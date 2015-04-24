@@ -1,0 +1,16 @@
+.fans img {
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease-in-out;
+}
+
+.fans:hover img{
+    box-shadow: 0 0 40px #ccc;
+    transform: scale(2);
+}
+
+.fans {
+    display: inline-block;
+    overflow: hidden;
+}
+

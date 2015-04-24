@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            border: solid green 2px;
+            width: 500px;
+            margin: 0 auto;
+        }
+        img{
+            float: right;
+        }
+        .clearfix {
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+
+<div><img src="ilta.png">
+    Uh oh... this image is taller than the element containing it, and it's floated, so it's overflowing outside of its container!
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<div class="clearfix"><img src="ilta.png">
+    Uh oh... this image is taller than the element containing it, and it's floated, so it's overflowing outside of its container!
+</div>
+
+
+</body>
+</html>

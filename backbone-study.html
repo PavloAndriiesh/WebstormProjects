@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="css/backbone-study.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+
+    <script id="personTemplate" type="text/template">
+        <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+    </script>
+
+</head>
+<body>
+<form id="addPerson" action="">
+    <input type="text" placeholder="Name of the person">
+    <input type="submit" value="Add Person">
+</form>
+
+</body>
+
+<script type="text/javascript" src="js/backbone-study.js"></script>
+
+</html>
