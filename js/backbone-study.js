@@ -11,10 +11,6 @@
         return _.template($('#' + id).html());
     };
 
-
-    new Todo.Router;
-    Backbone.history.start();
-
     Todo.Models.Person = Backbone.Model.extend({
         defaults: {
             name: 'Guest User',
