@@ -9,15 +9,12 @@
         addTask: function (task,parent) {
 
             if (!task) return;
-            if (task === "What needs to be done?") return;
 
             document.getElementById("text").value = "";
 
             i++;
 
             var taskWrapper = document.createElement("div");
-            taskWrapper.id = "taskWrapper" + i;
-
             var checkbox = document.createElement('input');
             checkbox.type = "checkbox";
             checkbox.id = "task" + i;
@@ -48,7 +45,6 @@
     document.getElementById("text").addEventListener('keydown', keyHandler, false);
     document.getElementById("button").addEventListener("click",  function() {
         toDo.addTask(document.getElementById("text").value, list);
-        document.getElementById("text").value = "What needs to be done?";
     });
 
     function keyHandler(event) {

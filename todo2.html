@@ -11,10 +11,13 @@
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
 
-    <script id="personTemplate" type="text/template">
-        <strong><%= name %></strong> (<%= age %>) - <%= occupation %>
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+    <script id="taskTemplate" type="text/template">
+        <label class="tasks btn-block">
+            <%= description %>
+            <input type="checkbox" class="check">
+            <button class="delete">Delete</button>
+            <button class="edit">Edit</button>
+        </label>
     </script>
 
 </head>
@@ -26,12 +29,12 @@
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
             <h1 class="text-center">Todo list</h1>
             <div class="text-center help-block">
-                <input type="text" class="text" id="text" value="What needs to be done?"
-                       onfocus="if (this.value=='What needs to be done?') this.value='';"
-                       onblur="if (this.value == '') {this.value = 'What needs to be done?';}">
-                <button id="button" class="btn btn-success btn-block">Enter</button>
-            </div>
-            <div class="list-of-tasks" id="list-of-tasks">
+                <form id="addTask" action="">
+                    <input type="text" id="text" class="text" placeholder="What needs to be done?">
+                    <input type="submit" class="btn btn-success btn-block" value="Add Task">
+                </form>
+                <div class="list-of-tasks" id="list-of-tasks">
+                </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>

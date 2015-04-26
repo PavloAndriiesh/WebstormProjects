@@ -1,70 +1,152 @@
-(function () {
-
-    var list = document.getElementById('list-of-tasks'),
-        listOfTasks= ["Get up", "Survive", "Go back to bad"];
-
-
-    var toDo = {
-        i: 0,
-
-        addTask: function (task,parent) {
-
-            if (!task) return;
-            if (task === "What needs to be done?") return;
-
-            document.getElementById("text").value = "";
-
-            this.i++;
-
-            var taskWrapper = document.createElement("div");
-            taskWrapper.id = "taskWrapper" + this.i;
-
-            var checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
-            checkbox.id = "task" + this.i;
-
-            var label = document.createElement('label');
-            label.className = "tasks btn-block";
-            label.htmlFor = "task" + this.i;
-            label.appendChild(document.createTextNode(task));
-
-            taskWrapper.appendChild(checkbox);
-            taskWrapper.appendChild(label);
-
-            parent.appendChild(taskWrapper);
-        },
-
-        init: function (tasks, parent) {
-
-            for (var i=0; i<tasks.length; i++) {
-                toDo.addTask(tasks[i], parent);
-            }
-        }
+(function() {
+    window.Todo = {
+        Models : {},
+        Views : {},
+        Routers : {},
+        Collections : {}
     };
 
-    toDo.init(listOfTasks, list);
+    window.template = function (id) {
+        return _.template($('#' + id).html());
+    };
 
-    document.getElementById("text").addEventListener('keydown', keyHandler, false);
-    document.getElementById("button").addEventListener("click",  function() {
-        toDo.addTask(document.getElementById("text").value, list);
-        document.getElementById("text").value = "What needs to be done?";
+    Todo.Models.Task = Backbone.Model.extend({
+        defaults: {
+            description: "Some thing to do",
+            time: new Date()
+        },
+
+        validate: function(attrs) {
+            if (!attrs.description) {
+                return "Task should have description";
+            }
+        }
     });
 
-    function keyHandler(event) {
+    Todo.Views.Task = Backbone.View.extend({
+        className: "task",
 
-        var KEY_CODE = {
-            SPACE: 32,
-            ENTER: 13
-        };
+        taskTemplate: template('taskTemplate'),
 
-        switch(event.keyCode) {
-            case KEY_CODE.ENTER:
-                toDo.addTask(event.target.value, list);
-                break;
+        initialize: function() {
+            this.model.on('change', this.render, this);
+            this.model.on('destroy', this.remove, this);
+        },
+
+        events: {
+            "click": "changeActiveness",
+            "click .edit": "editTask",
+            "click .delete": "deleteTask"
+        },
+
+        render: function() {
+            this.$el.html(this.taskTemplate(this.model.toJSON()));
+            return this;
+        },
+
+        changeActiveness: function() {
+            if (this.$el.hasClass("changeActiveness")) {
+                this.$el.removeClass("changeActiveness");
+            } else {
+                this.$el.addClass("changeActiveness");
+            }
+
+            return this.render();
+        },
+
+        editTask: function() {
+            var newDescription = prompt("Please enter new description", this.model.get('description'));
+            if (!newDescription) return;
+            this.model.set('description', newDescription);
+            this.changeActiveness();
+        },
+
+        deleteTask: function() {
+            this.model.destroy();
+        },
+
+        remove: function() {
+            this.$el.remove();
         }
-    }
+
+    });
+
+    Todo.Views.ListOfTasks = Backbone.View.extend({
+
+        initialize: function () {
+            this.collection.on("add", this.addTask, this);
+        },
+
+        render: function() {
+            this.collection.each(this.addTask, this);
+            return this;
+        },
+
+        addTask: function(task) {
+            var taskView = new Todo.Views.Task({ model: task });
+            this.$el.append(taskView.render().el);
+        }
+
+    });
+
+    Todo.Collections.ListOfTasks = Backbone.Collection.extend({
+        model: Todo.Models.Task
+    });
+
+    Todo.Views.AddTaskView = Backbone.View.extend({
+        el: '#addTask',
+
+        events: {
+            'submit': 'submit'
+        },
+
+        submit: function(e) {
+            e.preventDefault();
+            var newTaskDescription = document.getElementById("text").value;
+            if (!newTaskDescription) return;
+
+            document.getElementById("text").value = "";
+            var task = new Todo.Models.Task({ description: newTaskDescription});
+            this.collection.add(task);
+        }
+    });
+
+    var listOfTasksCollection = new Todo.Collections.ListOfTasks([
+        {
+            description: "Get up"
+        },
+        {
+            description: "Survive"
+        },
+        {
+            description: "Go back to bed"
+        }
+    ]);
+
+    var addTaskView = new Todo.Views.AddTaskView({ collection: listOfTasksCollection});
+    var tasksView = new Todo.Views.ListOfTasks({ collection: listOfTasksCollection});
+    $(".list-of-tasks").append(tasksView.render().el);
 
 }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
