@@ -11,24 +11,10 @@
     background-color: lightcyan;
 }
 
-.tasks {
-    margin-top: 5px;
-    padding: 5px;
-    font-size: 20px;
-    border: solid blue 1px;
-    background-color: lightcyan;
-    text-align: left;
-    overflow: hidden;
-    color: black;
-}
-
-.tasks:hover {
-    opacity: 0.8;
-}
-
 .check[type=checkbox] {
     display: none;
 }
+
 .changeActiveness label {
     background-color: lightgrey;
     border: solid grey 1px;
@@ -47,3 +33,46 @@
     margin-left: 5px;
 }
 
+.tasks {
+    position: relative;
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: solid blue 1px;
+    background-color: lightcyan;
+    text-align: left;
+    overflow: hidden;
+    color: black;
+}
+
+.task {
+    height: 40px;
+    -webkit-transition: height 1s ease;
+    -moz-transition: height 1s ease;
+    -o-transition: height 1s ease;
+    transition: height 1s ease, opacity 1s, top 2s;
+}
+
+.fading {
+    height: 0;
+    opacity: 0;
+    top: -100px;
+}
+
+.unfading {
+    height: 40px;
+    opacity: 1;
+    top: 0;
+}
+
+.deleteTaskAnimationBegin{
+    position: relative;
+    top: 0;
+    height: 40px;
+}
+
+.deleteTaskAnimationEnd {
+    top: -1000px;
+    opacity: 0.8;
+    height: 0;
+}
