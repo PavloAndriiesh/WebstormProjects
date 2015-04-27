@@ -172,19 +172,9 @@ jQuery(function () {
         try {
             console.log(JSON.parse(window.localStorage.getItem("tasksCollection")))
         } catch (err) {
-            $("h1").html("Ахтунг! Cработала защита!");
+            $("h1").html("A[neyu! Cработала защита!");
             window.localStorage.setItem("tasksCollection",JSON.stringify([
                     {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true},
-                    {"description": "научиться не клацать где не надо", "active":true}
-
             ]));
 
         }
