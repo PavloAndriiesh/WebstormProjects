@@ -1,0 +1,29 @@
+{
+    "name": "rad_project",
+    "application": null,
+    "libs": {},
+    "view": {
+        "screen.home": "/source/views/screen.home",
+        "screen.loader": "/source/views/screen.loader",
+        "scrollable": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/scrollable",
+        "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search"
+    },
+    "model": {
+        "model.itemDetail": "/source/models/model.itemDetail"
+    },
+    "service": {
+        "service.json_loader": "/source/service/service.json_loader"
+    },
+    "screen": {},
+    "external": {},
+    "links": {
+        "screen.home": "collection.phones"
+    },
+    "collection": {
+        "collection.phones": "/source/models/collection.phones"
+    },
+    "scrollable": {
+        "screen.details": "/source/views/screen.details",
+        "view": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/view"
+    }
+}

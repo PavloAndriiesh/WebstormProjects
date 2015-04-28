@@ -1,0 +1,30 @@
+<div>
+    <div class="top-title">
+        <div class="topcoat-navigation-bar">
+            <div class="topcoat-navigation-bar__item left quater">
+                <p class="topcoat-icon-button back-button">load next</p>
+            </div>
+            <div class="topcoat-navigation-bar__item center half" data-template>
+                <h1 class="topcoat-navigation-bar__title">{{ model.length }} phones</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="scroll-view screen-height">
+        <div>
+            <ul data-template>
+                {{# _.each(model, function(item, index) { }}
+                <li class="screen-home-list-item" data-id="{{ item.id }}">
+                    <div id="item-list">
+                        <div class="image-wrapper"><img src='{{ item.imageUrl }}'/></div>
+                        <div>
+                            <p> {{ item.name }} - {{ index }}</p>
+                        </div>
+                    </div>
+                </li>
+                {{# }); }}
+            </ul>
+        </div>
+    </div>
+</div>
