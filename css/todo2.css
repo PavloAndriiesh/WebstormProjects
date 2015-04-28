@@ -50,7 +50,7 @@
     -webkit-transition: height 1s ease;
     -moz-transition: height 1s ease;
     -o-transition: height 1s ease;
-    transition: height 1s ease, opacity 1s, top 2s;
+    transition: height 1s ease, opacity 0.2s, top 2s;
 }
 
 .fading {
@@ -73,6 +73,6 @@
 
 .deleteTaskAnimationEnd {
     top: -1000px;
-    opacity: 0.8;
+    opacity: 0;
     height: 0;
 }

@@ -1,0 +1,26 @@
+{
+    "name": "rad_project",
+    "application": null,
+    "libs": {},
+    "view": {
+        "screen.home": "/source/views/screen.home",
+        "screen.loader": "/source/views/screen.loader"
+    },
+    "model": {
+        "model.itemDetail": "/source/models/model.itemDetail"
+    },
+    "service": {
+        "service.json_loader": "/source/service/service.json_loader"
+    },
+    "screen": {},
+    "external": {},
+    "links": {
+        "screen.home": "collection.phones"
+    },
+    "collection": {
+        "collection.phones": "/source/models/collection.phones"
+    },
+    "scrollable": {
+        "screen.details": "/source/views/screen.details"
+    }
+}
