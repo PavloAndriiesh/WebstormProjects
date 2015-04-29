@@ -1,5 +1,118 @@
+h3{
+    margin: 0;
+    padding: 0;
+}
+
+.padding {
+    padding: 5px;
+}
+
+.float-left {
+    float:left;
+}
+.float-right {
+    float:right;
+}
+
+.color-red{
+    color: lightcoral;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+/*------------------------------------------screen-search------------------------------------------*/
+
 .header{
     font-size: 26px;
     text-align: center;
     background-color: aquamarine;
+}
+
+.text {
+    font-size: 26px;
+    height: 50px;
+    width: 100%;
+    padding: 5px;
+    color: black;
+    margin: 5px 0;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.prev-search{
+    padding: 10px 5px;
+}
+
+.prev-search:hover {
+    background-color: lightcyan;
+}
+.prev-search:active {
+    background-color: cyan;
+}
+
+.prev-search-block {
+    margin-top: 15px;
+}
+
+/*------------------------------------------screen-home------------------------------------------*/
+
+.back-button, .show-more-button{
+    display: inline-block;
+    font-size: 20px;
+    background-color: aquamarine;
+}
+
+.back-button{
+    float:left;
+}
+
+.show-more-button {
+    float:right;
+}
+
+.buttons-wrapper {
+    font-size: 26px;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.image-wrapper img{
+    height: 160px;
+}
+
+.image-description {
+    font-size: 26px;
+}
+
+.screen-home-list-item{
+    margin-top: 15px;
+}
+
+
+/*------------------------------------------screen-details------------------------------------------*/
+
+
+.item-description{
+    padding: 5px;
+    font-size: 20px;
+    font-style: italic;
+    margin: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.back-to-list {
+    font-size: 20px;
+    background-color: lightgrey;
+    margin: 25px;
+}
+
+.image-details {
+    width: 100%;
 }

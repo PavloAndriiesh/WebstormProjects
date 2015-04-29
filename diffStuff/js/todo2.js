@@ -56,7 +56,7 @@ jQuery(function () {
 
         render: function () {
             this.$el.html(this.taskTemplate(this.model.toJSON()));
-            Todo.Localstorage.saveTasks();
+            Todo.Localstorage.saveSearchedWords();
             return this;
         },
 
@@ -93,7 +93,7 @@ jQuery(function () {
 
 
             this.model.destroy();
-            Todo.Localstorage.saveTasks();
+            Todo.Localstorage.saveSearchedWords();
         },
 
         remove: function () {
@@ -154,14 +154,14 @@ jQuery(function () {
             document.getElementById("text").value = "";
             var task = new Todo.Models.Task({description: newTaskDescription});
             this.collection.add(task);
-            Todo.Localstorage.saveTasks();
+            Todo.Localstorage.saveSearchedWords();
         }
     });
 
 
     // LocalStorage
 
-    Todo.Localstorage.saveTasks = function () {
+    Todo.Localstorage.saveSearchedWords = function () {
         if (!Todo.Localstorage.supportsLocalStorage()) {
             return false;
         }

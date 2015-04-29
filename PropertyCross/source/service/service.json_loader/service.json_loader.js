@@ -14,6 +14,8 @@ RAD.service("service.json_loader", RAD.Blanks.Service.extend({
     },
 
     onReceiveMsg: function (channel, data) {
+
+
         var parts = channel.split('.'),
             command = parts[parts.length - 1];
 

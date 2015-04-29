@@ -20,7 +20,8 @@
         "screen.home": "collection.phones"
     },
     "collection": {
-        "collection.phones": "/source/models/collection.phones"
+        "collection.phones": "/source/models/collection.phones",
+        "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems"
     },
     "scrollable": {
         "screen.details": "/source/views/screen.details",

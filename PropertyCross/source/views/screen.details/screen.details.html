@@ -1,29 +1,26 @@
-<div >
-    <div class="top-title">
-        <div class="topcoat-navigation-bar">
-            <div class="topcoat-navigation-bar__item left quarter">
-                <p class="topcoat-icon-button back-button">back</p>
-            </div>
-            <div class="topcoat-navigation-bar__item center half">
-                <h1 class="topcoat-navigation-bar__title">Phone Details</h1>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="scroll-view screen-height">
-        <div class="content">
-
+<div>
+    <div class="scroll-view pos-absolute full-width">
+        <div>
             {{# if(model.name){ }}
-            <p class="header">{{ model.name }}</p>
+            <div class="header">{{ model.name }}</div>
             {{# } }}
+
+
+            <img class="image-details" src='{{ model.img_url }}'/>
 
             {{# if(model.snippet){ }}
-            <p class="subheader">{{ model.snippet }}</p>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
+            <div class="item-description">{{ model.snippet }}</div>
             {{# } }}
-            <img class="image-details" src='{{ model.imageUrl }}'/>
 
-            <div class="image-container center"></div>
+            <div class="back-to-list btn btn-default">Back to list</div>
         </div>
+
     </div>
 </div>

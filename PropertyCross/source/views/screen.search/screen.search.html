@@ -1,11 +1,30 @@
 <div>
-    <div class="header">RAD.js PropertyCross</div>
+    <div class="padding">
+        <div class="header">RAD.js PropertyCross</div>
+        <div class="searchBar">
+            <form id="input">
+                <input type="text" id="text" class="text btn-block" placeholder="Find property by place-name or postcode">
+                <div id="search-button" class="btn btn-success btn-block">Search</div>
+            </form>
+        </div>
+    </div>
 
-    <div class="searchBar">
-        <form id="input">
-            <input type="text" id="text" class="text btn-block" placeholder="What needs to be done?">
-            <input type="submit" class="btn btn-success btn-block" value="Search">
-        </form>
+    <div class="padding prev-search-block">
+        <h3 class="help-block">Your previous searches:</h3>
+        <div>
+            <ul class="btn-default">
+                {{# _.each(model, function(item, index) { }}
+                <li class="prev-search btn-block" data-word="{{ item.word }}">
+                    <div>
+                        <h3>
+                            <span class=""> {{ index+1 }}. {{ item.word }}</span>
+                            <span class="float-right color-red">{{ item.resultItems }}</span>
+                        </h3>
+                    </div>
+                </li>
+                {{# }); }}
+            </ul>
+        </div>
     </div>
 
 </div>

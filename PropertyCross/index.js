@@ -6,7 +6,11 @@
         
         "source/models/collection.phones/collection.phones.js",
         
+        "source/models/collection.searchedItems/collection.searchedItems.js",
+        
         "source/models/model.itemDetail/model.itemDetail.js",
+        
+        "source/models/model.searchedCollection/model.searchedCollection.js",
         
         "source/service/service.json_loader/service.json_loader.js",
         
@@ -26,8 +30,8 @@
         var core = window.RAD.core,
             application = window.RAD.application,
             coreOptions = {
-                defaultBackstack: true,
-                defaultAnimation: 'slide',
+                defaultBackstack: false,
+                defaultAnimation: 'none',
                 animationTimeout: 3000,
                 debug: false
             };

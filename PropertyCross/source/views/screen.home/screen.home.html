@@ -1,30 +1,34 @@
 <div>
-    <div class="top-title">
-        <div class="topcoat-navigation-bar">
-            <div class="topcoat-navigation-bar__item left quater">
-                <p class="topcoat-icon-button back-button">load next</p>
-            </div>
-            <div class="topcoat-navigation-bar__item center half" data-template>
-                <h1 class="topcoat-navigation-bar__title">{{ model.length }} phones</h1>
-            </div>
-
+    <div class="">
+        <div class="buttons-wrapper clearfix">
+            <div class="back-button btn btn-default">Back to search</div>
+            <div class="show-more-button btn btn-default">Load next</div>
+        </div>
+        <div class=" center half" data-template>
+            <h2 class="">Showing {{ model.length }} phones of {{ (model.length*Math.random()*100).toFixed(0) }}</h2>
         </div>
     </div>
 
-    <div class="scroll-view screen-height">
+    <div class="scroll-view pos-absolute">
         <div>
             <ul data-template>
                 {{# _.each(model, function(item, index) { }}
                 <li class="screen-home-list-item" data-id="{{ item.id }}">
                     <div id="item-list">
-                        <div class="image-wrapper"><img src='{{ item.imageUrl }}'/></div>
-                        <div>
-                            <p> {{ item.name }} - {{ index }}</p>
+                        <div class="image-wrapper clearfix"><img class="float-left" src='{{ item.img_url }}'/>
+                            <div class="image-description">
+                                <p> {{ item.title }} </p>
+                                {{# console.log(item);}}
+                            </div>
                         </div>
                     </div>
                 </li>
                 {{# }); }}
             </ul>
+            <div class="buttons-wrapper clearfix">
+                <div class="back-button btn btn-default">Back to search</div>
+                <div class="show-more-button btn btn-default">Load next</div>
+            </div>
         </div>
     </div>
 </div>

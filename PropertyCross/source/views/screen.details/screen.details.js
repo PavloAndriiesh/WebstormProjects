@@ -1,7 +1,9 @@
 RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/screen.details/screen.details.html',
-    model:'model.itemDetail',
+
+    className: "screen scroll-view",
+
 
     onInitialize: function () {
         this.model  = new RAD.model('model.itemDetail');
@@ -16,10 +18,11 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
     },
 
     events: {
-        'tap .back-button' : 'onItemClick'
+        'tap .back-to-list' : 'backToList'
     },
 
-    onItemClick: function (e) {
+    backToList: function (e) {
+        console.log(e);
         this.publish('router.back', null);
     }
 
