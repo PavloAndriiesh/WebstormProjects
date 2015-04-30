@@ -1,17 +1,8 @@
 <div>
-    <div>
-        <div class="buttons-wrapper clearfix">
-            <div class="back-button btn btn-default">Back to search</div>
-            <img class="float-right favorites-icon" src="http://png-4.findicons.com/files/icons/1700/2d/512/star.png">
-            <div class="show-more-button btn btn-default">Show next page</div>
-        </div>
-        <div class=" center half" data-template>
-            {{# if (this.model.total_pages>0) { }}
-
-            <h2 class="">Showing {{ model.length*this.model.page-19 }} - {{ model.length*this.model.page }} items of {{ this.model.total_pages*20 }}</h2>
-            {{# } else { }}
-            <h2 class="center half">Sorry, there is no results with your request!</h2>
-            {{# }; }}
+    <div class="center">
+        <div class="buttons-wrapper">
+            <div class="back-button btn btn-default">Back</div>
+            <div class="header center">Favorites</div>
         </div>
     </div>
 

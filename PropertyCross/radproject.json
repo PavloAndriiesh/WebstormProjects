@@ -6,7 +6,8 @@
         "screen.home": "/source/views/screen.home",
         "screen.loader": "/source/views/screen.loader",
         "scrollable": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/scrollable",
-        "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search"
+        "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search",
+        "screen.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/screen.favorites"
     },
     "model": {
         "model.itemDetail": "/source/models/model.itemDetail"
@@ -16,15 +17,15 @@
     },
     "screen": {},
     "external": {},
-    "links": {
-        "screen.home": "collection.phones"
-    },
+    "links": {},
     "collection": {
-        "collection.phones": "/source/models/collection.phones",
-        "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems"
+        "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems",
+        "collection.searchedWords": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedWords",
+        "collection.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.favorites"
     },
     "scrollable": {
         "screen.details": "/source/views/screen.details",
-        "view": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/view"
+        "view": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/view",
+        "viewe": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/viewe"
     }
 }

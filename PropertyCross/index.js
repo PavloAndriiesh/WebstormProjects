@@ -4,9 +4,11 @@
     
     var scripts = [
         
-        "source/models/collection.phones/collection.phones.js",
+        "source/models/collection.favorites/collection.favorites.js",
         
         "source/models/collection.searchedItems/collection.searchedItems.js",
+        
+        "source/models/collection.searchedWords/collection.searchedWords.js",
         
         "source/models/model.itemDetail/model.itemDetail.js",
         
@@ -15,6 +17,8 @@
         "source/service/service.json_loader/service.json_loader.js",
         
         "source/views/screen.details/screen.details.js",
+        
+        "source/views/screen.favorites/screen.favorites.js",
         
         "source/views/screen.home/screen.home.js",
         

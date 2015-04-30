@@ -5,25 +5,42 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
     className: "screen scroll-view",
 
     onInitialize: function () {
-        this.model = RAD.model('collection.searchedItems');
+        this.model = RAD.model('collection.searchedWords');
         this.loadObjectsFromLocalStorage();
     },
 
     events: {
         'tap #search-button': 'search',
-        'tap .prev-search': 'searchWord'
+        'tap .prev-search': 'searchWord',
+        'tap .favorites-icon': 'showFavorites'
+    },
+
+    showFavorites: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.favorites",
+            backstack: true
+        };
+
+        this.publish('navigation.show', options);
     },
 
     search: function () {
-        var word = document.getElementById("text").value;
+        var self = this;
 
-        var self = this,
-            options = {
+        var word = document.getElementById("text").value;
+        if (!word) return;
+
+        RAD.model('collection.searchedItems').word = word;
+        RAD.model('collection.searchedItems').page = 0;
+
+        var options = {
                 container_id: '#screen',
-                content: "screen.home"
+                content: "screen.home",
+                backstack: true
             };
 
-        this.model.fetch({
+        RAD.model('collection.searchedItems').fetch({
             dataType: "jsonp",
             data: {
                 country: "uk",
@@ -31,109 +48,68 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
                 action: "search_listings",
                 encoding: "json",
                 listing_type: "buy",
-                place_name: 'london'
+                place_name: word,
+                page: ++RAD.model('collection.searchedItems').page
             }
         }).then(function () {
+
+            var searchedWords = self.loadSearchedWords();
+            if (!searchedWords) searchedWords = [];
+            if (searchedWords.length >= 20) {
+                searchedWords.pop();
+            }
+
+            searchedWords.unshift({ "word": word, "resultItems": RAD.model('collection.searchedItems').total_pages*20});
+            self.model.unshift({ "word": word, "resultItems": RAD.model('collection.searchedItems').total_pages*20});
+            self.saveSearchedWords(searchedWords);
+
             self.publish('navigation.show', options);
         });
     },
 
     searchWord: function(e) {
         var word = e.currentTarget.getAttribute('data-word');
+        if (!word) return;
 
-        var self = this,
-            options = {
-                container_id: '#screen',
-                content: "screen.home"
-            };
-
-        this.model.fetch({
-            dataType: "jsonp",
-            data: {
-                country: "uk",
-                pretty: "1",
-                action: "search_listings",
-                encoding: "json",
-                listing_type: "buy",
-                place_name: 'london',
-                page: 1
-            }
-        }).then(function () {
-            self.publish('navigation.show', options);
-        });
-
-        this.application.loadList(word);
-
-    },
-
-    loadList : function(word, firstStart) {
-
-        if(firstStart) {
-            app.currentFile = 0;
-            var words = this.application.loadSearchedWords();
-
-            if (words.length >= 20) {
-                words.pop();
-            }
-
-            words.unshift({ "word": word, "resultItems": 123});
-
-            app.saveSearchedWords(words);
-        }
-
-        app.currentFile++;
-
-        var options = {
-            container_id: '#screen',
-            content: "screen.home",
-            backstack: false
-        };
-
-        core.publish('navigation.show', options);
-
-    },
-
-    onItemClick: function (e) {
-        var id = e.currentTarget.getAttribute('data-id');
-        this.application.showDetails(id);
-    },
-
-    onloadNextClick: function() {
-        this.application.loadList();
+        document.getElementById("text").value = word;
+        this.search();
     },
 
     loadObjectsFromLocalStorage: function() {
-        this.model.push(this.application.loadSearchedWords());
+        this.model.push(this.loadSearchedWords());
+    },
+
+    // LocalStorage
+
+    loadSearchedWords : function () {
+        if (!this.supportsLocalStorage()) {
+            return false;
+        }
+
+        try {
+            JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
+        } catch (err) {
+            saveSearchedWords([]);
+            return;
+        }
+
+
+        return JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
+    },
+
+    saveSearchedWords : function (collection) {
+        if (!this.supportsLocalStorage()) {
+            return false;
+        }
+        window.localStorage.setItem("searchedItemsCollection", JSON.stringify(collection));
+    },
+
+    supportsLocalStorage : function () {
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
+        }
     }
-/*
-
- onStartRender: function () {
- },
-    onNewExtras: function (extras) {
-
-    },
-    onReceiveMsg: function (channel, data) {
-
-    },
-    onStartRender: function () {
-
-    },
-
-    onBeforeAttach: function(){
-
-    },
-    onStartAttach: function () {
-
-    },
-    onEndAttach: function () {
-
-    },
-    onEndDetach: function () {
-
-    },
-    onDestroy: function () {
-
-    }
-*/
 
 }));

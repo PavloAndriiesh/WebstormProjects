@@ -1,26 +1,27 @@
 <div>
-    <div class="scroll-view pos-absolute full-width">
+    <div class="scroll-view pos-absolute full-width clearfix">
         <div>
-            {{# if(model.name){ }}
-            <div class="header">{{ model.name }}</div>
-            {{# } }}
+            <div class="header">{{ model.title }}
+                <img class="float-right favorites-icon" src="http://png-4.findicons.com/files/icons/1700/2d/512/star.png">
+            </div>
 
+            <div><img class="image-details" src='{{ model.img_url }}'/></div>
+            <div>
+                <div class="item-description">Bathroom number: {{ model.bathroom_number }}</div>
+                <div class="item-description">Bedroom number: {{ model.bedroom_number }}</div>
+                <div class="item-description">Price: {{ model.price_formatted }}</div>
+                <div class="item-description">Updated: {{ model.updated_in_days_formatted }}</div>
+                <div class="item-description">Seller: {{ model.lister_name }}</div>
+                <div class="item-description">Property type: {{ model.property_type }}</div>
+                <div class="item-description">{{ model.summary }}</div>
+            </div>
 
-            <img class="image-details" src='{{ model.img_url }}'/>
-
-            {{# if(model.snippet){ }}
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            <div class="item-description">{{ model.snippet }}</div>
-            {{# } }}
-
+            <p><a href="{{ model.lister_url }}" class="item-description">Link to website</a></p>
             <div class="back-to-list btn btn-default">Back to list</div>
+            <div id="addFavorites" class="addFavorites btn btn-default">Add to favorites</div>
+            <div id="removeFavorites" class="removeFavorites btn btn-default display-none">Remove from favorites</div>
         </div>
+
 
     </div>
 </div>

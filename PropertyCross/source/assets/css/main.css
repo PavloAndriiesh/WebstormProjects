@@ -22,10 +22,16 @@ h3{
     overflow: auto;
 }
 
+.favorites-icon {
+    height: 30px;
+    margin: 10px;
+}
+
+
 /*------------------------------------------screen-search------------------------------------------*/
 
 .header{
-    font-size: 26px;
+    font-size: 32px;
     text-align: center;
     background-color: aquamarine;
 }
@@ -64,6 +70,7 @@ h3{
     display: inline-block;
     font-size: 20px;
     background-color: aquamarine;
+    border: solid lightgrey 2px;
 }
 
 .back-button{
@@ -84,12 +91,15 @@ h3{
     height: 160px;
 }
 
-.image-description {
-    font-size: 26px;
+.image-description p{
+    font-size: 20px;
 }
 
+
 .screen-home-list-item{
-    margin-top: 15px;
+    margin: 15px;
+    border: solid lightgrey 2px;
+    background-color: lightcyan;
 }
 
 
@@ -113,6 +123,12 @@ h3{
     margin: 25px;
 }
 
-.image-details {
-    width: 100%;
+.addFavorites, .removeFavorites {
+    font-size: 20px;
+    background-color: yellow;
+    margin: 25px;
+}
+
+.display-none {
+    display: none;
 }
