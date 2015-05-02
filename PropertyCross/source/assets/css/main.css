@@ -23,15 +23,19 @@ h3{
 }
 
 .favorites-icon {
+    display: inline-block;
     height: 30px;
-    margin: 10px;
+    margin: 5px;
 }
 
+.empty-space {
+    height: 110px;
+}
 
 /*------------------------------------------screen-search------------------------------------------*/
 
 .header{
-    font-size: 32px;
+    font-size: 31px;
     text-align: center;
     background-color: aquamarine;
 }
@@ -62,6 +66,12 @@ h3{
 
 .prev-search-block {
     margin-top: 15px;
+}
+
+.search-button{
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 }
 
 /*------------------------------------------screen-home------------------------------------------*/
@@ -102,7 +112,10 @@ h3{
     background-color: lightcyan;
 }
 
+.screen-home-list-item:hover{
+    border: solid blue 2px;
 
+}
 /*------------------------------------------screen-details------------------------------------------*/
 
 
@@ -118,9 +131,10 @@ h3{
 }
 
 .back-to-list {
+    display: inline-block;
     font-size: 20px;
-    background-color: lightgrey;
-    margin: 25px;
+    background-color: aquamarine;
+    border: solid lightgrey 2px;
 }
 
 .addFavorites, .removeFavorites {

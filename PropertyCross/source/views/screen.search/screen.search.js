@@ -25,6 +25,14 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         this.publish('navigation.show', options);
     },
 
+    searchWord: function(e) {
+        var word = e.currentTarget.getAttribute('data-word');
+        if (!word) return;
+
+        document.getElementById("text").value = word;
+        this.search();
+    },
+
     search: function () {
         var self = this;
 
@@ -65,14 +73,6 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
 
             self.publish('navigation.show', options);
         });
-    },
-
-    searchWord: function(e) {
-        var word = e.currentTarget.getAttribute('data-word');
-        if (!word) return;
-
-        document.getElementById("text").value = word;
-        this.search();
     },
 
     loadObjectsFromLocalStorage: function() {

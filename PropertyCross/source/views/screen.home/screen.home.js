@@ -9,23 +9,13 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
     },
 
     events: {
-        'tap .screen-home-list-item': 'showDeatails',
+        'tap .screen-home-list-item': 'showDetails',
         'tap .back-button': 'onBackButton',
         'tap .show-more-button': 'searchMore',
         'tap .favorites-icon': "showFavorites"
     },
 
-    showFavorites: function() {
-        var options = {
-            container_id: '#screen',
-            content: "screen.favorites",
-            backstack: true
-        };
-
-        this.publish('navigation.show', options);
-    },
-
-    showDeatails: function (e) {
+    showDetails: function (e) {
         var title = e.currentTarget.getAttribute('data-id');
 
         var options = {
@@ -44,14 +34,16 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
 
 
     onBackButton: function() {
-        this.publish("router.back", null);
+        var options = {
+            container_id: '#screen',
+            content: "screen.search"
+        };
+
+        this.publish('navigation.show', options);
     },
 
     searchMore: function () {
         var model = this.model;
-        var that = this;
-        console.log(model);
-
         var options = {
             container_id: '#screen',
             content: "screen.home"
@@ -73,6 +65,17 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
 
         });
     },
+
+    showFavorites: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.favorites",
+            backstack: true
+        };
+
+        this.publish('navigation.show', options);
+    },
+
 
     // LocalStorage
 

@@ -1,8 +1,6 @@
 RAD.application(function (core) {
     var app = this;
 
-    app.currentFile = 0;
-
     app.start = function () {
         core.startService();
         app.searchPage(true);
@@ -13,10 +11,8 @@ RAD.application(function (core) {
         var options = {
             container_id: '#screen',
             content: 'screen.search',
-            backstack: true,
-            extras: id
+            backstack: true
         };
-
 
         core.publish('navigation.show', options);
     };

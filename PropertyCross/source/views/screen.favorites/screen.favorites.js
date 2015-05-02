@@ -4,6 +4,9 @@ RAD.view("screen.favorites", RAD.Blanks.ScrollableView.extend({
 
     onInitialize: function () {
         this.model = RAD.model('collection.favorites');
+    },
+
+    onStartAttach: function() {
         this.model.set(length, 0);
         this.model.push(this.loadFavorites());
     },
@@ -13,6 +16,9 @@ RAD.view("screen.favorites", RAD.Blanks.ScrollableView.extend({
         'tap .screen-home-list-item': 'onItemClick'
     },
 
+    back: function () {
+        this.publish('router.back', null);
+    },
 
     onItemClick: function (e) {
         var title = e.currentTarget.getAttribute('data-id');
@@ -30,9 +36,8 @@ RAD.view("screen.favorites", RAD.Blanks.ScrollableView.extend({
         this.publish('navigation.show', options);
     },
 
-    back: function (e) {
-        this.publish('router.back', null);
-    },
+
+    //Local Storage
 
     supportsLocalStorage : function () {
         try {
@@ -41,7 +46,6 @@ RAD.view("screen.favorites", RAD.Blanks.ScrollableView.extend({
             return false;
         }
     },
-
 
     loadFavorites: function() {
         if (!this.supportsLocalStorage()) {

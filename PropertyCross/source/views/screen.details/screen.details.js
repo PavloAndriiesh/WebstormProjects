@@ -12,13 +12,11 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
         this.model.set(thisTitle.model.findWhere({title:(thisTitle.title)}).toJSON())
     },
 
-    onStartRender: function () {
-    },
-
     onStartAttach: function() {
         var that = this;
         var localStoredItems = this.loadFavorites();
 
+        if (localStoredItems === null) return;
         for (var i=0; i<localStoredItems.length; i++) {
             if (localStoredItems[i].title === this.extras.title) {
                 document.getElementById("addFavorites").className = "addFavorites btn btn-default display-none";
@@ -33,9 +31,13 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
     events: {
         'tap .back-to-list' : 'routerBack',
         'tap .favorites-icon': 'showFavorites',
-        'tap .addFavorites': 'saveToFavorites',
+        'tap .addFavorites': 'addToFavorites',
         'tap .removeFavorites': 'removeFromFavorites'
 
+    },
+
+    routerBack: function (e) {
+        this.publish('router.back', null);
     },
 
     showFavorites: function() {
@@ -48,41 +50,25 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
         this.publish('navigation.show', options);
     },
 
-    saveToFavorites: function() {
-        RAD.model('collection.favorites').unshift(this.model);
-        this.saveFavorites(RAD.model('collection.favorites'));
-        this.showFavorites();
+    addToFavorites: function() {
+        var favorites = this.loadFavorites();
+        if (!favorites) favorites = [];
+        favorites.unshift(this.model);
+        this.saveFavorites(favorites);
+        this.onStartAttach();
     },
 
     removeFromFavorites: function() {
-        //RAD.model('collection.favorites').unshift(this.model);
-        //this.saveFavorites(RAD.model('collection.favorites'));
-        console.log("inside removeFromFavorites");
+        var that = this;
 
-        var array = this.loadFavorites();
-        var index = -1;
-        console.log(array);
-
-        for(var i=0; i<array.length; i++) {
-            console.log(array[i]);
-            if (array[i].title === this.extras.title) {
-                index = i;
-            }
-        }
-
-        if (index > -1) {
-            array.splice(index, 1);
-        }
-
-        RAD.model('collection.favorites').shift();
-
-        this.saveFavorites(array);
-        this.routerBack();
+        var favorites = this.loadFavorites();
+        var newFavorites = _.filter(favorites, function(prop) {return prop.title !== that.extras.title} );
+        this.saveFavorites(newFavorites);
+        this.onStartAttach();
     },
 
-    routerBack: function (e) {
-        this.publish('router.back', null);
-    },
+
+    // Local Storage
 
     loadFavorites: function() {
         if (!this.supportsLocalStorage()) {
