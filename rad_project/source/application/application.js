@@ -8,29 +8,30 @@ RAD.application(function (core) {
         app.loadList(true);
     };
 
-    app.loadList = function(fisrtStart) {
-
+    app.loadList = function (firstStart) {
         app.currentFile++;
-
         var options = {
             container_id: '#screen',
-            content: "screen.home",
-            animation: 'none',
+            content: 'screen.home',
+            animation: "slide",
             backstack: true
         };
 
         core.publish('service.json_loader.get',
             {
-                file: "jsondata/phones" + app.currentFile + ".json",
+                file: "jsondata/phones"+ app.currentFile +".json",
 
-                loader: true,
+                loader:true,
+
                 callback: function (json) {
-                    RAD.model('collection.phones').add(json);
-
-            }
-        });
-        core.publish('navigation.show', options);
-    };
+                    RAD.model('collection.phones').add(json, {silent:true});
+                    if (firstStart) {
+                        core.publish('navigation.show', options);
+                    }
+                    RAD.model('collection.phones').trigger('change');
+                }
+            });
+    }
 
     app.showDetails = function (id) {
         var options = {
@@ -40,7 +41,7 @@ RAD.application(function (core) {
             extras: id
         };
         core.publish('navigation.show', options);
-    };
+    }
 
     return app;
 }, true);

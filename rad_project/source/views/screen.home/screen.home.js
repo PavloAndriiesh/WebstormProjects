@@ -1,10 +1,10 @@
 RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
 
-    className: "screen scroll-view",
+    className: "screen",
 
     url: 'source/views/screen.home/screen.home.html',
 
-    onInitialize: function() {
+    onInitialize: function () {
         this.model = RAD.model('collection.phones');
     },
 
@@ -12,53 +12,53 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
         console.log("onStartRender screen home");
     },
 
+    /// <-- START event tracking
     events: {
-        'tap .screen-home-list-item': 'onItemClick',
-        'tap .back-button': 'onloadNextClick'
+        'tap .screen-home-list-item' : 'onItemClick',
+        'tap .back-button' : 'onloadNextClick'
+
     },
+    /// <-- END event tracking
 
     onItemClick: function (e) {
-        console.log("inside onItemClick");
         var id = e.currentTarget.getAttribute('data-id');
         this.application.showDetails(id);
     },
 
-    onloadNextClick: function() {
+    onloadNextClick: function (e) {
         this.application.loadList();
+        this.$(".back-button").css("visibility", "hidden");
     }
 
-/*
-    onInitialize: function () {
 
 
-    },
-    onNewExtras: function (extras) {
 
-    },
-    onReceiveMsg: function (channel, data) {
+    /*
+     onNewExtras: function () {
 
-    },
-    onStartRender: function () {
+     },
+     onReceiveMsg: function (channel, data) {
 
-    },
-    onEndRender: function () {
+     },
+     onStartRender: function () {
 
-    },
-    onBeforeAttach: function(){
+     },
+     onEndRender: function () {
 
-    },
-    onStartAttach: function () {
+     },
+     onBeforeAttach: function () {
 
-    },
-    onEndAttach: function () {
+     },
+     onStartAttach: function () {
 
-    },
-    onEndDetach: function () {
+     },
+     onEndAttach: function () {
 
-    },
-    onDestroy: function () {
+     },
+     onEndDetach: function () {
 
-    }
-*/
-
+     },
+     onDestroy: function () {
+     }
+     */
 }));

@@ -43,6 +43,9 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
     },
 
     searchMore: function () {
+        this.publish('navigation.dialog.show', {content: 'screen.loader'});
+
+        var that = this;
         var model = this.model;
         var options = {
             container_id: '#screen',
@@ -62,7 +65,7 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
                 reset: true
             }
         }).then(function () {
-
+            that.publish('navigation.dialog.close', {content: 'screen.loader'});
         });
     },
 
@@ -74,37 +77,6 @@ RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
         };
 
         this.publish('navigation.show', options);
-    },
-
-
-    // LocalStorage
-
-    loadSearchedWords : function () {
-        try {
-            JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
-        } catch (err) {
-            return;
-        }
-
-        if (!this.supportsLocalStorage()) {
-            return false;
-        }
-        return JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
-    },
-
-    supportsLocalStorage : function () {
-        try {
-            return 'localStorage' in window && window['localStorage'] !== null;
-        } catch (e) {
-            return false;
-        }
-    },
-
-    saveSearchedWords : function (collection) {
-        if (!this.supportsLocalStorage()) {
-            return false;
-        }
-        window.localStorage.setItem("searchedItemsCollection", JSON.stringify(collection));
     }
 
 }));

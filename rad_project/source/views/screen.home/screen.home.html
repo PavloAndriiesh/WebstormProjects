@@ -10,9 +10,8 @@
 
         </div>
     </div>
-
-    <div class="scroll-view pos-absolute">
-        <div>
+    <div class="scroll-view screen-height">
+        <div> <!--be careful with this tag -  it very important to avoid scroll jumping  -->
             <ul data-template>
                 {{# _.each(model, function(item, index) { }}
                 <li class="screen-home-list-item" data-id="{{ item.id }}">
@@ -25,6 +24,6 @@
                 </li>
                 {{# }); }}
             </ul>
-        </div>
+       </div>
     </div>
 </div>

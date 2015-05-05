@@ -15,7 +15,7 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         'tap .favorites-icon': 'showFavorites'
     },
 
-    showFavorites: function() {
+    showFavorites: function () {
         var options = {
             container_id: '#screen',
             content: "screen.favorites",
@@ -25,7 +25,7 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         this.publish('navigation.show', options);
     },
 
-    searchWord: function(e) {
+    searchWord: function (e) {
         var word = e.currentTarget.getAttribute('data-word');
         if (!word) return;
 
@@ -34,7 +34,9 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
     },
 
     search: function () {
-        var self = this;
+        this.publish('navigation.dialog.show', {content: 'screen.loader'});
+
+        var that = this;
 
         var word = document.getElementById("text").value;
         if (!word) return;
@@ -43,10 +45,10 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         RAD.model('collection.searchedItems').page = 0;
 
         var options = {
-                container_id: '#screen',
-                content: "screen.home",
-                backstack: true
-            };
+            container_id: '#screen',
+            content: "screen.home",
+            backstack: true
+        };
 
         RAD.model('collection.searchedItems').fetch({
             dataType: "jsonp",
@@ -60,56 +62,15 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
                 page: ++RAD.model('collection.searchedItems').page
             }
         }).then(function () {
-
-            var searchedWords = self.loadSearchedWords();
-            if (!searchedWords) searchedWords = [];
-            if (searchedWords.length >= 20) {
-                searchedWords.pop();
-            }
-
-            searchedWords.unshift({ "word": word, "resultItems": RAD.model('collection.searchedItems').total_pages*20});
-            self.model.unshift({ "word": word, "resultItems": RAD.model('collection.searchedItems').total_pages*20});
-            self.saveSearchedWords(searchedWords);
-
-            self.publish('navigation.show', options);
+            that.publish('service.localStorage.saveSearchedWords', {});
+            that.publish('navigation.show', options);
+            that.publish('navigation.dialog.close', {content: 'screen.loader'});
         });
     },
 
-    loadObjectsFromLocalStorage: function() {
-        this.model.push(this.loadSearchedWords());
-    },
-
-    // LocalStorage
-
-    loadSearchedWords : function () {
-        if (!this.supportsLocalStorage()) {
-            return false;
-        }
-
-        try {
-            JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
-        } catch (err) {
-            saveSearchedWords([]);
-            return;
-        }
-
-
-        return JSON.parse(window.localStorage.getItem("searchedItemsCollection"));
-    },
-
-    saveSearchedWords : function (collection) {
-        if (!this.supportsLocalStorage()) {
-            return false;
-        }
-        window.localStorage.setItem("searchedItemsCollection", JSON.stringify(collection));
-    },
-
-    supportsLocalStorage : function () {
-        try {
-            return 'localStorage' in window && window['localStorage'] !== null;
-        } catch (e) {
-            return false;
-        }
+    loadObjectsFromLocalStorage: function () {
+        this.publish('service.localStorage.loadSearchedWords', {});
+        this.publish('service.localStorage.loadFavorites', {});
     }
 
 }));

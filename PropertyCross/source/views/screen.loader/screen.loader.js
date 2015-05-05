@@ -1,40 +1,39 @@
 RAD.view("screen.loader", RAD.Blanks.View.extend({
 
-    url: 'source/views/screen.loader/screen.loader.html',
+    className: "screen",
 
-    className: "screen"
+    url: 'source/views/screen.loader/screen.loader.html'
+/*
+    onInitialize: function () {
+        
+    },
+    onNewExtras: function (extras) {
+        
+    },
+    onReceiveMsg: function (channel, data) {
+        
+    },
+    onStartRender: function () {
+        
+    },
+    onEndRender: function () {
+        
+    },
+    onBeforeAttach: function(){
 
-    /*
-        onInitialize: function () {
-
-        },
-        onNewExtras: function (extras) {
-
-        },
-        onReceiveMsg: function (channel, data) {
-
-        },
-        onStartRender: function () {
-
-        },
-        onEndRender: function () {
-
-        },
-        onBeforeAttach: function(){
-
-        },
-        onStartAttach: function () {
-
-        },
-        onEndAttach: function () {
-
-        },
-        onEndDetach: function () {
-
-        },
-        onDestroy: function () {
-
-        }
-    */
+    },
+    onStartAttach: function () {
+        
+    },
+    onEndAttach: function () {
+        
+    },
+    onEndDetach: function () {
+        
+    },
+    onDestroy: function () {
+        
+    }
+*/
 
 }));

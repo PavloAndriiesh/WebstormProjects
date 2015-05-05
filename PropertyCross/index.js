@@ -14,7 +14,7 @@
         
         "source/models/model.searchedCollection/model.searchedCollection.js",
         
-        "source/service/service.json_loader/service.json_loader.js",
+        "source/service/service.localStorage/service.localStorage.js",
         
         "source/views/screen.details/screen.details.js",
         
@@ -29,6 +29,7 @@
         "source/application/application.js"
     ];
     // #script_end#
+
     function onEndLoad() {
 
         var core = window.RAD.core,
@@ -47,5 +48,6 @@
         application.start();
     }
 
+    scripts.push("source/helper/util.js");
     window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
 }(document, window));

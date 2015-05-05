@@ -12,9 +12,9 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
     },
 
     onStartRender: function () {
-        console.log("screen.details rendered!");
+        console.log("onStartRender screen details ");
     },
-
+    /// <-- START event tracking
     events: {
         'tap .back-button' : 'onItemClick'
     },
@@ -22,9 +22,16 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
     onItemClick: function (e) {
         this.publish('router.back', null);
     }
+    /// <-- END event tracking
+
 
 /*
-
+    onInitialize: function () {
+        
+    },
+    onNewExtras: function () {
+        
+    },
     onReceiveMsg: function (channel, data) {
         
     },
@@ -38,16 +45,12 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
 
     },
     onStartAttach: function () {
-        
     },
     onEndAttach: function () {
-        
     },
     onEndDetach: function () {
-        
     },
     onDestroy: function () {
-        
     }
 */
 

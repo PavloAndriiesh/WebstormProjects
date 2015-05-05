@@ -4,11 +4,10 @@
     "libs": {},
     "view": {
         "screen.home": "/source/views/screen.home",
+        "screen.details": "/source/views/screen.details",
         "screen.loader": "/source/views/screen.loader"
     },
-    "model": {
-        "model.itemDetail": "/source/models/model.itemDetail"
-    },
+    "model": {},
     "service": {
         "service.json_loader": "/source/service/service.json_loader"
     },
@@ -19,8 +18,5 @@
     },
     "collection": {
         "collection.phones": "/source/models/collection.phones"
-    },
-    "scrollable": {
-        "screen.details": "/source/views/screen.details"
     }
 }

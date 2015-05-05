@@ -13,7 +13,9 @@
         "model.itemDetail": "/source/models/model.itemDetail"
     },
     "service": {
-        "service.json_loader": "/source/service/service.json_loader"
+        "service.json_loader": "/source/service/service.json_loader",
+        "localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/localStorage",
+        "service.localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/service.localStorage"
     },
     "screen": {},
     "external": {},

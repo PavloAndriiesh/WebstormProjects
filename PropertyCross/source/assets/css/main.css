@@ -32,6 +32,27 @@ h3{
     height: 110px;
 }
 
+.title {
+    font-size: 20px;
+}
+
+.price {
+    font-style: italic;
+    font-size: 28px;
+}
+
+.loader{
+    color:white;
+    background-color: #595b5b;
+
+    padding: 10px;
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    margin: -10px 0 0 -50px;
+    top: 50%;
+    left: 50%;
+}
 /*------------------------------------------screen-search------------------------------------------*/
 
 .header{
@@ -101,9 +122,7 @@ h3{
     height: 160px;
 }
 
-.image-description p{
-    font-size: 20px;
-}
+
 
 
 .screen-home-list-item{
