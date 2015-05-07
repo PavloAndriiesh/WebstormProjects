@@ -1,0 +1,28 @@
+<div class="">
+    <div class="header">
+        <div class="back-button pointer float-left">&larr;</div>
+        <div class="header-text">Favorites</div>
+    </div>
+
+    <div class="scroll-view pos-absolute full-width">
+        <div>
+            <ul data-template class="clearfix">
+                {{# _.each(model, function(item, index) { }}
+                <li class="screen-home-list-item" data-id="{{ item.title }}">
+                    <div class="screen-home-list-item-wrapper">
+                        <div class="image-wrapper">
+                            <img src='{{ item.img_url }}'/>
+                        </div>
+                        <div class="image-description">
+                            <div class="item-price"> {{ item.price_formatted }} </div>
+                            <div class="item-title"> {{ item.title }} </div>
+                            <div class="item-summary"> {{ item.summary }} </div>
+                        </div>
+                    </div>
+                </li>
+                {{# }); }}
+            </ul>
+            <div class="empty-space"></div>
+        </div>
+    </div>
+</div>

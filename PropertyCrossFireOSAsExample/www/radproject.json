@@ -1,0 +1,34 @@
+{
+    "name": "PropertyCross",
+    "application": null,
+    "libs": {},
+    "view": {
+        "screen.home": "/source/views/screen.home",
+        "screen.loader": "/source/views/screen.loader",
+        "scrollable": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/scrollable",
+        "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search",
+        "screen.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/screen.favorites",
+        "screen.info": "FireOSAsExample/www/source/views/screen.info"
+    },
+    "model": {
+        "model.itemDetail": "/source/models/model.itemDetail"
+    },
+    "service": {
+        "service.json_loader": "/source/service/service.json_loader",
+        "localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/localStorage",
+        "service.localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/service.localStorage"
+    },
+    "screen": {},
+    "external": {},
+    "links": {},
+    "collection": {
+        "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems",
+        "collection.searchedWords": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedWords",
+        "collection.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.favorites"
+    },
+    "scrollable": {
+        "screen.details": "/source/views/screen.details",
+        "view": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/view",
+        "viewe": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/viewe"
+    }
+}

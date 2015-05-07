@@ -34,12 +34,15 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
     },
 
     search: function () {
-        this.publish('navigation.dialog.show', {content: 'screen.loader'});
+        var word = document.getElementById("text").value;
+        if (!word) {
+            return;
+        }
 
         var that = this;
 
-        var word = document.getElementById("text").value;
-        if (!word) return;
+        this.publish('navigation.dialog.show', {content: 'screen.loader'});
+
 
         RAD.model('collection.searchedItems').word = word;
         RAD.model('collection.searchedItems').page = 0;

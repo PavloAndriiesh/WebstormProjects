@@ -1,0 +1,38 @@
+<div class="background">
+    <div class="">
+        <div class="header">
+            <span class="info-button">i</span>
+            <span class="search-title">PhoneGap</span>
+            <img class="float-right pointer favorites-icon" src="img/favorites-1.png">
+        </div>
+        <div class="searchBar">
+            <div id="input">
+                <img class="search" src="img/loupe.png">
+                <div class="line"></div>
+                <input type="text" id="text" class="text btn-block" placeholder="Search">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="">
+        <div class="search-scroll-view-wrapper">
+            <div class="scroll-view pos-absolute full-width">
+                <div>
+                    <ul>
+                        {{# _.each(this.model.models, function(item, index) { }}
+                        <li class="prev-search" data-word="{{ item.attributes.word }}">
+                            <div>
+                                <h4>
+                                    {{ index+1 }}.<span class="search-font">  {{ item.attributes.word }}</span>
+                                    <span class="float-right items-count color-red">{{ item.attributes.resultItems }}</span>
+                                </h4>
+                            </div>
+                        </li>
+                        {{# }); }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

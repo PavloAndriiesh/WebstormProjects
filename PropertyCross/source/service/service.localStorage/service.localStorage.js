@@ -101,13 +101,13 @@ RAD.service("service.localStorage", RAD.Blanks.Service.extend({
         window.setTimeout(function () {
             that.isSaving = false;
 
-            if (Math.random() > 0.5) {
+            try {
                 window.localStorage.setItem("favoritesCollection", JSON.stringify(RAD.model('collection.favorites')));
                 data.onSuccess();
-            } else {
+            } catch(err) {
                 data.onError();
             }
 
-        }, 2000);
+        }, 10);
     }
 }));

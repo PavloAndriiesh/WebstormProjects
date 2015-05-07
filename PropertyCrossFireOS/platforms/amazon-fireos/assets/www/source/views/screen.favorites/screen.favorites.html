@@ -1,0 +1,31 @@
+<div class="background">
+    <div class="padding">
+        <div class="header">
+            <div class="back-button pointer float-left">&larr;</div>
+            <div class="header-text">Favorites</div>
+        </div>
+    </div>
+
+    <div class="scroll-view pos-absolute full-width background">
+        <div>
+            <ul data-template>
+                {{# _.each(model, function(item, index) { }}
+                <li class="screen-home-list-item" data-id="{{ item.title }}">
+                    <div id="item-list">
+                        <div class="item-wrapper">
+                            <div class="image-wrapper">
+                                <img class="" src='{{ item.img_url }}'/>
+                            </div>
+                            <div class="image-description">
+                                <p class="price"> {{ item.price_formatted }} </p>
+                                <p class="title"> {{ item.title }} </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{# }); }}
+            </ul>
+            <div class="empty-space"></div>
+        </div>
+    </div>
+</div>

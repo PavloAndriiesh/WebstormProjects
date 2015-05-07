@@ -101,9 +101,7 @@ ul li div img{
     border: 1px solid #96918f;
 }
 
-.image-wrapper{
-    float:left;
-}
+
 
 ul li div p:nth-child(1){
     padding:40px;

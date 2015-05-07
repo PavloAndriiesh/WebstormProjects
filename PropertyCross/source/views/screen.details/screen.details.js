@@ -53,8 +53,9 @@ RAD.view("screen.details", RAD.Blanks.ScrollableView.extend({
     },
 
     addToFavorites: function () {
-        var that = this;
         RAD.model('collection.favorites').unshift(this.model);
+
+        var that = this;
         this.publish('service.localStorage.saveFavorites', {
             onSuccess: function () {
                 console.log("Success!!!");

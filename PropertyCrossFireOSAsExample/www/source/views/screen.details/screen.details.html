@@ -1,0 +1,39 @@
+<div class="">
+    <div class="">
+
+        <div class="scroll-view pos-absolute full-width  clearfix">
+            <div>
+                <div class="details-image-wrapper display-inline-block"><img src='{{ model.img_url }}'/></div>
+
+                <div class="favs-wrapper display-inline-block">
+                    <img class="addFavorites" src="img/favorites-2.png">
+                    {{# if(model.isFavorites) { }}
+                    <img class="removeFavorites" src="img/favorites-1.png">
+
+                    {{# } else { }}
+                    <img class="removeFavorites transparent" src="img/favorites-1.png">
+
+                    {{# } }}
+                </div>
+
+                <div>
+                    <div class="item-description">Bathroom number: {{ model.bathroom_number }}</div>
+                    <div class="item-description">Bedroom number: {{ model.bedroom_number }}</div>
+                    <div class="item-description">Price: {{ model.price_formatted }}</div>
+                    <div class="item-description">Updated: {{ model.updated_in_days_formatted }}</div>
+                    <div class="item-description">Seller: {{ model.lister_name }}</div>
+                    <div class="item-description">Property type: {{ model.property_type }}</div>
+                    <div class="item-description">Property description: {{ model.summary }}</div>
+                </div>
+
+                <p><a href="{{ model.lister_url }}" class="item-description">Link to website</a></p>
+            </div>
+        </div>
+        <div class="header-inv">
+        </div>
+        <div class="header-inv-text">
+            <div class="back-to-list float-left pointer">&larr;</div>
+            <div class="header-text">{{ model.title }}</div>
+        </div>
+    </div>
+</div>
