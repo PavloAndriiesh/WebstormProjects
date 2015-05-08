@@ -1,3 +1,5 @@
 {
-    "amazon-fireos": "3.6.3"
+    "amazon-fireos": "3.6.3",
+    "browser": "3.6.0",
+    "android": "4.0.0"
 }

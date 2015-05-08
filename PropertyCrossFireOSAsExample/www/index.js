@@ -26,6 +26,8 @@
         
         "source/views/screen.loader/screen.loader.js",
         
+        "source/views/screen.photomanager/screen.photomanager.js",
+        
         "source/views/screen.search/screen.search.js",
         
         "source/application/application.js"
@@ -46,10 +48,14 @@
         //initialize core by new application object
         core.initialize(application, coreOptions);
 
+
+
         //start
         application.start();
     }
-
-    scripts.push("source/helper/util.js");
-    window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
+    console.log('before deviceready');
+    //document.addEventListener("deviceready", function () {
+        scripts.push("source/helper/util.js");
+        window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
+    //}, true);
 }(document, window));

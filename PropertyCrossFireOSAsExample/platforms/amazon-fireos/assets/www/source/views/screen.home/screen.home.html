@@ -1,35 +1,35 @@
-<div class="background">
-    <div class="padding">
-        <div class="header border-rad">
-            <div class="back-button pointer float-left">&larr;</div>
-            <div class="header-text">Search results:</div>
-            <img class="favorites-icon pointer float-right" src="img/favorites-1.png">
-        </div>
-    </div>
+<div>
+    <div class="header">
+        <div class="back-button pointer float-left">&larr;</div>
 
-    <div>
         {{# if (this.model.total_pages>0) { }}
-        <div class="showed-items" data-template>Showing {{ model.length }} items of {{ this.model.total_pages*20 }}</div>
+        <div class="showed-items" data-template>{{ model.length }} from {{ this.model.total_pages*20 }}</div>
         {{# };}}
         {{# if (!this.model.total_pages) { }}
         <div class="showed-items">Sorry, there is no results with your request!</div>
         {{# }; }}
+
+        <img class="favorites-icon pointer float-right" src="img/favorites-1.png">
+    </div>
+
+
+    <div>
+
     </div>
     <div class="home-scroll-view-wrapper">
-        <div class="scroll-view pos-absolute full-width background">
+        <div class="scroll-view pos-absolute full-width">
             <div>
                 <ul data-template class="clearfix">
                     {{# _.each(model, function(item, index) { }}
                     <li class="screen-home-list-item" data-id="{{ item.title }}">
-                        <div id="item-list">
-                            <div class="item-wrapper">
-                                <div class="image-wrapper">
-                                    <img class="" src='{{ item.img_url }}'/>
-                                </div>
-                                <div class="image-description">
-                                    <div class="price"> {{ item.price_formatted }} </div>
-                                    <div class="title"> {{ item.title }} </div>
-                                </div>
+                        <div class="screen-home-list-item-wrapper">
+                            <div class="image-wrapper">
+                                <img src='{{ item.img_url }}'/>
+                            </div>
+                            <div class="image-description">
+                                <div class="item-price"> {{ item.price_formatted }} </div>
+                                <div class="item-title"> {{ item.title }} </div>
+                                <div class="item-summary"> {{ item.summary }} </div>
                             </div>
                         </div>
                     </li>
@@ -42,6 +42,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

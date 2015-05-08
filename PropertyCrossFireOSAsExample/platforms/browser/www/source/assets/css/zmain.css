@@ -1,0 +1,363 @@
+.background {
+    background-color:lightgrey;
+}
+
+.float-left {
+    float:left;
+}
+.float-right {
+    float:right;
+}
+
+.color-red{
+    color: #EB1818;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.favorites-icon {
+    display: inline-block;
+    height: 30px;
+    margin: 8px;
+}
+
+.empty-space {
+    height: 100px;
+}
+
+.screen-home-list-item-wrapper {
+    height: 120px;
+}
+
+.image-wrapper{
+    display: inline-block;
+    width: 20%;
+    float:left;
+}
+
+.image-description {
+    display: inline-block;
+    border-bottom: solid 1px lightgrey;
+    width: 70%;
+    overflow: hidden;
+}
+
+.item-price {
+    font: bold 26px arial, sans-serif;
+    margin : 5px;
+}
+
+.item-title {
+    font: 20px arial, sans-serif;
+    opacity: 0.7;
+    margin : 5px;
+    white-space: nowrap;
+}
+
+.item-summary {
+    font: 16px arial, sans-serif;
+    opacity: 0.6;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+.loader{
+    color:white;
+    background-color: #595b5b;
+
+    padding: 10px;
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    margin: -10px 0 0 -50px;
+    top: 50%;
+    left: 50%;
+}
+
+.border-rad{
+    border-radius: 5px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.search-scroll-view-wrapper{
+    position: absolute;
+    top: 115px;
+    bottom: 0;
+    width: 100%
+}
+.home-scroll-view-wrapper{
+    position: absolute;
+    top: 46px;
+    bottom: 0;
+    width: 100%
+}
+
+
+/*------------------------------------------screen-search------------------------------------------*/
+
+.header{
+    height:46px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #3635C6;
+    color: white;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.text {
+    font-size: 26px;
+    height: 70px;
+    width: 100%;
+    padding: 0 40px;
+    color: black;
+    background-color: lightgrey;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.prev-search{
+    padding: 10px 5px;
+    border-top: solid 1px lightgrey;
+    overflow: hidden;
+}
+
+.prev-search:active {
+    background-color: cyan;
+}
+.search-font {
+    font: bold 20px arial, sans-serif;
+}
+
+.search{
+    cursor: pointer;
+    width: 25px;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+}
+
+.screen-search-height div {
+    height: calc(100% - 221px);
+}
+
+.items-count{
+    padding: 0 10px;
+    font-size: 24px;
+}
+
+.info-button {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 12px;
+    background-color: lightgrey;
+    color: #3635C6;
+    float:left;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.info-wrapper {
+    white-space: normal;
+    font: 16px arial, sans-serif;
+    color:white;
+    background-color: #009FFF;
+    position: absolute;
+    padding: 15px;
+    width: 50%;
+    top: 25%;
+    left: 30%;
+}
+
+.info-header {
+    font-weight: bold;
+}
+
+.info-after-header {
+    margin: 10px 0;
+}
+
+.info-enjoy, .take-a-photo-button {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #FF5E00;
+    margin: 5px 0;
+}
+
+.take-a-photo-button {
+}
+
+.ul-info li{
+    list-style-type: circle;
+    text-align: left;
+    margin-left: 25px;
+    padding: 5px;
+}
+
+.search-title {
+    float: left;
+    margin-left: 30px;
+}
+
+.line {
+    width: 85%;
+    border-top: solid grey 1px;
+    position: absolute;
+    top: 100px;
+    left: 7%;
+}
+
+/*------------------------------------------screen-home------------------------------------------*/
+
+.back-button {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 30px;
+}
+
+.show-more-button {
+    text-align: center;
+    font-size: 20px;
+    margin: 15px;
+    padding: 5px;
+    background-color: #3635C6;
+    color: white;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.header-text {
+    display: inline-block;
+    font-size: 26px;
+}
+
+.showed-items {
+    margin: 0 15px;
+    font-size: 26px;
+    display: inline-block;
+}
+
+.buttons-wrapper {
+    font-size: 26px;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.image-wrapper img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.screen-home-list-item{
+    margin: 15px;
+}
+
+/*------------------------------------------screen-details------------------------------------------*/
+
+.header-inv{
+    position: absolute;
+    top:0;
+    opacity: 0.5;
+    height:46px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    background-color: black;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+.header-inv-text {
+    position: absolute;
+    top:0;
+    height:46px;
+    width: 100%;
+    color: white;
+    opacity: 1;
+    line-height: 45px;
+}
+
+
+.header-inv div{
+    opacity: 1;
+}
+
+.details-image {
+    position: relative;
+    top: -2px;
+    width: 400px;
+    height: 300px;
+}
+
+.item-description{
+    padding: 5px;
+    font-size: 20px;
+    font-style: italic;
+    margin: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.back-to-list {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 30px;
+}
+
+.addFavorites, .removeFavorites {
+    cursor: pointer;
+    position: relative;
+}
+
+.addFavorites {
+    width: 100px;
+    top: 5px;
+    left: 7px;
+}
+
+.removeFavorites {
+    width: 100px;
+    top: -97px;
+    left: 7px;
+}
+
+.favs-wrapper {
+    position: relative;
+    margin: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: solid 2px lightgrey;
+    top:250px;
+    left: 30px;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.transparent{
+    opacity: 0;
+}

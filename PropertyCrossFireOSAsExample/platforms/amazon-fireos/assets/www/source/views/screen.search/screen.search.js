@@ -2,18 +2,17 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/screen.search/screen.search.html',
 
-    className: "screen scroll-view",
-
     onInitialize: function () {
         this.model = RAD.model('collection.searchedWords');
         this.loadObjectsFromLocalStorage();
+        this.showInfo();
     },
 
     events: {
-        'tap .search-button': 'search',
+        'tap .search': 'search',
         'tap .prev-search': 'searchWord',
         'tap .favorites-icon': 'showFavorites',
-        'submit' : "search"
+        'tap .info-button' : "showInfo"
     },
 
     showFavorites: function () {
@@ -31,10 +30,10 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         if (!word) return;
 
         document.getElementById("text").value = word;
-        this.search();
+        this.search({}, true);
     },
 
-    search: function () {
+    search: function (obj, isUsedWord) {
         var word = document.getElementById("text").value;
         if (!word) {
             return;
@@ -66,7 +65,10 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
                 page: ++RAD.model('collection.searchedItems').page
             }
         }).then(function () {
-            that.publish('service.localStorage.saveSearchedWords', {});
+            if (!isUsedWord) {
+                that.publish('service.localStorage.saveSearchedWords', {});
+            }
+
             that.publish('navigation.show', options);
             that.publish('navigation.dialog.close', {content: 'screen.loader'});
         });
@@ -75,6 +77,10 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
     loadObjectsFromLocalStorage: function () {
         this.publish('service.localStorage.loadSearchedWords', {});
         this.publish('service.localStorage.loadFavorites', {});
+    },
+
+    showInfo: function() {
+        this.publish('navigation.dialog.show', {content: 'screen.info'});
     }
 
 }));

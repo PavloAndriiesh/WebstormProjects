@@ -8,7 +8,8 @@
         "scrollable": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/scrollable",
         "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search",
         "screen.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/screen.favorites",
-        "screen.info": "FireOSAsExample/www/source/views/screen.info"
+        "screen.info": "FireOSAsExample/www/source/views/screen.info",
+        "screen.photomanager": "FireOSAsExample/www/source/views/screen.photomanager"
     },
     "model": {
         "model.itemDetail": "/source/models/model.itemDetail"
