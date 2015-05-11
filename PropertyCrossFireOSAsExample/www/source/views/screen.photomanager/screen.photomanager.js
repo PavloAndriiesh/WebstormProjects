@@ -9,6 +9,7 @@ RAD.view("screen.photomanager", RAD.Blanks.View.extend({
 
     events: {
         'tap .take-a-photo': "takeAPhoto",
+        'tap .choose-photo': "choosePhoto",
         'tap .check-connection': 'checkConnection'
     },
 
@@ -37,6 +38,26 @@ RAD.view("screen.photomanager", RAD.Blanks.View.extend({
 
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.FILE_URI });
+
+        function onSuccess(imageURI) {
+            var image = document.getElementById('myImage');
+            image.src = imageURI;
+            console.log("success, url: " + imageURI);
+            alert("success, url: " + imageURI);
+        }
+
+        function onFail(message) {
+            console.log("fail");
+            alert('Failed because: ' + message);
+        }
+    },
+
+    choosePhoto: function() {
+        console.log("choosing a photo");
+
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
 
         function onSuccess(imageURI) {
             var image = document.getElementById('myImage');

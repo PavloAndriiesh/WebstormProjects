@@ -9,19 +9,19 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -44,19 +44,19 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.mobidev.pavlo"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.mobidev.pavlo"
         },
         "org.apache.cordova.camera": {
             "PACKAGE_NAME": "com.mobidev.pavlo"
         },
-        "cordova-plugin-device": {
+        "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.mobidev.pavlo"
         },
         "org.apache.cordova.network-information": {
-            "PACKAGE_NAME": "com.mobidev.pavlo"
-        },
-        "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.mobidev.pavlo"
         }
     },
