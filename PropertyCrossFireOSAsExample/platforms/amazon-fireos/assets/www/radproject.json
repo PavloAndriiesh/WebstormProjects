@@ -25,7 +25,8 @@
     "collection": {
         "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems",
         "collection.searchedWords": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedWords",
-        "collection.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.favorites"
+        "collection.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.favorites",
+        "collection.photos": "FireOSAsExample/www/source/models/collection.photos"
     },
     "scrollable": {
         "screen.details": "/source/views/screen.details",

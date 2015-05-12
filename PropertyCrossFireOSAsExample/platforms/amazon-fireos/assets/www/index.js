@@ -6,6 +6,8 @@
         
         "source/models/collection.favorites/collection.favorites.js",
         
+        "source/models/collection.photos/collection.photos.js",
+        
         "source/models/collection.searchedItems/collection.searchedItems.js",
         
         "source/models/collection.searchedWords/collection.searchedWords.js",
@@ -53,9 +55,8 @@
         //start
         application.start();
     }
-    console.log('before deviceready');
-    //document.addEventListener("deviceready", function () {
+    document.addEventListener("deviceready", function () {
         scripts.push("source/helper/util.js");
         window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
-    //}, true);
+    }, true);
 }(document, window));

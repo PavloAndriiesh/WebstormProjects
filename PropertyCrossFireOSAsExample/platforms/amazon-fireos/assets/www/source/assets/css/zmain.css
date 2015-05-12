@@ -359,10 +359,21 @@
     opacity: 0;
 }
 
-#myImage {
+/*------------------------------------------photo-manager------------------------------------------*/
+
+.myImageWrapper {
+}
+
+.myImage {
     width: 100%;
 }
-.take-a-photo, .check-connection {
+
+.photos-li{
+    margin: 1%;
+    width: 30%;
+}
+
+.take-a-photo, .check-connection, .choose-from-gallery {
     width: 100%;
     background-color: green;
     color: white;
@@ -370,4 +381,12 @@
     text-align: center;
     border: solid 2px black;
     padding: 10px;
+    height: 52px;
+}
+
+.photo-manager-scroll-view-wrapper {
+    position: absolute;
+    top: 202px;
+    bottom: 0;
+    width: 100%
 }

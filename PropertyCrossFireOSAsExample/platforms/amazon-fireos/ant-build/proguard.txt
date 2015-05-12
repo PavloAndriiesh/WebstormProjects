@@ -1,5 +1,5 @@
 # view AndroidManifest.xml #generated:6
--keep class com.mobidev.pavlo.MyPropertyCross { <init>(...); }
+-keep class com.mobidev.pavlo.PropertyCross { <init>(...); }
 
 # view AndroidManifest.xml #generated:13
 -keep class org.chromium.content.app.SandboxedProcessService0 { <init>(...); }
