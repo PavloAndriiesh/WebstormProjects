@@ -2,17 +2,39 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/screen.search/screen.search.html',
 
-    className: "screen scroll-view",
+
 
     onInitialize: function () {
         this.model = RAD.model('collection.searchedWords');
         this.loadObjectsFromLocalStorage();
     },
 
+    onStartAttach: function() {
+        this.formManager();
+
+
+        $( "#search-button" ).click(function( event ) {
+
+            event.preventDefault();
+
+            $( this ).hide( "slow" );
+
+        });
+    },
+
     events: {
         'tap .search-button': 'search',
         'tap .prev-search': 'searchWord',
         'tap .favorites-icon': 'showFavorites'
+    },
+
+    formManager: function() {
+        var that = this;
+
+        $( "#input" ).submit(function( event ) {
+            event.preventDefault();
+            that.search();
+        });
     },
 
     showFavorites: function () {

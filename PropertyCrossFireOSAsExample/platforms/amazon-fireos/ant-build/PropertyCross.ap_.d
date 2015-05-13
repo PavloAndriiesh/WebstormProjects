@@ -27,7 +27,6 @@
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/npm-debug.log \
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/index.html \
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/cordova_plugins.js \
-/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/icon.png \
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/source \
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/cordova.js \
 /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/assets/www/img/favorites-1.png \

@@ -39,30 +39,15 @@ RAD.view("screen.photomanager", RAD.Blanks.ScrollableView.extend({
         console.log(cordova.file.externalCacheDirectory);
     },
 
-    chooseFromGallery: function() {
-        var that = this;
-        console.log("choosing a photo");
-
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
-            destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
-
-        function onSuccess(imageURI) {
-            console.log("success, url: " + imageURI);
-            that.model.unshift({ "URL" : imageURI });
-        }
-
-        function onFail(message) {
-            console.log("fail because" + message);
-        }
-    },
 
     takeAPhoto: function() {
         var that = this;
         console.log("making a photo");
 
-        navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
-            destinationType: Camera.DestinationType.FILE_URI });
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 100,
+            destinationType: Camera.DestinationType.FILE_URI
+        });
 
         function onSuccess(imageURI) {
             console.log("success, url: " + imageURI);
@@ -70,7 +55,27 @@ RAD.view("screen.photomanager", RAD.Blanks.ScrollableView.extend({
         }
 
         function onFail(message) {
-            console.log("fail because" + message);
+            console.log("fail because: " + message);
+        }
+    },
+
+    chooseFromGallery: function() {
+        var that = this;
+        console.log("choosing a photo");
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 100,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+        });
+
+        function onSuccess(imageURI) {
+            console.log("success, url: " + imageURI);
+            that.model.unshift({ "URL" : imageURI });
+        }
+
+        function onFail(message) {
+            console.log("fail because: " + message);
         }
     },
 

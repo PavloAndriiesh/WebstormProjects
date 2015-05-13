@@ -365,7 +365,7 @@
 }
 
 .myImage {
-    width: 100%;
+    max-width:100%;
 }
 
 .photos-li{

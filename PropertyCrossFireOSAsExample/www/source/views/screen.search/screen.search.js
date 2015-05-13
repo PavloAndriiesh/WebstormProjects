@@ -8,11 +8,24 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
         this.showInfo();
     },
 
+    onStartAttach: function() {
+        this.formManager();
+    },
+
     events: {
         'tap .search': 'search',
         'tap .prev-search': 'searchWord',
         'tap .favorites-icon': 'showFavorites',
         'tap .info-button' : "showInfo"
+    },
+
+    formManager: function() {
+        var that = this;
+
+        $( "#input" ).submit(function( event ) {
+            event.preventDefault();
+            that.search();
+        });
     },
 
     showFavorites: function () {
