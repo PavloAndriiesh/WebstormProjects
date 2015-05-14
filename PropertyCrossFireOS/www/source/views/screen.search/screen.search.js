@@ -11,15 +11,6 @@ RAD.view("screen.search", RAD.Blanks.ScrollableView.extend({
 
     onStartAttach: function() {
         this.formManager();
-
-
-        $( "#search-button" ).click(function( event ) {
-
-            event.preventDefault();
-
-            $( this ).hide( "slow" );
-
-        });
     },
 
     events: {

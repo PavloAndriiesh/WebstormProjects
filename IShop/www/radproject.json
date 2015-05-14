@@ -1,0 +1,28 @@
+{
+    "name": "IShop",
+    "application": null,
+    "libs": {},
+    "view": {
+        "screen.login": "/www/source/views/screen.login",
+        "screen.home": "/www/source/views/screen.home"
+    },
+    "model": {
+        "model.productDetails": "/www/source/models/model.productDetails"
+    },
+    "service": {
+        "service.localStorage": "/www/source/service/service.localStorage",
+        "service.dataSource": "/www/source/service/service.dataSource"
+    },
+    "screen": {},
+    "external": {},
+    "links": {},
+    "collection": {
+        "collection.listOfProducts": "/www/source/models/collection.listOfProducts"
+    },
+    "scrollable": {
+        "screen.shoppingCart": "/www/source/views/screen.shoppingCart",
+        "screen.listOfProducts": "/www/source/views/screen.listOfProducts",
+        "screen.productDetails": "/www/source/views/screen.productDetails",
+        "screen.shoppingHistory": "/www/source/views/screen.shoppingHistory"
+    }
+}

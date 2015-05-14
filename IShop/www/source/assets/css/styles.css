@@ -1,0 +1,150 @@
+.header {
+    height: 40px;
+    background-color: lightcyan;
+}
+
+.footer {
+    width: 100%;
+    height: 40px;
+    background-color: darkgreen;
+}
+
+.flag {
+    width: 50px;
+    height: 30px;
+    float: right;
+    border: solid 1px grey;
+    margin: 5px 5px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 28px;
+}
+
+.float-left {
+    float:left;
+}
+
+.float-right {
+    float:right;
+}
+
+.logged-user {
+    font-size: 20px;
+    float: left;
+    margin: 5px 5px;
+}
+
+/*-----------------login page-------------------------------------------*/
+
+.form-wrapper {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 26px;;
+}
+
+.form-wrapper input{
+    width: 100%;
+}
+
+.form-wrapper button {
+    margin-top: 5px;
+    font-size: 20px;;
+}
+
+.invalid-data {
+    font: 20px Arial;
+    color: red;
+}
+
+/*-----------------home page-----------------------------------------------------*/
+
+.menu-list{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.menu-list div{
+    margin: 5px;;
+    font: bold 26px Arial;
+}
+
+/*-----------------list of products page------------------------------------------*/
+
+.category-li {
+    font-size: 20px;
+    background-color: lightgrey;
+    border: solid 1px grey;
+    margin: 5px;
+    overflow: auto;
+    text-align: center;
+    height: 45px;
+    line-height: 40px;
+}
+
+.category-li-checked {
+    background-color: limegreen;
+    font-weight: bold;
+    color: white;
+}
+
+.products-filter {
+
+}
+
+.products-li {
+    border: solid 2px lightgrey;
+}
+
+.products-li-title {
+    font: bold 26px Arial;
+}
+
+.products-li-description{
+    font: 20px Arial;
+}
+
+.products-li-price {
+    font: bold 20px Arial;
+    color:red;
+}
+
+
+/*-----------------product details page-------------------------------------------*/
+
+.details-wrapper {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    font-size: 26px;;
+}
+
+.add-button, .remove-button {
+    width: 200px;
+    font: 20px Arial;
+}
+
+.btn-wrapper{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.product-details-input {
+    text-align: right;
+    width: 80px;
+}
+
+.price {
+    color: red;
+}

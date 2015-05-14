@@ -1,0 +1,30 @@
+<div class="">
+    <div class="header">
+        <div class="back-button pointer float-left">&larr;</div>
+        <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
+        <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
+    </div>
+    <div class="row">
+        <div class="products-filter col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <p>Choose category:</p>
+            <ul class="category-ul">
+                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'car')){ }} category-li-checked {{# } }}">car</li>
+                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'house')){ }} category-li-checked {{# } }}">house</li>
+                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'alcohol')){ }} category-li-checked {{# } }}">alcohol</li>
+                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'food')){ }} category-li-checked {{# } }}">food</li>
+                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'computer')){ }} category-li-checked {{# } }}">computer</li>
+            </ul>
+        </div>
+        <div class="products-ul-wrapper col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <ul class="products-ul">
+                {{# _.each(model, function(item, index) { }}
+                <li class="products-li btn-block btn" data-id="{{ item.id }}">
+                    <div class="products-li-title">{{ item.title_en }}</div>
+                    <div class="products-li-description">{{ item.description_en }}</div>
+                    <div class="products-li-price">{{ item.price }} UAH</div>
+                </li>
+                {{# }); }}
+            </ul>
+        </div>
+    </div>
+</div>

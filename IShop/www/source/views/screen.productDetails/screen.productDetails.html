@@ -1,0 +1,27 @@
+<div class="">
+    <div class="header">
+        <div class="back-button pointer float-left">&larr;</div>
+        <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
+        <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
+    </div>
+    <div class="details-wrapper">
+        <div>Category: {{ model.category }}</div>
+        <div>Title: {{ model.title_en }}</div>
+        <div>Description: {{ model.description_en }}</div>
+
+        <div class="btn-wrapper">
+            <div class="">
+                <span class="add-button btn btn-success">Add to cart</span>
+                x
+                <input id="add-quantity" class="product-details-input" type="text" value="1"/>
+                <span id="price-add" class="price float-right">1238</span>
+            </div>
+            <div class="">
+                <span class="remove-button btn btn-warning">Remove from cart</span>
+                x
+                <input id="remove-quantity" class="product-details-input" type="text" value="1"/>
+                <span id="price-remove" class="price float-right">-1238</span>
+            </div>
+        </div>
+    </div>
+</div>
