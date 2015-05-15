@@ -23,7 +23,6 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     },
 
     productDetails: function(event) {
-
         var id = event.currentTarget.getAttribute('data-id');
 
         var options = {

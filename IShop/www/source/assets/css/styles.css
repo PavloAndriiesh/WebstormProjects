@@ -102,6 +102,11 @@
 
 }
 
+.products-filter p {
+    margin: 5px;
+    font: normal 20px Arial;
+}
+
 .products-li {
     border: solid 2px lightgrey;
 }
@@ -145,6 +150,36 @@
     width: 80px;
 }
 
-.price {
+.color-red {
     color: red;
+}
+
+.spoilers-wrapper {
+    margin: 5px;
+}
+
+.added-spoiler, .removed-spoiler {
+    font: normal 16px Arial;
+}
+
+/*-----------------shopping cart page-------------------------------------------*/
+
+.price-wrapper {
+    margin: 5px;
+    font: normal 26px Arial
+}
+
+.buy-button {
+    font: normal 26px Arial;
+    margin: 15px;
+}
+
+.total {
+    margin-top: 10px;
+    border-top: solid 1px grey;
+}
+
+.make-order{
+    margin: 15px 5px;
+    font-size: 28px;
 }

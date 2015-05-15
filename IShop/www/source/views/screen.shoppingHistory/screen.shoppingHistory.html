@@ -7,51 +7,13 @@
     <div class="">
         Shopping history:
         <ul class="">
+            {{# _.each(model, function(item, index) { }}
             <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
+                {{# console.log(item); }}
+                <span class="date">{{ item.date }}</span>
+                <span class="color-red">{{ item.total }} UAH</span>
             </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-            <li class="btn btn-block">
-                <span class="date">01.01.2001</span>
-                <span class="price">1238123,31 UAH</span>
-            </li>
-
+            {{# }); }}
         </ul>
     </div>
 </div>

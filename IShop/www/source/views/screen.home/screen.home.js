@@ -3,7 +3,7 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     url: 'source/views/screen.home/screen.home.html',
 
     onInitialize: function () {
-
+        this.publish('service.dataSource.downloadShoppingCartData');
     },
 
     onStartAttach: function() {
@@ -28,8 +28,6 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     },
 
     shoppingCart: function() {
-        console.log("shoppingCart");
-
         var options = {
             container_id: '#screen',
             content: "screen.shoppingCart",
@@ -40,8 +38,6 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     },
 
     shoppingHistory: function() {
-        console.log("shoppingHistory");
-
         var options = {
             container_id: '#screen',
             content: "screen.shoppingHistory",
@@ -52,8 +48,6 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     },
 
     logout: function() {
-        console.log("logout");
-
         var options = {
             container_id: '#screen',
             content: "screen.login",

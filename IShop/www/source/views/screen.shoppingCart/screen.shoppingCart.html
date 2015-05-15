@@ -5,23 +5,34 @@
         <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
     <div class="row">
-        <div class="products-ul-wrapper col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <div class="products-ul-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
             <ul class="products-ul">
                 {{# _.each(model, function(item, index) { }}
                 <li class="products-li btn-block btn" data-id="{{ item.id }}">
                     <div class="products-li-title">{{ item.title_en }}</div>
                     <div class="products-li-description">{{ item.description_en }}</div>
-                    <div class="products-li-price">{{ item.price }} UAH</div>
+                    <div class="products-li-price">{{ item.inShoppingCart }} x {{ item.price }} UAH</div>
                 </li>
                 {{# }); }}
             </ul>
-
             <div class="price-wrapper">
-                <div>Price:......................12310  UAH</div>
-                <div>Discount(3%):...............23  UAH</div>
-                <div>Sale:.......................231  UAH</div>
-                <div>Total:......................123123 UAH</div>
-                <div class="btn btn-success">Buy</div>
+                <div>
+                    <span>Price:</span>
+                    <span class="float-right">{{ this.model.price }}</span>
+                </div>
+                <div>
+                    <span>Discount(3%):</span>
+                    <span class="float-right color-red">{{ this.model.discount }}</span>
+                </div>
+                <div>
+                    <span>Deal({{ this.model.percentDeal }}%):</span>
+                    <span class="float-right color-red">{{ this.model.deal }}</span></div>
+                <div class="total">
+                    <span>Total (UAH):</span>
+                    <span class="float-right">{{ this.model.total }}</span>
+                </div>
+                <div class="make-order btn btn-success">Make an order</div>
             </div>
         </div>
     </div>

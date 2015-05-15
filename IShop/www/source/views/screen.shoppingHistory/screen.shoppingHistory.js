@@ -1,37 +1,18 @@
 RAD.view("screen.shoppingHistory", RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/screen.shoppingHistory/screen.shoppingHistory.html',
-/*
-    onInitialize: function () {
-        
-    },
-    onNewExtras: function (extras) {
-        
-    },
-    onReceiveMsg: function (channel, data) {
-        
-    },
-    onStartRender: function () {
-        
-    },
-    onEndRender: function () {
-        
-    },
-    onBeforeAttach: function(){
 
+    onInitialize: function () {
+        this.model = RAD.model("collection.shoppingHistory");
+        this.publish('service.dataSource.loadShoppingHistory');
     },
-    onStartAttach: function () {
-        
+
+    events: {
+        'tap .back-button': 'back'
     },
-    onEndAttach: function () {
-        
-    },
-    onEndDetach: function () {
-        
-    },
-    onDestroy: function () {
-        
+
+    back: function () {
+        this.publish('router.back', null);
     }
-*/
 
 }));

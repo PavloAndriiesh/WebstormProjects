@@ -17,7 +17,9 @@
     "external": {},
     "links": {},
     "collection": {
-        "collection.listOfProducts": "/www/source/models/collection.listOfProducts"
+        "collection.listOfProducts": "/www/source/models/collection.listOfProducts",
+        "collection.shoppingCart": "/www/source/models/collection.shoppingCart",
+        "collection.shoppingHistory": "/www/source/models/collection.shoppingHistory"
     },
     "scrollable": {
         "screen.shoppingCart": "/www/source/views/screen.shoppingCart",

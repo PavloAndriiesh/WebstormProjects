@@ -28,6 +28,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
         if(!user) {
             $(".invalid-data").removeClass("hidden");
+            return;
         }
 
         if (user.password === password) {
@@ -40,9 +41,9 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
     login: function(user) {
 
-        window.user = user.email;
+        window.user = user;
 
-        this.publish('service.localStorage.saveUser', user);
+        this.publish('service.dataSource.saveUser', user);
 
         var options = {
             container_id: '#screen',

@@ -6,11 +6,13 @@
         
         "source/models/collection.listOfProducts/collection.listOfProducts.js",
         
+        "source/models/collection.shoppingCart/collection.shoppingCart.js",
+        
+        "source/models/collection.shoppingHistory/collection.shoppingHistory.js",
+        
         "source/models/model.productDetails/model.productDetails.js",
         
         "source/service/service.dataSource/service.dataSource.js",
-        
-        "source/service/service.localStorage/service.localStorage.js",
         
         "source/views/screen.home/screen.home.js",
         
