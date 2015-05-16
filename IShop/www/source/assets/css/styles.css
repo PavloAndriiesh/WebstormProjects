@@ -87,13 +87,18 @@
 
 .category-li {
     font-size: 20px;
-    background-color: lightgrey;
+    background-color: lightgoldenrodyellow;
     border: solid 1px grey;
     margin: 5px;
     overflow: auto;
     text-align: center;
     height: 45px;
     line-height: 40px;
+    border-radius: 5px;
+}
+
+.category-li:hover {
+    border:solid 2px grey;
 }
 
 .category-li-checked {
@@ -143,6 +148,7 @@
 .add-button, .remove-button {
     width: 200px;
     font: 20px Arial;
+    margin: 5px 0;
 }
 
 .btn-wrapper{
@@ -185,6 +191,10 @@
 
 .details-description {
     margin: 10px auto;
+}
+
+.price {
+    padding: 13px 0;
 }
 
 /*-----------------shopping cart page-------------------------------------------*/

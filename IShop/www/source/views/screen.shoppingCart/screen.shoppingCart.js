@@ -14,7 +14,8 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
     events: {
         'tap .back-button': 'back',
         'tap .products-li' : 'productDetails',
-        'tap .make-order' :'makeOrder'
+        'tap .make-order' :'makeOrder',
+        'tap .flag' : "changeLanguage"
     },
 
     back: function () {
@@ -106,6 +107,12 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
         window.setTimeout(function() {
             that.publish('navigation.dialog.close', options);
         }, 1000);
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
+        RAD.model('collection.shoppingCart').trigger("change");
     }
 
 }));

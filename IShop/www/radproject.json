@@ -9,7 +9,9 @@
     },
     "model": {
         "model.productDetails": "/www/source/models/model.productDetails",
-        "model.movedToSCToast": "\\www\\source\\models\\model.movedToSCToast"
+        "model.movedToSCToast": "\\www\\source\\models\\model.movedToSCToast",
+        "model.home": "\\www\\source\\models\\model.home",
+        "model.login": "\\www\\source\\models\\model.login"
     },
     "service": {
         "service.localStorage": "/www/source/service/service.localStorage",

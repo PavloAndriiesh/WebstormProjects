@@ -35,8 +35,8 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
                 this.saveShoppingHistory(data);
                 break;
 
-            case "getLocalString":
-                this.getLocalString(data);
+            case "setLanguage":
+                this.setLanguage(data);
                 break;
         }
     },
@@ -86,8 +86,7 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
             JSON.parse(window.localStorage.getItem("shoppingCart"));
         } catch (err) {
             alert("problem with downloading data");
-            RAD.model('collection.shoppingCart').reset();
-            RAD.model('collection.shoppingCart').push([]);
+            RAD.model('collection.shoppingCart').trigger("change");
             return;
         }
 
@@ -131,45 +130,92 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
         }
     },
 
-    getLocalString: function(data) {
+    setLanguage: function(data) {
+        window.language = data;
+
+        var local;
         var en = {
             login: "Login",
-            logged_in: "You logged in as ",
-            list_of_products: "List of products",
-            shopping_cart: "Shoping cart",
-            shopping_history: "Shopping history",
-            logout: "Logout"
+            incorrect: "Your email or password is incorrect",
+            loggedIn: "You logged in as ",
+            listOfProducts: "List of products",
+            shoppingCart: "Shoping cart",
+            shoppingHistory: "Shopping history",
+            logout: "Logout",
+            category: "Category",
+            bundle: "Bundle",
+            items: "item(s)",
+            addToCart: "Add to сart",
+            removeFromCart: "Remove from сart",
+            price: "Price",
+            discount: "Discount",
+            deal: "Deal",
+            total: "Total",
+            makeAnOrder: "Make an order",
+            selectCategory: "Select category",
+            food: "Food",
+            alcohol: "Alcohol",
+            automobile: "Automobile",
+            realEstate: "Real estate",
+            computers: "Computers"
         };
 
         var ru = {
             login: "Войти",
-            logged_in: "Вы вошли как ",
-            list_of_products: "Список товаров",
-            shopping_cart: "Корзина",
-            shopping_history: "История покупок",
-            logout: "Выйти"
+            incorrect: "Ваш email или пароль неверны",
+            loggedIn: "Вы вошли как ",
+            listOfProducts: "Список товаров",
+            shoppingCart: "Корзина",
+            shoppingHistory: "История покупок",
+            logout: "Выйти",
+            category: "Категория",
+            bundle: "Пачка",
+            items: "штук",
+            addToCart: "Добавить в корзину",
+            removeFromCart: "Удалить с корзины",
+            price: "Цена",
+            discount: "Скидка",
+            deal: "Акция",
+            total: "Всего",
+            makeAnOrder: "Сделать заказ",
+            selectCategory: "Выберите категорию",
+            food: "Еда",
+            alcohol: "Алкоголь",
+            automobile: "Автомобили",
+            realEstate: "Недвижимость",
+            computers: "Компьютеры"
         };
 
-        switch(data.local) {
+        switch(data) {
             case "en":
-                return en[data.string];
+                local = en;
                 break;
 
             case "ru":
-                return ru[data.string];
+                local = ru;
                 break;
         }
+
+        RAD.model("model.productDetails").set("local", local);
+        RAD.model("model.home").set("local", local);
+        RAD.model("model.login").set("local", local);
+        RAD.models.collection.shoppingCart.local = local;
+        RAD.model("collection.shoppingCart").trigger("change");
+        RAD.models.collection.shoppingHistory.local = local;
+        RAD.model("collection.shoppingHistory").trigger("change");
+        RAD.models.collection.listOfProducts.local = local;
+        RAD.model("collection.listOfProducts").trigger("change");
     },
 
     loadCategory: function(cat) {
         var that = this;
 
         switch (cat) {
-            case "car":
-                return that.data.car;
+            case "automobile":
+                return that.data.automobile;
 
-            case "house":
-                return that.data.house;
+            case "realEstate":
+                return that.data.realEstate;
 
             case "alcohol":
                 return that.data.alcohol;
@@ -177,14 +223,14 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
             case "food":
                 return that.data.food;
 
-            case "computer":
-                return that.data.computer;
+            case "computers":
+                return that.data.computers;
         }
     },
 
     data: {
 
-        car:
+        automobile:
             [
                 {
                     id: 1,
@@ -212,7 +258,7 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
                 }
             ],
 
-        house:
+        realEstate:
             [
                 {
                     id: 3,
@@ -296,7 +342,7 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
                 }
             ],
 
-        computer:
+        computers:
             [
                 {
                     id: 9,

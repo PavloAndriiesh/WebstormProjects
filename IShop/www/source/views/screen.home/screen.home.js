@@ -3,6 +3,7 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     url: 'source/views/screen.home/screen.home.html',
 
     onInitialize: function () {
+        this.model = RAD.model("model.home");
         this.publish('service.dataSource.downloadShoppingCartData');
         this.publish('service.dataSource.loadShoppingHistory');
     },
@@ -15,7 +16,8 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
         'tap .list-of-products': "listOfProducts",
         'tap .shopping-cart': "shoppingCart",
         'tap .shopping-history': "shoppingHistory",
-        'tap .logout': "logout"
+        'tap .logout': "logout",
+        'tap .flag': "changeLanguage"
     },
 
     listOfProducts: function() {
@@ -56,6 +58,11 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
         };
 
         this.publish("navigation.show", options);
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
     }
 
 }));

@@ -15,7 +15,8 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     events: {
         'tap .back-button': 'back',
         'tap .products-li' : 'productDetails',
-        'tap .category-li' : 'changeCategory'
+        'tap .category-li' : 'changeCategory',
+        'tap .flag' : "changeLanguage"
     },
 
     back: function () {
@@ -41,7 +42,8 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     changeCategory: function(event) {
         $(event.target).toggleClass("category-li-checked");
 
-        var category = event.target.innerText;
+        var category = event.currentTarget.id;
+        console.log(category);
 
         if(_.find(this.checkedCategories, function(cat){ return (cat === category); })) {
             this.checkedCategories = _.filter(this.checkedCategories, function(cat){ return (cat !== category); });
@@ -56,6 +58,11 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
         var that = this;
         that.publish("service.dataSource.refreshGoods", that.checkedCategories);
 
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
     }
 
 }));

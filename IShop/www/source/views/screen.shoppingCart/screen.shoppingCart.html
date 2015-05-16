@@ -1,8 +1,8 @@
 <div class="">
     <div class="header">
         <div class="back-button pointer float-left">&larr;</div>
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
+        <img id="ru" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
+        <img id="en" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
     <div class="row">
         <div class="products-ul-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -10,29 +10,32 @@
             <ul class="products-ul">
                 {{# _.each(model, function(item, index) { }}
                 <li class="products-li btn-block btn" data-id="{{ item.id }}">
-                    <div class="products-li-title">{{ item.title_en }}</div>
-                    <div class="products-li-description">{{ item.description_en }}</div>
+                    {{# if(window.language==="en") { this.title = item.title_en; this.description = item.description_en }
+                    else { this.title = item.title_ru; this.description = item.description_ru  } }}
+                    <div class="products-li-title">{{ this.title }}</div>
+                    <div class="products-li-description">{{ this.description }}</div>
                     <div class="products-li-price">{{ item.inShoppingCart }} x {{ item.price }} UAH</div>
+
                 </li>
                 {{# }); }}
             </ul>
             <div class="price-wrapper">
                 <div>
-                    <span>Price:</span>
+                    <span>{{ this.model.local.price }}:</span>
                     <span class="float-right">{{ this.model.price }}</span>
                 </div>
                 <div>
-                    <span>Discount(3%):</span>
+                    <span>{{ this.model.local.discount }}(3%):</span>
                     <span class="float-right color-red">{{ this.model.discount }}</span>
                 </div>
                 <div>
-                    <span>Deal({{ this.model.percentDeal }}%):</span>
+                    <span>{{ this.model.local.deal }}({{ this.model.percentDeal }}%):</span>
                     <span class="float-right color-red">{{ this.model.deal }}</span></div>
                 <div class="total">
-                    <span>Total (UAH):</span>
+                    <span>{{ this.model.local.total }} (UAH):</span>
                     <span class="float-right">{{ this.model.total }}</span>
                 </div>
-                <div class="make-order btn btn-success">Make an order</div>
+                <div class="make-order btn btn-success">{{ this.model.local.makeAnOrder }}</div>
             </div>
         </div>
     </div>

@@ -3,21 +3,17 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
     url: 'source/views/screen.login/screen.login.html',
 
     onInitialize: function () {
+        this.model = RAD.model("model.login");
+        this.publish('service.dataSource.setLanguage', "en");
     },
 
     onStartAttach: function() {
-        var that = this;
-
-        $( "#login-button" ).click(function( event ) {
-            event.preventDefault();
-            that.authorize()
-        });
-
-        that.addListeners();
+        this.inputManager();
     },
 
     events: {
-        'tap .login-button' : "authorize"
+        'tap .login-button' : "authorize",
+        'tap .flag' : 'changeLanguage'
     },
 
     authorize: function() {
@@ -42,36 +38,6 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         )
     },
 
-    login: function(user) {
-        window.user = user;
-        this.publish('service.dataSource.saveUser', user);
-
-        var options = {
-            container_id: '#screen',
-            content: "screen.home",
-            backstack: true
-        };
-
-        this.publish("navigation.show", options);
-    },
-
-    addListeners: function() {
-        document.getElementById("email").addEventListener("input", _.bind(this.isDataEntered, this));
-        document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
-    },
-
-    isDataEntered: function() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-
-        if (!email.trim() || !password.trim()) {
-            document.getElementById("login-button").setAttribute("disabled", "true");
-        } else {
-            document.getElementById("login-button").removeAttribute("disabled");
-        }
-    },
-
-
     getUsers: function() {
         return [
             {
@@ -85,5 +51,49 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
                 isVip: true
             }
         ];
+    },
+
+    login: function(user) {
+        window.user = user;
+        this.publish('service.dataSource.saveUser', user);
+
+        var options = {
+            container_id: '#screen',
+            content: "screen.home",
+            backstack: true
+        };
+
+        this.publish("navigation.show", options);
+    },
+
+    inputManager: function() {
+        var that = this;
+
+        document.getElementById("email").addEventListener("input", _.bind(this.isDataEntered, this));
+        document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
+
+        $( "#login-button" ).click(function( event ) {
+            event.preventDefault();
+            that.authorize()
+        });
+    },
+
+    isDataEntered: function() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (!email.trim() || !password.trim()) {
+            document.getElementById("login-button").setAttribute("disabled", "true");
+        } else {
+            document.getElementById("login-button").removeAttribute("disabled");
+        }
+    },
+
+    changeLanguage: function(event) {
+        console.log(event.currentTarget.id);
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
+        this.inputManager();
     }
+
 }));

@@ -23,17 +23,15 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
             this.model.set(_.find(array, function(item) {
                 return item.id === +extras.id} ));
         }
+
+        this.changeLanguage({ currentTarget : { id: window.language}});
     },
 
     events: {
         'tap .back-button': 'back',
         'tap .add-button' : "add",
-        'tap .remove-button': 'remove'
-    },
-
-    addListeners: function() {
-        document.getElementById("remove-quantity").addEventListener("input", _.bind(this.calculateAdd, this));
-        document.getElementById("add-quantity").addEventListener("input",  _.bind(this.calculateRemove, this));
+        'tap .remove-button': 'remove',
+        'tap .flag': 'changeLanguage'
     },
 
     back: function () {
@@ -42,8 +40,6 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
     add: function() {
         var that = this;
-
-
         var quantity = +document.getElementById("add-quantity").value.trim();
 
         var found = _.find(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
@@ -145,6 +141,16 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
         document.getElementById("remove-button").removeAttribute("disabled");
         document.getElementById("price-remove").innerHTML = "-" + quantity*this.model.attributes.attributes.price + " UAH";
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
+    },
+
+    addListeners: function() {
+        document.getElementById("add-quantity").addEventListener("input", _.bind(this.calculateAdd, this));
+        document.getElementById("remove-quantity").addEventListener("input",  _.bind(this.calculateRemove, this));
     },
 
     showAffirmationPopup: function(action, quantity) {

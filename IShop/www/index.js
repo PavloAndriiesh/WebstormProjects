@@ -10,6 +10,10 @@
         
         "source/models/collection.shoppingHistory/collection.shoppingHistory.js",
         
+        "source/models/model.home/model.home.js",
+        
+        "source/models/model.login/model.login.js",
+        
         "source/models/model.movedToSCToast/model.movedToSCToast.js",
         
         "source/models/model.productDetails/model.productDetails.js",

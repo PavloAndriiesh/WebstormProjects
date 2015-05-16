@@ -1,14 +1,14 @@
 <div class="">
     <div class="header">
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
+        <img id="ru" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
+        <img id="en" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
     <div class="form-wrapper">
         <form action="">
             <div><input id="email" type="text" placeholder="Email" value="user@gmail.com"></div>
             <div><input id="password" type="password" placeholder="Password" value="password"></div>
-            <div class="invalid-data hidden">Your email or password is incorrect.</div>
-            <button type="submit" id="login-button" class="btn btn-success btn-block">{{# console.log(model); }}Login</button>
+            <div class="invalid-data hidden">{{ this.model.attributes.local.incorrect }}</div>
+            <button type="submit" id="login-button" class="btn btn-success btn-block">{{ this.model.attributes.local.login }}</button>
         </form>
     </div>
 </div>

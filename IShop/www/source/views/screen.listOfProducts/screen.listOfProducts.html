@@ -1,27 +1,29 @@
 <div class="">
     <div class="header">
         <div class="back-button pointer float-left">&larr;</div>
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
-        <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
+        <img id="ru" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
+        <img id="en" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
     <div class="row">
         <div class="products-filter col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <p>Select category:</p>
+            <p>{{ this.model.local.selectCategory }}:</p>
             <ul class="category-ul">
-                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'food')){ }} category-li-checked {{# } }}">food</li>
-                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'alcohol')){ }} category-li-checked {{# } }}">alcohol</li>
-                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'car')){ }} category-li-checked {{# } }}">car</li>
-                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'house')){ }} category-li-checked {{# } }}">house</li>
-                <li class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'computer')){ }} category-li-checked {{# } }}">computer</li>
+                <li id="food" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'food')){ }} category-li-checked {{# } }}">{{ this.model.local.food }}</li>
+                <li id="alcohol" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'alcohol')){ }} category-li-checked {{# } }}">{{ this.model.local.alcohol }}</li>
+                <li id="automobile" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'automobile')){ }} category-li-checked {{# } }}">{{ this.model.local.automobile }}</li>
+                <li id="realEstate" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'realEstate')){ }} category-li-checked {{# } }}">{{ this.model.local.realEstate }}</li>
+                <li id="computers" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'computers')){ }} category-li-checked {{# } }}">{{ this.model.local.computers }}</li>
             </ul>
         </div>
         <div class="products-ul-wrapper col-xs-9 col-sm-9 col-md-9 col-lg-9">
             <ul class="products-ul">
                 {{# _.each(model, function(item, index) { }}
+                {{# if(window.language==="en") {this.title = item.title_en; this.description = item.description_en;}
+                else {this.title = item.title_ru; this.description = item.description_ru;} }}
                 <li class="products-li btn-block btn" data-id="{{ item.id }}">
                     <img class="products-li-img" src="{{ item.img_url }}"/>
-                    <div class="products-li-title">{{ item.title_en }}</div>
-                    <div class="products-li-description">{{ item.description_en }}</div>
+                    <div class="products-li-title">{{ this.title }}</div>
+                    <div class="products-li-description">{{ this.description }}</div>
                     <div class="products-li-price">{{ item.price }} UAH</div>
                 </li>
                 {{# }); }}

@@ -7,11 +7,17 @@ RAD.view("screen.shoppingHistory", RAD.Blanks.ScrollableView.extend({
     },
 
     events: {
-        'tap .back-button': 'back'
+        'tap .back-button': 'back',
+        'tap .flag' : "changeLanguage"
     },
 
     back: function () {
         this.publish('router.back', null);
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
     }
 
 }));
