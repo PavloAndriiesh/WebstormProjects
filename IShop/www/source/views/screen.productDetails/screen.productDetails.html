@@ -5,9 +5,10 @@
         <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
     <div class="details-wrapper">
-        <div>Category: {{ model.attributes.category }}</div>
-        <div>Title: {{ model.attributes.title_en }}</div>
-        <div>Description: {{ model.attributes.description_en }}</div>
+        Category: <span class="details-category">{{ model.attributes.category }}</span>
+        <img class="details-image" src="{{ model.attributes.img_url }}"/>
+        <div class="details-title"> {{ model.attributes.title_en }}</div>
+        <span class="details-description"> {{ model.attributes.description_en }}</span>
 
 
         <div class="btn-wrapper">
@@ -17,13 +18,13 @@
                 <span id="add-button" class="add-button btn btn-success">Add to cart</span>
                 x
                 <input id="add-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
-                <span id="price-add" class="color-red float-right">{{ model.attributes.price }} UAH</span>
+                <span id="price-add" class="color-red float-right">{{ model.attributes.price*model.attributes.bundle }} UAH</span>
             </div>
             <div class="">
                 <span id="remove-button" class="remove-button btn btn-warning">Remove from cart</span>
                 x
                 <input id="remove-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
-                <span id="price-remove" class="color-red float-right">-{{ model.attributes.price }} UAH</span>
+                <span id="price-remove" class="color-red float-right">-{{ model.attributes.price*model.attributes.bundle }} UAH</span>
             </div>
             <div class="spoilers-wrapper">
                 <div class="added-spoiler color-red hidden"></div>

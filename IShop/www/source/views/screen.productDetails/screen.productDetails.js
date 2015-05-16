@@ -12,19 +12,14 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
     onNewExtras: function (extras) {
         var array;
+
         if (extras.source === "listOfProducts") {
-
             array = RAD.model("collection.listOfProducts").models;
-
-            var found = (_.find(array, function(item) {
+            this.model.set(_.find(array, function(item) {
                 return item.id === +extras.id}));
 
-            this.model.set(found);
-
         } else if (extras.source === "shoppingCart") {
-
             array = RAD.model("collection.shoppingCart").models;
-
             this.model.set(_.find(array, function(item) {
                 return item.id === +extras.id} ));
         }
@@ -36,14 +31,19 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         'tap .remove-button': 'remove'
     },
 
+    addListeners: function() {
+        document.getElementById("remove-quantity").addEventListener("input", _.bind(this.calculateAdd, this));
+        document.getElementById("add-quantity").addEventListener("input",  _.bind(this.calculateRemove, this));
+    },
+
     back: function () {
         this.publish('router.back', null);
     },
 
     add: function() {
-        console.log(this.model);
-
         var that = this;
+
+
         var quantity = +document.getElementById("add-quantity").value.trim();
 
         var found = _.find(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
@@ -73,6 +73,8 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         $(".removed-spoiler").addClass("hidden");
         $(".added-spoiler").removeClass("hidden");
         RAD.model("collection.shoppingCart").trigger("change");
+
+        that.showAffirmationPopup("add", quantity);
     },
 
     remove: function() {
@@ -115,11 +117,8 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         $(".added-spoiler").addClass("hidden");
         $(".removed-spoiler").removeClass("hidden");
         RAD.model("collection.shoppingCart").trigger("change");
-    },
 
-    addListeners: function() {
-        document.getElementById("add-quantity").addEventListener("input", _.bind(this.calculateAdd, this));
-        document.getElementById("remove-quantity").addEventListener("input",  _.bind(this.calculateRemove, this));
+        that.showAffirmationPopup("remove", quantity);
     },
 
     calculateAdd: function() {
@@ -146,6 +145,25 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
         document.getElementById("remove-button").removeAttribute("disabled");
         document.getElementById("price-remove").innerHTML = "-" + quantity*this.model.attributes.attributes.price + " UAH";
+    },
+
+    showAffirmationPopup: function(action, quantity) {
+        var that = this;
+
+        var options = {
+            container_id: '#screen',
+            content: "toast.movedToShoppingCart",
+            extras: {
+                action: action,
+                quantity: quantity
+            }
+        };
+
+        this.publish('navigation.dialog.show', options);
+
+        window.setTimeout(function() {
+            that.publish('navigation.dialog.close', options);
+        }, 1000);
     },
 
     isQuantityValid: function(quantity) {

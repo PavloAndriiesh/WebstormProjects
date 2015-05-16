@@ -24,7 +24,7 @@
 .back-button {
     display: inline-block;
     padding: 0 10px;
-    font-size: 28px;
+    font-size: 38px;
 }
 
 .float-left {
@@ -41,6 +41,10 @@
     margin: 5px 5px;
 }
 
+
+.clearfix {
+    overflow: auto;
+}
 /*-----------------login page-------------------------------------------*/
 
 .form-wrapper {
@@ -124,15 +128,16 @@
     color:red;
 }
 
+.products-li-img {
+    width: 100%;
+}
 
 /*-----------------product details page-------------------------------------------*/
 
 .details-wrapper {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto;
     width: 80%;
-    font-size: 26px;;
+    font-size: 20px;;
 }
 
 .add-button, .remove-button {
@@ -162,6 +167,26 @@
     font: normal 16px Arial;
 }
 
+.details-image {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.details-category {
+    font-size: 20px;
+    margin: 10px;
+    color: blue;
+    font-style: italic;
+}
+
+.details-title {
+    font: bold 24px Arial;
+}
+
+.details-description {
+    margin: 10px auto;
+}
+
 /*-----------------shopping cart page-------------------------------------------*/
 
 .price-wrapper {
@@ -182,4 +207,28 @@
 .make-order{
     margin: 15px 5px;
     font-size: 28px;
+}
+
+
+/*-----------------shopping history page-------------------------------------------*/
+.history-wrapper {
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+}
+
+/*-----------------shopping history page-------------------------------------------*/
+
+.toast-wrapper div{
+    padding: 10px 5px;
+    font: normal 20px Arial;
+    background-color: white;
+    color: red;
+    width: 40%;
+    margin: 40% auto;
+    white-space: normal;
+    border: solid 2px grey;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
 }

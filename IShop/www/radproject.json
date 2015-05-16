@@ -4,10 +4,12 @@
     "libs": {},
     "view": {
         "screen.login": "/www/source/views/screen.login",
-        "screen.home": "/www/source/views/screen.home"
+        "screen.home": "/www/source/views/screen.home",
+        "toast.movedToShoppingCart": "\\www\\source\\views\\toast.movedToShoppingCart"
     },
     "model": {
-        "model.productDetails": "/www/source/models/model.productDetails"
+        "model.productDetails": "/www/source/models/model.productDetails",
+        "model.movedToSCToast": "\\www\\source\\models\\model.movedToSCToast"
     },
     "service": {
         "service.localStorage": "/www/source/service/service.localStorage",

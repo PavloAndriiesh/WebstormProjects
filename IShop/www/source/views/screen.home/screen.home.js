@@ -4,6 +4,7 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
 
     onInitialize: function () {
         this.publish('service.dataSource.downloadShoppingCartData');
+        this.publish('service.dataSource.loadShoppingHistory');
     },
 
     onStartAttach: function() {
@@ -51,7 +52,7 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
         var options = {
             container_id: '#screen',
             content: "screen.login",
-            backstack: true
+            backstack: false
         };
 
         this.publish("navigation.show", options);

@@ -48,8 +48,8 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
 
         var discount = window.user.isVip? (price*3/100).toFixed(0) : 0;
 
-        var deal = 0;
-        var percentDeal = 0;
+        var deal;
+        var percentDeal;
 
         if(quantity<11) {
             deal = price*5/100;
@@ -72,7 +72,9 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
     },
 
     makeOrder: function() {
-        console.log(this.model);
+        if (this.model.total === 0) {
+            return;
+        }
 
         var order = {
             date : new Date().toLocaleDateString(),
@@ -84,6 +86,26 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
         RAD.model("collection.shoppingCart").reset();
         this.publish('service.dataSource.uploadShoppingCartData');
 
+        this.showAffirmationPopup("order");
+    },
+
+    showAffirmationPopup: function(action, quantity) {
+        var that = this;
+
+        var options = {
+            container_id: '#screen',
+            content: "toast.movedToShoppingCart",
+            extras: {
+                action: action,
+                quantity: quantity
+            }
+        };
+
+        this.publish('navigation.dialog.show', options);
+
+        window.setTimeout(function() {
+            that.publish('navigation.dialog.close', options);
+        }, 1000);
     }
 
 }));

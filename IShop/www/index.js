@@ -10,6 +10,8 @@
         
         "source/models/collection.shoppingHistory/collection.shoppingHistory.js",
         
+        "source/models/model.movedToSCToast/model.movedToSCToast.js",
+        
         "source/models/model.productDetails/model.productDetails.js",
         
         "source/service/service.dataSource/service.dataSource.js",
@@ -26,6 +28,8 @@
         
         "source/views/screen.shoppingHistory/screen.shoppingHistory.js",
         
+        "source/views/toast.movedToShoppingCart/toast.movedToShoppingCart.js",
+        
         "source/application/application.js"
     ];
     // #script_end#
@@ -35,7 +39,7 @@
             application = window.RAD.application,
             coreOptions = {
                 defaultBackstack: false,
-                defaultAnimation: 'none',
+                defaultAnimation: 'slide',
                 animationTimeout: 3000,
                 debug: false
             };

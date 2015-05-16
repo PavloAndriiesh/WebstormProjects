@@ -4,13 +4,13 @@
         <img class="flag" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
         <img class="flag" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
     </div>
-    <div class="">
+    <div class="history-wrapper">
         Shopping history:
-        <ul class="">
+        <ul class="history-ul">
             {{# _.each(model, function(item, index) { }}
-            <li class="btn btn-block">
+            <li class="history-li">
                 {{# console.log(item); }}
-                <span class="date">{{ item.date }}</span>
+                <span class="date">{{ item.date }} - </span>
                 <span class="color-red">{{ item.total }} UAH</span>
             </li>
             {{# }); }}

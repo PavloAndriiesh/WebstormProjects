@@ -3,18 +3,21 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
     url: 'source/views/screen.login/screen.login.html',
 
     onInitialize: function () {
-
     },
 
     onStartAttach: function() {
         var that = this;
+
         $( "#login-button" ).click(function( event ) {
             event.preventDefault();
-            that.authorize();
+            that.authorize()
         });
+
+        that.addListeners();
     },
 
     events: {
+        'tap .login-button' : "authorize"
     },
 
     authorize: function() {
@@ -40,9 +43,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
     },
 
     login: function(user) {
-
         window.user = user;
-
         this.publish('service.dataSource.saveUser', user);
 
         var options = {
@@ -54,69 +55,34 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         this.publish("navigation.show", options);
     },
 
+    addListeners: function() {
+        document.getElementById("email").addEventListener("input", _.bind(this.isDataEntered, this));
+        document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
+    },
+
+    isDataEntered: function() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (!email.trim() || !password.trim()) {
+            document.getElementById("login-button").setAttribute("disabled", "true");
+        } else {
+            document.getElementById("login-button").removeAttribute("disabled");
+        }
+    },
+
+
     getUsers: function() {
         return [
             {
                 email: "user@gmail.com",
                 password: "password",
-                isVip: false,
-                shoppingHistory: [
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    }
-                ]
+                isVip: true
             },
             {
-                email: "1",
-                password: "1",
-                isVip: true,
-                shoppingHistory: [
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    },
-                    {
-                        date: "01.01.2000 19:48:34",
-                        price: 123821.23
-                    }
-                ]
+                email: "anotherUser@gmail.com",
+                password: "password",
+                isVip: true
             }
         ];
     }

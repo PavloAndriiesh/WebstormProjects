@@ -4,7 +4,6 @@ RAD.view("screen.shoppingHistory", RAD.Blanks.ScrollableView.extend({
 
     onInitialize: function () {
         this.model = RAD.model("collection.shoppingHistory");
-        this.publish('service.dataSource.loadShoppingHistory');
     },
 
     events: {
