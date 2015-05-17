@@ -4,32 +4,43 @@
     
     var scripts = [
         
-        "source/models/collection.favorites/collection.favorites.js",
+        "source/models/collection.listOfProducts/collection.listOfProducts.js",
         
-        "source/models/collection.searchedItems/collection.searchedItems.js",
+        "source/models/collection.shoppingCart/collection.shoppingCart.js",
         
-        "source/models/collection.searchedWords/collection.searchedWords.js",
+        "source/models/collection.shoppingHistory/collection.shoppingHistory.js",
         
-        "source/models/model.itemDetail/model.itemDetail.js",
+        "source/models/model.affirmationPopup/model.affirmationPopup.js",
         
-        "source/models/model.searchedCollection/model.searchedCollection.js",
+        "source/models/model.confirmLogout/model.confirmLogout.js",
         
-        "source/service/service.localStorage/service.localStorage.js",
+        "source/models/model.home/model.home.js",
         
-        "source/views/screen.details/screen.details.js",
+        "source/models/model.login/model.login.js",
         
-        "source/views/screen.favorites/screen.favorites.js",
+        "source/models/model.productDetails/model.productDetails.js",
+        
+        "source/service/service.dataSource/service.dataSource.js",
+        
+        "source/views/screen.affirmationPopup/screen.affirmationPopup.js",
+        
+        "source/views/screen.confirmLogout/screen.confirmLogout.js",
         
         "source/views/screen.home/screen.home.js",
         
-        "source/views/screen.loader/screen.loader.js",
+        "source/views/screen.listOfProducts/screen.listOfProducts.js",
         
-        "source/views/screen.search/screen.search.js",
+        "source/views/screen.login/screen.login.js",
+        
+        "source/views/screen.productDetails/screen.productDetails.js",
+        
+        "source/views/screen.shoppingCart/screen.shoppingCart.js",
+        
+        "source/views/screen.shoppingHistory/screen.shoppingHistory.js",
         
         "source/application/application.js"
     ];
     // #script_end#
-
     function onEndLoad() {
 
         var core = window.RAD.core,
@@ -48,6 +59,5 @@
         application.start();
     }
 
-    scripts.push("source/helper/util.js");
     window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
 }(document, window));

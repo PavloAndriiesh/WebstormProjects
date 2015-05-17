@@ -1,82 +1,66 @@
-RAD.view("screen.home", RAD.Blanks.ScrollableView.extend({
-
-    className: "screen scroll-view",
+RAD.view("screen.home", RAD.Blanks.View.extend({
 
     url: 'source/views/screen.home/screen.home.html',
 
-    onInitialize: function() {
-        this.model = RAD.model('collection.searchedItems');
+    onInitialize: function () {
+        this.model = RAD.model("model.home");
+        this.publish('service.dataSource.loadShoppingCartData');
+        this.publish('service.dataSource.loadShoppingHistory');
     },
 
     events: {
-        'tap .screen-home-list-item': 'showDetails',
-        'tap .back-button': 'onBackButton',
-        'tap .show-more-button': 'searchMore',
-        'tap .favorites-icon': "showFavorites"
+        'tap .list-of-products': "listOfProducts",
+        'tap .shopping-cart': "shoppingCart",
+        'tap .scart-icon': "shoppingCart",
+        'tap .shopping-history': "shoppingHistory",
+        'tap .logout': "logout",
+        'tap .flag': "changeLanguage"
     },
 
-    showDetails: function (e) {
-        var title = e.currentTarget.getAttribute('data-id');
-
+    listOfProducts: function() {
         var options = {
             container_id: '#screen',
-            content: 'screen.details',
-            animation: 'slide',
-            backstack: true,
-            extras: {
-                "title" : title,
-                "model" : this.model,
-                "fromHome" : true
-            }
-        };
-        this.publish('navigation.show', options);
-    },
-
-
-    onBackButton: function() {
-        var options = {
-            container_id: '#screen',
-            content: "screen.search"
-        };
-
-        this.publish('navigation.show', options);
-    },
-
-    searchMore: function () {
-        this.publish('navigation.dialog.show', {content: 'screen.loader'});
-
-        var that = this;
-        var model = this.model;
-        var options = {
-            container_id: '#screen',
-            content: "screen.home"
-        };
-
-        model.fetch({
-            remove: false,
-            dataType: "jsonp",
-            data: {
-                country: "uk",
-                pretty: "1",
-                action: "search_listings",
-                encoding: "json",
-                listing_type: "buy",
-                place_name: model.word,
-                page: ++model.page
-            }
-        }).then(function () {
-            that.publish('navigation.dialog.close', {content: 'screen.loader'});
-        });
-    },
-
-    showFavorites: function() {
-        var options = {
-            container_id: '#screen',
-            content: "screen.favorites",
+            content: "screen.listOfProducts",
             backstack: true
         };
 
-        this.publish('navigation.show', options);
+        this.publish("navigation.show", options);
+    },
+
+    shoppingCart: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.shoppingCart",
+            backstack: true
+        };
+
+        this.publish("navigation.show", options);
+    },
+
+    shoppingHistory: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.shoppingHistory",
+            backstack: true
+        };
+
+        this.publish("navigation.show", options);
+    },
+
+    logout: function() {
+
+        var options = {
+            container_id: '#screen',
+            content: "screen.confirmLogout"
+        };
+
+        this.publish('navigation.dialog.show', options);
+
+    },
+
+    changeLanguage: function(event) {
+        var newLanguage = event.currentTarget.id;
+        this.publish('service.dataSource.setLanguage', newLanguage);
     }
 
 }));

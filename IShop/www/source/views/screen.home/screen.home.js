@@ -4,17 +4,14 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
 
     onInitialize: function () {
         this.model = RAD.model("model.home");
-        this.publish('service.dataSource.downloadShoppingCartData');
+        this.publish('service.dataSource.loadShoppingCartData');
         this.publish('service.dataSource.loadShoppingHistory');
-    },
-
-    onStartAttach: function() {
-
     },
 
     events: {
         'tap .list-of-products': "listOfProducts",
         'tap .shopping-cart': "shoppingCart",
+        'tap .scart-icon': "shoppingCart",
         'tap .shopping-history': "shoppingHistory",
         'tap .logout': "logout",
         'tap .flag': "changeLanguage"
@@ -51,13 +48,14 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     },
 
     logout: function() {
+
         var options = {
             container_id: '#screen',
-            content: "screen.login",
-            backstack: false
+            content: "screen.confirmLogout"
         };
 
-        this.publish("navigation.show", options);
+        this.publish('navigation.dialog.show', options);
+
     },
 
     changeLanguage: function(event) {

@@ -1,33 +1,35 @@
 {
-    "name": "PropertyCross",
+    "name": "IShop",
     "application": null,
     "libs": {},
     "view": {
-        "screen.home": "/source/views/screen.home",
-        "screen.loader": "/source/views/screen.loader",
-        "scrollable": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/scrollable",
-        "screen.search": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/screen.search",
-        "screen.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/screen.favorites"
+        "screen.login": "/www/source/views/screen.login",
+        "screen.home": "/www/source/views/screen.home",
+        "screen.confirmLogout": "\\www\\source\\views\\screen.confirmLogout",
+        "screen.affirmationPopup": "\\www\\source\\views\\screen.affirmationPopup"
     },
     "model": {
-        "model.itemDetail": "/source/models/model.itemDetail"
+        "model.productDetails": "/www/source/models/model.productDetails",
+        "model.home": "\\www\\source\\models\\model.home",
+        "model.login": "\\www\\source\\models\\model.login",
+        "model.confirmLogout": "\\www\\source\\models\\model.confirmLogout",
+        "model.affirmationPopup": "\\www\\source\\models\\model.affirmationPopup"
     },
     "service": {
-        "service.json_loader": "/source/service/service.json_loader",
-        "localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/localStorage",
-        "service.localStorage": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/service/service.localStorage"
+        "service.dataSource": "/www/source/service/service.dataSource"
     },
     "screen": {},
     "external": {},
     "links": {},
     "collection": {
-        "collection.searchedItems": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedItems",
-        "collection.searchedWords": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.searchedWords",
-        "collection.favorites": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/models/collection.favorites"
+        "collection.listOfProducts": "/www/source/models/collection.listOfProducts",
+        "collection.shoppingCart": "/www/source/models/collection.shoppingCart",
+        "collection.shoppingHistory": "/www/source/models/collection.shoppingHistory"
     },
     "scrollable": {
-        "screen.details": "/source/views/screen.details",
-        "view": "/home/pavlo/WebstormProjects/WebstormProjects/RAD/PropertyCross/source/views/view",
-        "viewe": "/home/pavlo/WebstormProjects/WebstormProjects/PropertyCross/source/views/viewe"
+        "screen.shoppingCart": "/www/source/views/screen.shoppingCart",
+        "screen.listOfProducts": "/www/source/views/screen.listOfProducts",
+        "screen.productDetails": "/www/source/views/screen.productDetails",
+        "screen.shoppingHistory": "/www/source/views/screen.shoppingHistory"
     }
 }

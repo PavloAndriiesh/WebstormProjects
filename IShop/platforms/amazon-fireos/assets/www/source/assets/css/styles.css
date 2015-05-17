@@ -1,185 +1,318 @@
-.screen {
-    height: 100%;
+.header {
+    height: 40px;
+    background: #b4e391; /* Old browsers */
+    background: -moz-linear-gradient(top,  #b4e391 0%, #61c419 50%, #b4e391 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(50%,#61c419), color-stop(100%,#b4e391)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #b4e391 0%,#61c419 50%,#b4e391 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #b4e391 0%,#61c419 50%,#b4e391 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #b4e391 0%,#61c419 50%,#b4e391 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #b4e391 0%,#61c419 50%,#b4e391 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    font: normal 16px Arial;
+    text-align: center;
+    line-height: 40px;
+    width: 100%;
+    height: 40px;
+    background: #cdeb8e; /* Old browsers */
+    background: -moz-linear-gradient(top,  #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #cdeb8e 0%,#a5c956 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */
+}
+
+.flag {
+    float: right;
+    width: 50px;
+    height: 30px;
+    border: solid 1px grey;
+    margin: 5px 5px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 38px;
+}
+
+.float-left {
+    float:left;
+}
+
+.float-right {
+    float:right;
+}
+
+.header-text {
+    margin: 0 5px;
+    font: bold 20px Arial;
+    color:white;
+    line-height: 40px;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.scart-icon {
+    float: right;
+    width: 40px;
+}
+/*-----------------login page-------------------------------------------*/
+
+.form-wrapper {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 26px;;
+}
+
+.form-wrapper input{
     width: 100%;
 }
 
+.form-wrapper button {
+    margin-top: 5px;
+    font-size: 20px;;
+}
 
+.invalid-data {
+    font: 20px Arial;
+    color: red;
+}
 
-/*html, body, div, span, applet, object, iframe,*/
-/*h1, h2, h3, h4, h5, h6, p, blockquote, pre,*/
-/*a, abbr, acronym, address, big, cite, code,*/
-/*del, dfn, em, img, ins, kbd, q, s, samp,*/
-/*small, strike, strong, sub, sup, tt, var,*/
-/*b, u, i, center,*/
-/*dl, dt, dd, ol, ul, li,*/
-/*fieldset, form, label, legend,*/
-/*table, caption, tbody, tfoot, thead, tr, th, td,*/
-/*article, aside, canvas, details, embed,*/
-/*figure, figcaption, footer, header, hgroup,*/
-/*menu, nav, output, ruby, section, summary,*/
-/*time, mark, audio, video {*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*border: 0;*/
-    /*font-size: 100%;*/
-    /*font: inherit;*/
-    /*vertical-align: baseline;*/
-/*}*/
-/*article, aside, details, figcaption, figure,*/
-/*footer, header, hgroup, menu, nav, section {*/
-    /*display: block;*/
-/*}*/
+/*-----------------home page-----------------------------------------------------*/
 
-/*ol, ul {*/
-    /*list-style: none;*/
-/*}*/
-/*blockquote, q {*/
-    /*quotes: none;*/
-/*}*/
-/*blockquote:before, blockquote:after,*/
-/*q:before, q:after {*/
-    /*content: '';*/
-    /*content: none;*/
-/*}*/
-/*table {*/
-    /*border-collapse: collapse;*/
-    /*border-spacing: 0;*/
-/*}*/
+.menu-list{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
-/*body {*/
-    /*line-height: 1;*/
-    /*font: 16px  arial;*/
-    /*color: #f9fdff;*/
-/*}*/
+.menu-list div{
+    margin: 5px;;
+    font: bold 26px Arial;
+}
 
+/*-----------------list of products page------------------------------------------*/
 
-/*#container{*/
-    /*width: 400px;*/
-    /*height:600px;*/
-    /*border: 2px solid #b9b4b1;*/
-    /*overflow:auto;*/
-/*}*/
+.category-li {
+    font-size: 20px;
+    background-color: lightgoldenrodyellow;
+    border: solid 1px grey;
+    margin: 5px;
+    overflow: auto;
+    text-align: center;
+    height: 45px;
+    line-height: 40px;
+    border-radius: 5px;
+}
 
-/*#containerWrapper{*/
-    /*padding: 30px;*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*-webkit-transform: translate(-50%, -50%);*/
-    /*transform: translate(-50%, -50%);*/
-/*}*/
+.category-li:hover {
+    border:solid 2px grey;
+}
 
-/*.link{*/
-    /*color: #FFFFFF;*/
-/*}*/
+.category-li-checked {
+    background-color: limegreen;
+    font-weight: bold;
+    color: white;
+}
 
+.products-ul-wrapper {
+    position: absolute;
+    top: 40px;
+    right:0;
+}
 
-/*/!*  home   ***********************************************************!/*/
+.products-ul {
+    padding-bottom: 40px;
+}
 
-/*#splash{*/
-    /*color:#333;*/
-    /*padding: 30px;*/
-    /*position: fixed;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*-webkit-transform: translate(-50%, -50%);*/
-    /*transform: translate(-50%, -50%);*/
-    /*background-color: #e6e6f5;*/
-/*}*/
+.category-ul-wrapper {
 
-/*ul li div img{*/
-    /*width:80px;*/
-    /*height:80px;*/
-    /*margin: 10px;*/
-    /*border: 1px solid #96918f;*/
-/*}*/
+}
 
-/*.image-wrapper{*/
-    /*float:left;*/
-/*}*/
+.category-ul-wrapper p {
+    margin: 5px;
+    font: normal 20px Arial;
+}
 
-/*ul li div p:nth-child(1){*/
-    /*padding:40px;*/
-    /*font: 16px arial;*/
-    /*font-weight:bold;*/
-    /*color: #f9fdff;*/
-/*}*/
+.products-li {
+    border: solid 2px lightgrey;
+    overflow: hidden;
+}
 
+.products-li-title {
+    font: bold 26px Arial;
+}
 
-/*#item-list:after,#item-list:before {*/
-    /*content:"";*/
-    /*display:table;*/
-    /*clear:both;*/
-/*}*/
+.products-li-description{
+    font: 20px Arial;
+}
 
-/*.topcoat-list__item{*/
-    /*padding:0;*/
-/*}*/
+.products-li-price {
+    font: bold 20px Arial;
+    color:red;
+}
 
-/*a{*/
-    /*text-decoration:none*/
-/*}*/
+.products-li-img {
+    max-width: 50%;
+    min-width: 200px;
+}
 
-/*.page-content{*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-/*}*/
+/*-----------------product details page-------------------------------------------*/
 
-/*.screen-height {*/
-    /*width:100%;*/
-    /*height:90%;*/
-    /*position: absolute;*/
-/*}*/
+.details-wrapper {
+    width: 90%;
+    font-size: 20px;
+    position: absolute;
+    top: 40px;
+    left: 5%;
+}
 
-/*.top-title {*/
-/*}*/
+.add-button, .remove-button {
+    width: 250px;
+    font: 20px Arial;
+    margin: 5px 0;
+}
 
+.btn-wrapper{
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 40px;
+}
 
-/*.page-scroll-body {*/
-    /*overflow: auto;*/
-    /*padding: 0;*/
-/*}*/
+.product-details-input {
+    text-align: right;
+    width: 80px;
+}
 
-/*/!*  details  *******************************************************!/*/
-/*.image-details{*/
-    /*margin:10px 0px;*/
-    /*border: 2px solid #303034;*/
-/*}*/
+.color-red {
+    color: red;
+}
 
-/*.content {*/
-    /*padding:10px 20px;*/
-    /*color: #f9fdff;*/
-/*}*/
+.details-image {
+    width: 100%;
+    margin: 10px auto;
+}
 
-/*.header{*/
-    /*font: 2em bold  arial;*/
-    /*font-weight: bold;*/
-    /*margin:10px 0px;;*/
-/*}*/
-/*.subheader{*/
-    /*font: 1.5em bold  arial;*/
-    /*margin:10px 0px;;*/
-/*}*/
+.details-category {
+    font-size: 20px;
+    margin: 10px;
+    color: blue;
+    font-style: italic;
+}
 
-/*div span{*/
-    /*font: 1.5em bold  arial;*/
-/*}*/
+.details-title {
+    font: bold 24px Arial;
+}
 
+.details-description {
+    margin: 10px auto;
+}
 
-/*/!* loader  *****!/*/
-/*.loader{*/
-    /*color:white;*/
-    /*background-color: #595b5b;*/
+.price {
+    padding: 13px 0;
+}
 
-    /*padding: 10px;*/
-    /*position: absolute;*/
-    /*height: 20px;*/
-    /*width: 100px;*/
-    /*margin: -10px 0 0 -50px;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
+/*-----------------shopping cart page-------------------------------------------*/
 
-/*}*/
+.price-wrapper {
+    margin: 5px;
+    font: normal 26px Arial;
+    padding-bottom: 40px;
+}
+
+.buy-button {
+    font: normal 26px Arial;
+    margin: 15px;
+}
+
+.total {
+    margin-top: 10px;
+    border-top: solid 1px grey;
+}
+
+.make-order{
+    margin: 15px 5px;
+    font-size: 28px;
+}
+
+.shopping-cart-img {
+    height: 112px;
+}
+
+.remove-item {
+    position: relative;
+    top: -40px;
+    left: 90%;
+    width: 40px;
+}
+/*-----------------shopping history page-------------------------------------------*/
+.history-wrapper {
+    width: 90%;
+    text-align: center;
+    font-size: 26px;
+    position: absolute;
+    top:40px;
+    left:5%;
+}
+
+.history-ul {
+    padding-bottom: 40px;
+}
+
+.history-li {
+    margin: 5px;
+    padding: 5px;
+    border: solid 2px grey;
+}
+/*-----------------shopping history page-------------------------------------------*/
+
+.toast-wrapper div{
+    overflow: hidden;
+    padding: 10px 5px;
+    font: normal 20px Arial;
+    background-color: white;
+    color: red;
+    width: 40%;
+    margin: 40% auto;
+    white-space: normal;
+    border: solid 2px grey;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+}
+
+/*-----------------confirm logout page-------------------------------------------*/
+.confirm-wrapper div{
+    overflow: hidden;
+    padding: 10px 5px;
+    font: bold 20px Arial;
+    background-color: white;
+    color: green;
+    width: 40%;
+    margin: 40% auto;
+    white-space: normal;
+    border: solid 2px grey;
+    -webkit-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
+}
+
+.yes-button, .no-button {
+    padding: 2px 20px;
+}

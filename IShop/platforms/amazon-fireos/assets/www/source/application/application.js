@@ -10,7 +10,7 @@ RAD.application(function (core) {
 
         var options = {
             container_id: '#screen',
-            content: 'screen.search',
+            content: 'screen.login',
             backstack: true
         };
 

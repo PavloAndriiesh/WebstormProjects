@@ -8,7 +8,7 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.mobidev.pavlo"
+            "PACKAGE_NAME": "com.pavlo.ishop"
         }
     },
     "dependent_plugins": {}

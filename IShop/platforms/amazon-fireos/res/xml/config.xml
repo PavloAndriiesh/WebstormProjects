@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.mobidev.pavlo" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.mobidev.ishop" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <name>PropertyCross</name>
+    <name>IShop</name>
     <description>
-        PropertyCross application developed with help RAD.js Apache Cordova
+        IShop application developed with help of RAD.js, Apache Cordova
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Pavlo Andriiesh, MobiDev
