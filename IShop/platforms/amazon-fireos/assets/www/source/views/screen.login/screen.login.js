@@ -22,15 +22,21 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
 
         $( "#login-button" ).click(function( event ) {
-            event.preventDefault();
             that.authorizeUser();
+            event.preventDefault();
         });
     },
 
     authorizeUser: function() {
-        var users = this.getUsers();
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
+        var users, email, password;
+
+        try {
+            users = this.getUsers();
+            email = document.getElementById("email").value;
+            password = document.getElementById("password").value;
+        } catch(err) {
+            return;
+        }
 
         var user = _.find(users, function(user){
             if (user.email === email)
@@ -46,25 +52,21 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             this.login(user);
         } else (
             $(".invalid-data").removeClass("hidden")
-        )
+        );
+
     },
 
     getUsers: function() {
-        return [
-            {
-                email: "user@gmail.com",
-                password: "password",
-                isVip: true
-            },
-            {
-                email: "anotherUser@gmail.com",
-                password: "password",
-                isVip: true
-            }
-        ];
+        var request = new XMLHttpRequest();
+
+        request.open( "GET", "http://localhost:3000/users", false );
+        request.send( null );
+
+        return JSON.parse(request.responseText);
     },
 
     login: function(user) {
+        document.getElementById("password").value = "";
         window.user = user;
 
         var options = {

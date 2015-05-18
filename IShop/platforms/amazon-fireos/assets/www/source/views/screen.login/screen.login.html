@@ -6,10 +6,10 @@
     </div>
     <div class="form-wrapper">
         <form action="">
-            <div><input id="email" type="text" placeholder="Email" value="user@gmail.com"></div>
-            <div><input id="password" type="password" placeholder="Password" value="password"></div>
+            <div><input id="email" type="text" placeholder="Email" value=""></div>
+            <div><input id="password" type="password" placeholder="Password" value=""></div>
             <div class="invalid-data hidden">{{ this.model.attributes.local.incorrect }}</div>
-            <button type="submit" id="login-button" class="btn btn-success btn-block">{{ this.model.attributes.local.login }}</button>
+            <button type="submit" id="login-button" class="btn btn-success btn-block" disabled>{{ this.model.attributes.local.login }}</button>
         </form>
     </div>
     <div class="footer">(c) IShop 2015</div>

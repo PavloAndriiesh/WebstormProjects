@@ -8,11 +8,11 @@ RAD.view("screen.confirmLogout", RAD.Blanks.View.extend({
 
     events: {
         'tap .yes-button': "logout",
-        'tap .no-button': "cancel"
+        'tap .no-button': "closePopup"
     },
 
     logout: function() {
-        this.publish('navigation.dialog.close', {content: "screen.confirmLogout"});
+        this.closePopup();
 
         var options = {
             container_id: '#screen',
@@ -22,9 +22,10 @@ RAD.view("screen.confirmLogout", RAD.Blanks.View.extend({
         };
 
         this.publish("navigation.show", options);
+
     },
 
-    cancel: function() {
+    closePopup: function() {
         var options = {
             container_id: '#screen',
             content: "screen.confirmLogout"

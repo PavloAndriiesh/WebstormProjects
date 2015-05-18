@@ -1,0 +1,22 @@
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-gen/com/mobidev/pavlo/R.java \
+ : /home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-land-ldpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-port-xhdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/values/strings.xml \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable/icon.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/xml/config.xml \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-land-mdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-port-hdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-port-ldpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-land-hdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-land-xhdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/res/drawable-port-mdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-land-ldpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-port-xhdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable/icon.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-land-mdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-port-hdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-port-ldpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-land-hdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-land-xhdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/res/drawable-port-mdpi/screen.png \
+/home/pavlo/WebstormProjects/WebstormProjects/PropertyCrossFireOSAsExample/platforms/amazon-fireos/ant-build/AndroidManifest.xml \

@@ -101,6 +101,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         var popupDelay = 1000;
 
         var options = {
+            container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
                 action: action,

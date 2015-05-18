@@ -18,7 +18,12 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         'tap .back-button': 'back',
         'tap .add-button' : "addItemsToShoppingCart",
         'tap .remove-button': 'removeItemsFromShoppingCart',
-        'tap .flag': 'changeLanguage'
+        'tap .flag': 'changeLanguage',
+        'tap #add-add': "addToAdd",
+        'tap #remove-add': "removeFromAdd",
+        'tap #add-remove': "addToRemove",
+        'tap #remove-remove': "removeFromRemove",
+        'tap .minus-button': "removeOneBundle"
     },
 
     defineModel: function (extras) {
@@ -101,6 +106,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         var popupDelay = 1000;
 
         var options = {
+            container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
                 action: action,
@@ -115,6 +121,45 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }, popupDelay);
     },
 
+    addToAdd: function() {
+        var quantity = +document.getElementById("add-quantity").value;
+        quantity += +this.model.attributes.attributes.bundle;
+
+        document.getElementById("add-quantity").value = quantity;
+        this.calculateAdd();
+    },
+
+    removeFromAdd: function() {
+        var quantity = +document.getElementById("add-quantity").value;
+        quantity -= +this.model.attributes.attributes.bundle;
+
+        if(quantity <= 0) {
+            return;
+        }
+
+        document.getElementById("add-quantity").value = quantity;
+        this.calculateAdd();
+    },
+
+    addToRemove: function() {
+        var quantity = +document.getElementById("remove-quantity").value;
+        quantity += +this.model.attributes.attributes.bundle;
+
+        document.getElementById("remove-quantity").value = quantity;
+        this.calculateRemove();
+    },
+
+    removeFromRemove: function() {
+        var quantity = +document.getElementById("remove-quantity").value;
+        quantity -= +this.model.attributes.attributes.bundle;
+
+        if(quantity <= 0) {
+            return;
+        }
+
+        document.getElementById("remove-quantity").value = quantity;
+        this.calculateAdd();
+    },
 
     addListeners: function() {
         document.getElementById("add-quantity").addEventListener("input", _.bind(this.calculateAdd, this));

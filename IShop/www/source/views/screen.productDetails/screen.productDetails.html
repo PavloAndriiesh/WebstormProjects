@@ -6,30 +6,33 @@
     </div>
     <div class="scroll-view details-wrapper">
         <div>
-        {{ this.model.attributes.local.category }}: <span class="details-category">{{ model.attributes.category }}</span>
-        <img class="details-image" src="{{ model.attributes.img_url }}"/>
-        {{# if(window.language==="en") { this.title = this.model.attributes.attributes.title_en; this.description = this.model.attributes.attributes.description_en;}
-        else { this.title = this.model.attributes.attributes.title_ru; this.description = this.model.attributes.attributes.description_ru;} }}
-        <div class="details-title"> {{ this.title }}</div>
-        <span class="details-description"> {{ this.description }}</span>
+            {{ this.model.attributes.local.category }}: <span class="details-category">{{ model.attributes.category }}</span>
+            <img class="details-image" src="{{ model.attributes.img_url }}"/>
+            {{# if(window.language==="en") { this.title = this.model.attributes.attributes.title_en; this.description = this.model.attributes.attributes.description_en;}
+            else { this.title = this.model.attributes.attributes.title_ru; this.description = this.model.attributes.attributes.description_ru;} }}
+            <div class="details-title"> {{ this.title }}</div>
+            <span class="details-description"> {{ this.description }}</span>
 
 
-        <div class="btn-wrapper">
-            <h4>{{ this.model.attributes.local.bundle }}: {{ model.attributes.bundle }} {{ this.model.attributes.local.items }}</h4>
+            <div class="btn-wrapper">
+                <h4>{{ this.model.attributes.local.bundle }}: {{ model.attributes.bundle }} {{ this.model.attributes.local.items }}</h4>
 
-            <div class="">
-                <span id="add-button" class="add-button btn btn-success">{{ this.model.attributes.local.addToCart }}</span>
-                x
-                <input id="add-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
-                <span id="price-add" class="price float-right color-red">{{ model.attributes.price*model.attributes.bundle }} UAH</span>
-            </div>
-            <div class="">
-                <span id="remove-button" class="remove-button btn btn-warning">{{ this.model.attributes.local.removeFromCart }}</span>
-                x
-                <input id="remove-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
-                <span id="price-remove" class="price float-right color-red">-{{ model.attributes.price*model.attributes.bundle }} UAH</span>
+                <div class="">
+                    <span id="add-add" class="plus-button plus btn-success btn">+</span>
+                    <span id="remove-add" class="plus-button minus btn-success btn">-</span>
+                    <span id="add-button" class="add-button btn btn-success">{{ this.model.attributes.local.addToCart }}</span>
+                    <input id="add-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
+                    <span id="price-add" class="price color-red">{{ model.attributes.price*model.attributes.bundle+" UAH" }}</span>
+                </div>
+                <div class="">
+                    <span id="add-remove" class="minus-button plus btn-warning btn">+</span>
+                    <span id="remove-remove" class="minus-button minus btn-warning btn">-</span>
+                    <span id="remove-button" class="remove-button btn btn-warning">{{ this.model.attributes.local.removeFromCart }}</span>
+                    <input id="remove-quantity" class="product-details-input" type="text" value="{{ model.attributes.bundle }}"/>
+                    <span id="price-remove" class="price color-red">-{{ model.attributes.price*model.attributes.bundle+" UAH" }}</span>
+                </div>
+                <div class="white-space"></div>
             </div>
         </div>
-    </div>
     </div>
 </div>

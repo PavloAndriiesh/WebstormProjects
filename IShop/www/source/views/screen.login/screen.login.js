@@ -7,64 +7,47 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         this.publish('service.dataSource.setLanguage', "en");
     },
 
-    onStartAttach: function() {
+    onStartAttach: function () {
         this.inputManager();
     },
 
     events: {
-        'tap .flag' : 'changeLanguage'
+        'tap .flag': 'changeLanguage'
     },
 
-    inputManager: function() {
+    inputManager: function () {
         var that = this;
 
         document.getElementById("email").addEventListener("input", _.bind(this.isDataEntered, this));
-        document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
+        document.getElementById("password").addEventListener("input", _.bind(this.isDataEntered, this));
 
-        $( "#login-button" ).click(function( event ) {
-            event.preventDefault();
+        $("#login-button").click(function (event) {
             that.authorizeUser();
+            event.preventDefault();
         });
     },
 
-    authorizeUser: function() {
-        var users = this.getUsers();
+    authorizeUser: function () {
+        this.showLoader();
+        var that = this;
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
 
-        var user = _.find(users, function(user){
-            if (user.email === email)
-                return true; });
-
-        if(!user) {
-            $(".invalid-data").removeClass("hidden");
-            return;
-        }
-
-        if (user.password === password) {
-            $(".invalid-data").addClass("hidden");
-            this.login(user);
-        } else (
-            $(".invalid-data").removeClass("hidden")
-        )
-    },
-
-    getUsers: function() {
-        return [
-            {
-                email: "user@gmail.com",
-                password: "password",
-                isVip: true
+        Parse.User.logIn("User", password, {
+            success: function(user) {
+                $(".invalid-data").addClass("hidden");
+                that.login(user.attributes.email);
+                that.hideLoader();
             },
-            {
-                email: "anotherUser@gmail.com",
-                password: "password",
-                isVip: true
+            error: function(user, error) {
+                $(".invalid-data").removeClass("hidden");
+                that.hideLoader();
             }
-        ];
+        });
     },
 
-    login: function(user) {
+    login: function (user) {
+        document.getElementById("password").value = "";
         window.user = user;
 
         var options = {
@@ -73,10 +56,10 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             backstack: true
         };
 
-        this.publish("navigation.show", options);
+        this.publish('navigation.show', options);
     },
 
-    isDataEntered: function() {
+    isDataEntered: function () {
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
 
@@ -87,10 +70,34 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         }
     },
 
-    changeLanguage: function(event) {
+    changeLanguage: function (event) {
         var newLanguage = event.currentTarget.id;
         this.publish('service.dataSource.setLanguage', newLanguage);
         this.inputManager();
+    },
+
+    showLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.show', options);
+    },
+
+    hideLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.close', options);
     }
 
 }));

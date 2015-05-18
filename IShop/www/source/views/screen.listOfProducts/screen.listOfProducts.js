@@ -13,7 +13,8 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
         'tap .products-li' : 'productDetails',
         'tap .category-li' : 'changeCategory',
         'tap .scart-icon': "shoppingCart",
-        'tap .flag' : "changeLanguage"
+        'tap .flag' : "changeLanguage",
+        'tap .select-category-button': "changeCategoriesVisibility"
     },
 
     back: function () {
@@ -37,16 +38,27 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     },
 
     changeCategory: function(event) {
-        $(event.target).toggleClass("category-li-checked");
+        var that = this;
 
-        var category = event.currentTarget.id;
+        try {
+            $(event.target).toggleClass("category-li-checked");
 
-        if(_.find(this.checkedCategories, function(cat){ return (cat === category); })) {
-            this.checkedCategories = _.filter(this.checkedCategories, function(cat){ return (cat !== category); });
-        } else {
-            this.checkedCategories.push(category);
+            var category = event.currentTarget.id;
+
+            if(_.find(this.checkedCategories, function(cat){ return (cat === category); })) {
+                this.checkedCategories = _.filter(this.checkedCategories, function(cat){ return (cat !== category); });
+            } else {
+                this.showLoader();
+                this.checkedCategories.push(category);
+            }
+            this.loadItems();
+        } catch (err) {
+            console.log(err);
         }
-        this.loadItems();
+
+        window.setTimeout(function() {
+            that.hideLoader();
+        }, 100);
     },
 
     loadItems: function() {
@@ -57,6 +69,7 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
 
     shoppingCart: function() {
         var options = {
+            container_id: '#screen',
             content: "screen.shoppingCart",
             backstack: true
         };
@@ -67,6 +80,37 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     changeLanguage: function(event) {
         var newLanguage = event.currentTarget.id;
         this.publish('service.dataSource.setLanguage', newLanguage);
+    },
+
+    changeCategoriesVisibility: function() {
+        $(".category-ul-wrapper").toggleClass("hidden");
+        $(".products-ul-wrapper").toggleClass("col-xs-7").toggleClass("col-sm-7").toggleClass("col-md-7").toggleClass("col-lg-7").
+            toggleClass("col-xs-12").toggleClass("col-sm-12").toggleClass("col-md-12").toggleClass("col-lg-12");
+
+    },
+
+    showLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.show', options);
+    },
+
+    hideLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.close', options);
     }
 
 }));

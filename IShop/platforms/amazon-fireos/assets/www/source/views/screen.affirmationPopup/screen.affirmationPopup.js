@@ -17,6 +17,8 @@ RAD.view("screen.affirmationPopup", RAD.Blanks.View.extend({
                     popupText = "Removed " + extras.quantity + " item(s) from the shopping cart";
                 } else if (extras.action === 'order') {
                     popupText = "Thank you for shopping at IShop!"
+                } else if (extras.action === '') {
+                    popupText = "loading..."
                 }
                 break;
 
@@ -27,6 +29,8 @@ RAD.view("screen.affirmationPopup", RAD.Blanks.View.extend({
                     popupText = "Удалено " + extras.quantity + " найменований из корзины";
                 } else if (extras.action === 'order') {
                     popupText = "Спасибо Вам за покупки в IShop!"
+                } else if (extras.action === '') {
+                    popupText = "Загрузка..."
                 }
                 break;
         }
