@@ -33,7 +33,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
 
-        Parse.User.logIn("User", password, {
+        Parse.User.logIn(email, password, {
             success: function(user) {
                 $(".invalid-data").addClass("hidden");
                 that.login(user.attributes.email);
