@@ -9,15 +9,15 @@
             <div>
                 <ul class="products-ul">
                     {{# _.each(model, function(item, index) { }}
-                    <li class="products-li btn-block btn" data-id="{{ item.id }}">
-                        {{# if(window.language==="en") { this.title = item.title_en; this.description = item.description_en }
-                        else { this.title = item.title_ru; this.description = item.description_ru  } }}
+                    <li class="products-li btn-block btn" data-id="{{ item.objectId }}">
+                        {{# if(window.language==="en") { var title = item.title_en; var description = item.description_en }
+                        else { var title = item.title_ru; var description = item.description_ru  } }}
                         <img class="float-left shopping-cart-img" src="{{ item.img_url }}"/>
-                        <div class="products-li-title">{{ this.title }}</div>
-                        <div class="products-li-description">{{ this.description }}</div>
+                        <div class="products-li-title">{{ title }}</div>
+                        <div class="products-li-description">{{ description }}</div>
                         <div class="products-li-price">{{ item.inShoppingCart }} x {{ item.price }} UAH</div>
+                        <img class="remove-item pointer" data-id="{{ item.objectId }}" src="http://vignette3.wikia.nocookie.net/criminal-case-grimsborough/images/b/b1/Delete_Icon.png/revision/latest?cb=20141216101607"/>
                     </li>
-                    <img class="remove-item pointer" data-id="{{ item.id }}" src="http://vignette3.wikia.nocookie.net/criminal-case-grimsborough/images/b/b1/Delete_Icon.png/revision/latest?cb=20141216101607"/>
                     {{# }); }}
                 </ul>
                 <div class="price-wrapper">

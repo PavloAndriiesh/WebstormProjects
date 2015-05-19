@@ -7,67 +7,54 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         this.publish('service.dataSource.setLanguage', "en");
     },
 
-    onStartAttach: function() {
+    onStartAttach: function () {
         this.inputManager();
     },
 
     events: {
-        'tap .flag' : 'changeLanguage'
+        'tap .flag': 'changeLanguage'
     },
 
-    inputManager: function() {
+    inputManager: function () {
         var that = this;
 
         document.getElementById("email").addEventListener("input", _.bind(this.isDataEntered, this));
-        document.getElementById("password").addEventListener("input",  _.bind(this.isDataEntered, this));
+        document.getElementById("password").addEventListener("input", _.bind(this.isDataEntered, this));
 
-        $( "#login-button" ).click(function( event ) {
+        $("#login-button").click(function (event) {
             that.authorizeUser();
             event.preventDefault();
         });
     },
 
-    authorizeUser: function() {
-        var users, email, password;
+    authorizeUser: function () {
+        this.showLoader();
+        var that = this;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
 
-        try {
-            users = this.getUsers();
-            email = document.getElementById("email").value;
-            password = document.getElementById("password").value;
-        } catch(err) {
-            return;
-        }
-
-        var user = _.find(users, function(user){
-            if (user.email === email)
-                return true; });
-
-        if(!user) {
-            $(".invalid-data").removeClass("hidden");
-            return;
-        }
-
-        if (user.password === password) {
-            $(".invalid-data").addClass("hidden");
-            this.login(user);
-        } else (
-            $(".invalid-data").removeClass("hidden")
-        );
-
+        Parse.User.logIn(email, password, {
+            success: function(user) {
+                $(".invalid-data").addClass("hidden");
+                that.login(user);
+                that.hideLoader();
+            },
+            error: function(user, error) {
+                $(".invalid-data").removeClass("hidden");
+                that.hideLoader();
+            }
+        });
     },
 
-    getUsers: function() {
-        var request = new XMLHttpRequest();
+    login: function (user) {
+        if (!document.getElementById("password"))
+            return;
 
-        request.open( "GET", "http://localhost:3000/users", false );
-        request.send( null );
-
-        return JSON.parse(request.responseText);
-    },
-
-    login: function(user) {
         document.getElementById("password").value = "";
-        window.user = user;
+        window.user = {
+            email: user.attributes.email,
+            isVip: user.attributes.isVip
+        };
 
         var options = {
             container_id: '#screen',
@@ -75,10 +62,10 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             backstack: true
         };
 
-        this.publish("navigation.show", options);
+        this.publish('navigation.show', options);
     },
 
-    isDataEntered: function() {
+    isDataEntered: function () {
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
 
@@ -89,10 +76,34 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         }
     },
 
-    changeLanguage: function(event) {
+    changeLanguage: function (event) {
         var newLanguage = event.currentTarget.id;
         this.publish('service.dataSource.setLanguage', newLanguage);
         this.inputManager();
+    },
+
+    showLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.show', options);
+    },
+
+    hideLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
+
+        this.publish('navigation.dialog.close', options);
     }
 
 }));

@@ -38,34 +38,37 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     },
 
     changeCategory: function(event) {
-        var that = this;
+        this.showLoader();
+        $(event.target).toggleClass("category-li-checked");
 
-        try {
-            $(event.target).toggleClass("category-li-checked");
+        var category = event.currentTarget.id;
 
-            var category = event.currentTarget.id;
-
-            if(_.find(this.checkedCategories, function(cat){ return (cat === category); })) {
-                this.checkedCategories = _.filter(this.checkedCategories, function(cat){ return (cat !== category); });
-            } else {
-                this.showLoader();
-                this.checkedCategories.push(category);
-            }
-            this.loadItems();
-        } catch (err) {
-            console.log(err);
+        if(_.find(this.checkedCategories, function(cat){ return (cat === category); })) {
+            this.checkedCategories = _.filter(this.checkedCategories, function(cat){ return (cat !== category); });
+        } else {
+            this.checkedCategories.push(category);
         }
 
-        window.setTimeout(function() {
-            that.hideLoader();
-        }, 100);
+        this.loadItems(category);
     },
 
-    loadItems: function() {
-        var categoriesToLoad = this.checkedCategories;
-        this.publish("service.dataSource.loadItems", categoriesToLoad);
+    loadItems: function(category) {
+        this.publish("service.dataSource.loadItems", category);
     },
 
+    onEndRender: function () {
+        this.loadImages();
+    },
+
+    loadImages: function() {
+        _.each($('.products-li-img'), function ($img) {
+            if (!$img.complete) {
+                $img.onload = function () {
+                    RAD.model('collection.listOfProducts').trigger("change");
+                };
+            }
+        });
+    },
 
     shoppingCart: function() {
         var options = {
@@ -86,7 +89,6 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
         $(".category-ul-wrapper").toggleClass("hidden");
         $(".products-ul-wrapper").toggleClass("col-xs-7").toggleClass("col-sm-7").toggleClass("col-md-7").toggleClass("col-lg-7").
             toggleClass("col-xs-12").toggleClass("col-sm-12").toggleClass("col-md-12").toggleClass("col-lg-12");
-
     },
 
     showLoader: function() {

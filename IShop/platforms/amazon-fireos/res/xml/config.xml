@@ -8,6 +8,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Pavlo Andriiesh, MobiDev
     </author>
+    <icon src="icon.png" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

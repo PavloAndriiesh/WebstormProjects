@@ -22,18 +22,21 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         'tap #add-add': "addToAdd",
         'tap #remove-add': "removeFromAdd",
         'tap #add-remove': "addToRemove",
-        'tap #remove-remove': "removeFromRemove",
-        'tap .minus-button': "removeOneBundle"
+        'tap #remove-remove': "removeFromRemove"
     },
 
     defineModel: function (extras) {
         if (extras.source === "listOfProducts") {
             this.model.set(_.find(RAD.model("collection.listOfProducts").models,
-                function(item) { return item.id === +extras.id}));
+                function(item) {
+                    return item.attributes.objectId === extras.id}));
 
         } else if (extras.source === "shoppingCart") {
             this.model.set(_.find(RAD.model("collection.shoppingCart").models,
-                function(item) { return item.id === +extras.id} ));
+                function(item) {
+                    return item.attributes.objectId === extras.id} ));
+        } else {
+            console.log("Fatal error while defining model")
         }
     },
 
@@ -46,13 +49,14 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         var quantity = +document.getElementById("add-quantity").value.trim();
 
         var item = _.find(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
-            function(item) { return item.id === that.model.id;});
+            function(item) {
+                return item.objectId === that.model.attributes.attributes.objectId;});
 
         if(item) {
             item.inShoppingCart += quantity;
-
             var otherItems = _.filter(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
-                function(item) { return item.id !== that.model.id;});
+                function(item) {
+                    return item.objectId !== that.model.attributes.attributes.objectId;});
 
             RAD.model("collection.shoppingCart").reset();
             RAD.model("collection.shoppingCart").push(item);
@@ -61,7 +65,6 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         } else {
             var newItem = JSON.parse(JSON.stringify(this.model.attributes));
             newItem.inShoppingCart += quantity;
-
             RAD.model("collection.shoppingCart").unshift(newItem);
         }
 
@@ -72,10 +75,13 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
     removeItemsFromShoppingCart: function() {
         var that = this;
         var quantity = +document.getElementById("remove-quantity").value.trim();
+        console.log(RAD.model("collection.shoppingCart").models);
 
         var item = _.find(RAD.model("collection.shoppingCart").models,
-            function(item) {return item.attributes.id === that.model.id;});
+            function(item) {
+                return item.attributes.objectId === that.model.attributes.attributes.objectId;});
 
+        console.log(item);
         if(!item || item.attributes.inShoppingCart === 0) {
             alert("There is no such item(s) in your shopping cart");
             return;
@@ -87,23 +93,24 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }
 
         item.attributes.inShoppingCart -= quantity;
+        this.publish('service.dataSource.saveShoppingCartData');
 
         if (item.attributes.inShoppingCart === 0) {
-
             var newItemsCollection = _.filter(RAD.model("collection.shoppingCart").models,
-                function(item) { return item.attributes.id !== that.model.id;});
+                function(item) {
+                    return item.attributes.objectId !== that.model.attributes.attributes.objectId;});
 
             RAD.model("collection.shoppingCart").reset();
             RAD.model("collection.shoppingCart").push(newItemsCollection);
         }
 
-        this.publish('service.dataSource.saveShoppingCartData');
+        RAD.model("collection.shoppingCart").trigger("change");
         that.showAffirmationPopup("remove", quantity);
     },
 
     showAffirmationPopup: function(action, quantity) {
         var that = this;
-        var popupDelay = 1000;
+        var popupDelay = 500;
 
         var options = {
             container_id: '#screen',
@@ -158,7 +165,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }
 
         document.getElementById("remove-quantity").value = quantity;
-        this.calculateAdd();
+        this.calculateRemove();
     },
 
     addListeners: function() {

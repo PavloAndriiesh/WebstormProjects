@@ -92,7 +92,7 @@
 }
 
 .invalid-data {
-    font: 20px Arial;
+    font: 14px Arial;
     color: red;
 }
 
@@ -155,14 +155,23 @@
 .products-li {
     border: solid 2px lightgrey;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-height: 125px;
 }
 
 .products-li-title {
     font: bold 26px Arial;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .products-li-description{
     font: 20px Arial;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .products-li-price {
@@ -236,6 +245,22 @@
     padding: 13px 0;
 }
 
+.plus-button, .minus-button {
+    padding: 0;
+    margin: 0;
+    font-size:30px;
+    height: 37px;
+    width: 40px;
+}
+
+.plus {
+    line-height: 35px;
+}
+
+.minus {
+    line-height: 30px;
+}
+
 /*-----------------shopping cart page-------------------------------------------*/
 
 .price-wrapper {
@@ -260,13 +285,11 @@
 }
 
 .shopping-cart-img {
-    height: 112px;
+    width:150px;
 }
 
 .remove-item {
-    position: relative;
-    top: -40px;
-    left: 90%;
+    float:right;
     width: 40px;
 }
 /*-----------------shopping history page-------------------------------------------*/
@@ -314,7 +337,7 @@
     color: green;
     width: 40%;
     margin: 0 auto;
-    margin-top: 55%;
+    margin-top: 50%;
     white-space: normal;
     border: solid 2px grey;
     -webkit-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
@@ -331,11 +354,11 @@
 
 .spinner {
     margin: 0 auto;
-    margin-top: 60%;
+    margin-top: 40%;
     width: 50px;
     height: 30px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .spinner > div {

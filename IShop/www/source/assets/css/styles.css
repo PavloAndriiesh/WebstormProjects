@@ -157,6 +157,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    min-height: 125px;
 }
 
 .products-li-title {
@@ -214,7 +215,6 @@
 .product-details-input {
     text-align: right;
     width: 80px;
-    margin-left:5px;
 }
 
 .color-red {
@@ -289,9 +289,7 @@
 }
 
 .remove-item {
-    position: relative;
-    top: -40px;
-    left: 90%;
+    float:right;
     width: 40px;
 }
 /*-----------------shopping history page-------------------------------------------*/
@@ -339,7 +337,7 @@
     color: green;
     width: 40%;
     margin: 0 auto;
-    margin-top: 55%;
+    margin-top: 50%;
     white-space: normal;
     border: solid 2px grey;
     -webkit-box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.75);
@@ -356,7 +354,7 @@
 
 .spinner {
     margin: 0 auto;
-    margin-top: 60%;
+    margin-top: 40%;
     width: 50px;
     height: 30px;
     text-align: center;

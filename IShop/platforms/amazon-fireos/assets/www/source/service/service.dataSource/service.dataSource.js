@@ -1,5 +1,7 @@
 RAD.service("service.dataSource", RAD.Blanks.Service.extend({
 
+    chekedCategories: [],
+
     onReceiveMsg: function (channel, data) {
 
         var parts = channel.split('.'),
@@ -32,50 +34,124 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
         }
     },
 
-    loadItems: function (data) {
-        var that = this;
-        RAD.model('collection.listOfProducts').reset();
 
-        _.each(data, function(cat) {
-            RAD.model('collection.listOfProducts').push(that.loadCategory(cat));
+    loadItems: function (category) {
+        var that = this;
+
+        if (!_.contains(that.chekedCategories, category)) {
+            that.chekedCategories.unshift(category);
+            that.loadCategory(category, onSuccess, onError);
+        } else {
+            that.chekedCategories = _.filter(that.chekedCategories, function(cat) {
+                return cat !== category;
+            });
+
+            var newCategories = _.filter(RAD.model('collection.listOfProducts').models, function(item) {
+                return item.attributes.category !== category;
+            });
+            RAD.model('collection.listOfProducts').reset();
+            RAD.model('collection.listOfProducts').push(newCategories);
+
+            that.hideLoader();
+        }
+
+        function onSuccess(cat) {
+            RAD.model('collection.listOfProducts').push(cat);
+            that.hideLoader();
+        }
+
+        function onError(error) {
+            alert('Downloading data from parse.com failed, error:' + error);
+        }
+    },
+
+    loadCategory: function (categoryTitle, onSuccess, onError) {
+        var MyClass = Parse.Object.extend("item");
+        var query = new Parse.Query(MyClass);
+
+        query.equalTo("category", categoryTitle).find({
+            success : function(response){
+                onSuccess(JSON.parse(JSON.stringify(response)));
+            },
+            error: function(data) {
+                onError(data);
+            }});
+    },
+
+    loadShoppingCartData: function () {
+        var MyClass = Parse.Object.extend("item");
+        var query = new Parse.Query(MyClass);
+
+        query.notEqualTo("inShoppingCart", 0).find({
+            success : function(response){
+                RAD.model('collection.shoppingCart').push(JSON.parse(JSON.stringify(response)));
+            },
+            error: function(error) {
+                console.log(error);
+            }});
+    },
+
+    saveShoppingCartData: function () {
+        var ShoppingCart = Parse.Object.extend("item");
+
+        _.each(JSON.parse(JSON.stringify(RAD.model('collection.shoppingCart'))), function(item) {
+            var object = new ShoppingCart;
+
+            object.save({
+                objectId: item.objectId,
+                inShoppingCart: item.inShoppingCart
+            }, {
+                success: function(data) {
+                },
+                error: function(error) {
+                }
+            });
         });
     },
 
-    loadShoppingCartData: function() {
-        try {
-            RAD.model('collection.shoppingCart').push(JSON.parse(window.localStorage.getItem("shoppingCart")));
-        } catch (err) {
-            alert("problem with downloading data");
-        }
+    loadShoppingHistory: function () {
+        var MyClass = Parse.Object.extend("ShoppingHistory");
+        var query = new Parse.Query(MyClass);
+
+        query.addDescending("date").find({
+            success : function(response){
+                RAD.model('collection.shoppingHistory').push(JSON.parse(JSON.stringify(response)))
+            },
+            error: function(error) {
+                console.log(error);
+            }});
     },
 
-    saveShoppingCartData: function() {
-        try {
-            window.localStorage.setItem("shoppingCart", JSON.stringify(RAD.model('collection.shoppingCart')) );
-        } catch (err) {
-            alert("problem with saving shopping cart data");
-        }
+    saveShoppingHistory: function () {
+        var ShoppingHistory = Parse.Object.extend("ShoppingHistory");
+        var object = new ShoppingHistory;
+        var lastPurchase = JSON.parse(JSON.stringify(RAD.model('collection.shoppingHistory')))[0];
+
+        object.save({
+            date: lastPurchase.date,
+            total: lastPurchase.total
+        }, {
+            success: function(data) {
+            },
+            error: function(error) {
+            }
+        });
     },
 
-    loadShoppingHistory: function() {
-        try {
-            RAD.model('collection.shoppingHistory').push(JSON.parse(window.localStorage.getItem("shoppingHistory")));
-        } catch (err) {
-            alert("problem with loading shopping history data");
-        }
+    hideLoader: function() {
+        var options = {
+            container_id: '#screen',
+            content: "screen.affirmationPopup",
+            extras: {
+                action: "loading"
+            }
+        };
 
+        this.publish('navigation.dialog.close', options);
     },
 
-    saveShoppingHistory: function() {
-        try {
-            window.localStorage.setItem("shoppingHistory", JSON.stringify(RAD.model("collection.shoppingHistory")) );
-        } catch (err) {
-            alert("problem with saving shopping history data");
-        }
-    },
-
-    setLanguage: function(data) {
-        window.language = data;
+    setLanguage: function (lang) {
+        window.language = lang;
 
         var local;
         var en = {
@@ -138,7 +214,7 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
             no: "Нет"
         };
 
-        switch(data) {
+        switch (lang) {
             case "en":
                 local = en;
                 break;
@@ -158,15 +234,6 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
         RAD.model("collection.shoppingHistory").trigger("change");
         RAD.models.collection.listOfProducts.local = local;
         RAD.model("collection.listOfProducts").trigger("change");
-    },
-
-
-    loadCategory: function(cat) {
-        var request = new XMLHttpRequest();
-
-        request.open( "GET", "http://localhost:3000/" + cat, false );
-        request.send( null );
-
-        return JSON.parse(request.responseText);
     }
+
 }));

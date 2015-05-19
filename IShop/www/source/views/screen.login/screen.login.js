@@ -36,7 +36,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         Parse.User.logIn(email, password, {
             success: function(user) {
                 $(".invalid-data").addClass("hidden");
-                that.login(user.attributes.email);
+                that.login(user);
                 that.hideLoader();
             },
             error: function(user, error) {
@@ -47,8 +47,14 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
     },
 
     login: function (user) {
+        if (!document.getElementById("password"))
+            return;
+
         document.getElementById("password").value = "";
-        window.user = user;
+        window.user = {
+            email: user.attributes.email,
+            isVip: user.attributes.isVip
+        };
 
         var options = {
             container_id: '#screen',
