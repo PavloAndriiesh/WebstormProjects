@@ -8,10 +8,10 @@
         <div>
             {{ this.model.attributes.local.category }}: <span class="details-category">{{ model.attributes.category }}</span>
             <img class="details-image" src="{{ model.attributes.img_url }}"/>
-            {{# if(window.language==="en") { this.title = this.model.attributes.attributes.title_en; this.description = this.model.attributes.attributes.description_en;}
-            else { this.title = this.model.attributes.attributes.title_ru; this.description = this.model.attributes.attributes.description_ru;} }}
-            <div class="details-title"> {{ this.title }}</div>
-            <span class="details-description"> {{ this.description }}</span>
+            {{# if(window.language==="en") { var title = this.model.attributes.attributes.title_en; var description = this.model.attributes.attributes.description_en;}
+            else { var title = this.model.attributes.attributes.title_ru; var description = this.model.attributes.attributes.description_ru;} }}
+            <div class="details-title"> {{ title }}</div>
+            <span class="details-description"> {{ description }}</span>
 
 
             <div class="btn-wrapper">

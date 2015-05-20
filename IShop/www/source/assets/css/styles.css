@@ -97,7 +97,7 @@
 }
 
 .white-space {
-    height: 100px;
+    height: 5px;
 }
 
 /*-----------------home page-----------------------------------------------------*/
@@ -138,6 +138,7 @@
     position: absolute;
     top: 40px;
     right:0;
+    margin: 0 2%;
 }
 
 .products-ul {
@@ -145,7 +146,8 @@
 }
 
 .category-ul-wrapper{
-    margin: 5px;
+    margin: 2%;
+    width: 30%;
 }
 
 .category-ul-wrapper p {
@@ -184,10 +186,20 @@
     min-width: 150px;
 }
 
-.select-category-button {
+.hide-show-categories {
     height: 40px;
     font: bold 16px Arial;
     line-height: 30px;
+}
+
+.width95 {
+    width: 95%;
+}
+.width30 {
+    width: 30%;
+}
+.width60 {
+    width: 60%;
 }
 
 /*-----------------product details page-------------------------------------------*/

@@ -6,6 +6,7 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
 
     onInitialize: function () {
         this.model = RAD.model('collection.listOfProducts');
+        RAD.models.collection.listOfProducts.isCategoriesShown = true;
     },
 
     events: {
@@ -14,7 +15,7 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
         'tap .category-li' : 'changeCategory',
         'tap .scart-icon': "shoppingCart",
         'tap .flag' : "changeLanguage",
-        'tap .select-category-button': "changeCategoriesVisibility"
+        'tap .hide-show-categories': "changeCategoriesVisibility"
     },
 
     back: function () {
@@ -86,9 +87,8 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
     },
 
     changeCategoriesVisibility: function() {
-        $(".category-ul-wrapper").toggleClass("hidden");
-        $(".products-ul-wrapper").toggleClass("col-xs-7").toggleClass("col-sm-7").toggleClass("col-md-7").toggleClass("col-lg-7").
-            toggleClass("col-xs-12").toggleClass("col-sm-12").toggleClass("col-md-12").toggleClass("col-lg-12");
+        RAD.models.collection.listOfProducts.isCategoriesShown = !RAD.models.collection.listOfProducts.isCategoriesShown;
+        RAD.model('collection.listOfProducts').trigger("change");
     },
 
     showLoader: function() {

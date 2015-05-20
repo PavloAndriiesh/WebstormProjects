@@ -1,13 +1,13 @@
 <div class="">
     <div class="header">
         <div class="back-button pointer float-left">&larr;</div>
-        <span class="select-category-button btn">{{ this.model.local.selectCategory }}:</span>
+        <span class="hide-show-categories btn">{{ this.model.local.selectCategory }}:</span>
         <img id="ru" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.svg.png" alt=""/>
         <img id="en" class="flag pointer" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Union_flag_1606_(Kings_Colors).svg/2000px-Union_flag_1606_(Kings_Colors).svg.png" alt=""/>
         <img class="scart-icon pointer" src="http://www.inmotionhosting.com/support/images/stories/icons/ecommerce/empty-cart-dark.png"/>
     </div>
-    <div class="row">
-        <div class="category-ul-wrapper col-xs-5 col-sm-5 col-md-5 col-lg-5">
+    <div class="">
+        <div class="category-ul-wrapper {{# if(!this.model.isCategoriesShown) { }} hidden {{# }; }}">
             <ul class="category-ul">
                 <li id="food" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'food')){ }} category-li-checked {{# } }}">{{ this.model.local.food }}</li>
                 <li id="alcohol" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'alcohol')){ }} category-li-checked {{# } }}">{{ this.model.local.alcohol }}</li>
@@ -16,7 +16,7 @@
                 <li id="computers" class="category-li pointer btn-block {{# if(_.contains(this.checkedCategories, 'computers')){ }} category-li-checked {{# } }}">{{ this.model.local.computers }}</li>
             </ul>
         </div>
-        <div class="scroll-view products-ul-wrapper col-xs-7 col-sm-7 col-md-7 col-lg-7">
+        <div class="scroll-view products-ul-wrapper {{# if(this.model.isCategoriesShown) { }} width60 {{# } else { }} width95 {{# } }}">
             <div>
                 <ul class="products-ul">
                     {{# _.each(model, function(item, index) { }}
@@ -30,6 +30,7 @@
                     </li>
                     {{# }); }}
                 </ul>
+                <div class="white-space"></div>
             </div>
         </div>
     </div>
