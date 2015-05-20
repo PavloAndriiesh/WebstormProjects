@@ -9,7 +9,7 @@ RAD.view("screen.affirmationPopup", RAD.Blanks.View.extend({
     onNewExtras: function (extras) {
         var popupText = "";
 
-        switch(window.language) {
+        switch(RAD.namespace("language")) {
             case "en":
                 if(extras.action === 'add') {
                     popupText = "Added " + extras.quantity + " item(s) to the shopping cart";

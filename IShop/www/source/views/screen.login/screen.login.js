@@ -4,6 +4,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
     onInitialize: function () {
         this.model = RAD.model("model.login");
+        this.createUser();
         this.publish('service.dataSource.setLanguage', "en");
     },
 
@@ -51,10 +52,9 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             return;
 
         document.getElementById("password").value = "";
-        window.user = {
-            email: user.attributes.email,
-            isVip: user.attributes.isVip
-        };
+
+        RAD.namespace("user").email = user.attributes.email;
+        RAD.namespace("user").isVip = user.attributes.isVip;
 
         var options = {
             container_id: '#screen',
@@ -104,6 +104,14 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
         };
 
         this.publish('navigation.dialog.close', options);
+    },
+
+    createUser: function() {
+        RAD.namespace("user", {
+            email: "",
+            isVip: "",
+            language: ""
+        });
     }
 
 }));

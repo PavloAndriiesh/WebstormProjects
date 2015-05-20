@@ -75,13 +75,11 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
     removeItemsFromShoppingCart: function() {
         var that = this;
         var quantity = +document.getElementById("remove-quantity").value.trim();
-        console.log(RAD.model("collection.shoppingCart").models);
 
         var item = _.find(RAD.model("collection.shoppingCart").models,
             function(item) {
                 return item.attributes.objectId === that.model.attributes.attributes.objectId;});
 
-        console.log(item);
         if(!item || item.attributes.inShoppingCart === 0) {
             alert("There is no such item(s) in your shopping cart");
             return;
@@ -123,7 +121,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
         this.publish('navigation.dialog.show', options);
 
-        window.setTimeout(function() {
+        setTimeout(function() {
             that.publish('navigation.dialog.close', options);
         }, popupDelay);
     },

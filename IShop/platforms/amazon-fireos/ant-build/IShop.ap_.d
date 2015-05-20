@@ -60,7 +60,6 @@
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models/model.productDetails/model.productDetails.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models/collection.listOfProducts/collection.listOfProducts.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models/collection.shoppingHistory/collection.shoppingHistory.js \
-/home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/external/languages.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/external/readme.txt \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets/img \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets/css \

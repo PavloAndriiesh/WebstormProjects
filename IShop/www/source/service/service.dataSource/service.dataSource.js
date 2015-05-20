@@ -151,7 +151,11 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
     },
 
     setLanguage: function (lang) {
-        window.language = lang;
+        if (RAD.namespace("user") && RAD.namespace("user").language === lang) {
+            return;
+        }
+
+        RAD.namespace("user").language = lang;
 
         var local;
         var en = {

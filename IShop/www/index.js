@@ -58,6 +58,5 @@
         //start
         application.start();
     }
-
     window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
 }(document, window));

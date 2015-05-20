@@ -33,7 +33,7 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
             quantity += item.get("inShoppingCart");
         });
 
-        var discount = window.user.isVip ? (price * 3 / 100).toFixed(0) : 0;
+        var discount = RAD.namespace("user").isVip ? (price * 3 / 100).toFixed(0) : 0;
 
         var deal;
         var percentDeal;
@@ -91,13 +91,13 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
 
         this.publish('navigation.dialog.show', options);
 
-        window.setTimeout(function () {
+        setTimeout(function () {
             that.publish('navigation.dialog.close', options);
         }, popupDelay);
     },
 
     removeItem: function (event) {
-        window.isRemoving = true;
+        RAD.namespace("isRemoving", true);
         var id = event.currentTarget.getAttribute('data-id');
 
         var shopingCartItems = _.filter(RAD.model("collection.shoppingCart").models, function (item) {
@@ -113,7 +113,7 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
 
         RAD.model("collection.shoppingCart").reset();
         RAD.model("collection.shoppingCart").push(shopingCartItems);
-        this.isRemoving = false;
+        RAD.namespace("isRemoving", false);
     },
 
     removeAllItemsFromTheShoppingCart: function () {
@@ -123,7 +123,7 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
     },
 
     productDetails: function (event) {
-        if(window.isRemoving){
+        if(RAD.namespace("isRemoving")){
             return;
         }
 

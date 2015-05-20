@@ -10,7 +10,7 @@
                 <ul class="products-ul">
                     {{# _.each(model, function(item, index) { }}
                     <li class="products-li btn-block btn" data-id="{{ item.objectId }}">
-                        {{# if(window.language==="en") { var title = item.title_en; var description = item.description_en }
+                        {{# if(RAD.namespace("user").language==="en") { var title = item.title_en; var description = item.description_en }
                         else { var title = item.title_ru; var description = item.description_ru  } }}
                         <img class="float-left shopping-cart-img" src="{{ item.img_url }}"/>
                         <div class="products-li-title">{{ title }}</div>
