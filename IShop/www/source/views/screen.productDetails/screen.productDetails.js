@@ -6,7 +6,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.model = RAD.model('model.productDetails');
     },
 
-    onStartAttach: function() {
+    onStartAttach: function () {
         this.addListeners();
     },
 
@@ -16,7 +16,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
     events: {
         'tap .back-button': 'back',
-        'tap .add-button' : "addItemsToShoppingCart",
+        'tap .add-button': "addItemsToShoppingCart",
         'tap .remove-button': 'removeItemsFromShoppingCart',
         'tap .flag': 'changeLanguage',
         'tap #add-add': "addToAdd",
@@ -28,13 +28,15 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
     defineModel: function (extras) {
         if (extras.source === "listOfProducts") {
             this.model.set(_.find(RAD.model("collection.listOfProducts").models,
-                function(item) {
-                    return item.attributes.objectId === extras.id}));
+                function (item) {
+                    return item.attributes.objectId === extras.id
+                }));
 
         } else if (extras.source === "shoppingCart") {
             this.model.set(_.find(RAD.model("collection.shoppingCart").models,
-                function(item) {
-                    return item.attributes.objectId === extras.id} ));
+                function (item) {
+                    return item.attributes.objectId === extras.id
+                }));
         } else {
             console.log("Fatal error while defining model")
         }
@@ -44,19 +46,21 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.publish('router.back', null);
     },
 
-    addItemsToShoppingCart: function() {
+    addItemsToShoppingCart: function () {
         var that = this;
         var quantity = +document.getElementById("add-quantity").value.trim();
 
         var item = _.find(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
-            function(item) {
-                return item.objectId === that.model.attributes.attributes.objectId;});
+            function (item) {
+                return item.objectId === that.model.attributes.attributes.objectId;
+            });
 
-        if(item) {
+        if (item) {
             item.inShoppingCart += quantity;
             var otherItems = _.filter(JSON.parse(JSON.stringify(RAD.model("collection.shoppingCart"))),
-                function(item) {
-                    return item.objectId !== that.model.attributes.attributes.objectId;});
+                function (item) {
+                    return item.objectId !== that.model.attributes.attributes.objectId;
+                });
 
             RAD.model("collection.shoppingCart").reset();
             RAD.model("collection.shoppingCart").push(item);
@@ -69,18 +73,19 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }
 
         that.publish('service.dataSource.saveShoppingCartData', quantity);
-        that.showAffirmationPopup("add", quantity);
+        that.showAffirmationPopup("Added {quantity} item(s) to the shopping cart", quantity);
     },
 
-    removeItemsFromShoppingCart: function() {
+    removeItemsFromShoppingCart: function () {
         var that = this;
         var quantity = +document.getElementById("remove-quantity").value.trim();
 
         var item = _.find(RAD.model("collection.shoppingCart").models,
-            function(item) {
-                return item.attributes.objectId === that.model.attributes.attributes.objectId;});
+            function (item) {
+                return item.attributes.objectId === that.model.attributes.attributes.objectId;
+            });
 
-        if(!item || item.attributes.inShoppingCart === 0) {
+        if (!item || item.attributes.inShoppingCart === 0) {
             alert("There is no such item(s) in your shopping cart");
             return;
         }
@@ -95,18 +100,19 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
         if (item.attributes.inShoppingCart === 0) {
             var newItemsCollection = _.filter(RAD.model("collection.shoppingCart").models,
-                function(item) {
-                    return item.attributes.objectId !== that.model.attributes.attributes.objectId;});
+                function (item) {
+                    return item.attributes.objectId !== that.model.attributes.attributes.objectId;
+                });
 
             RAD.model("collection.shoppingCart").reset();
             RAD.model("collection.shoppingCart").push(newItemsCollection);
         }
 
         RAD.model("collection.shoppingCart").trigger("change");
-        that.showAffirmationPopup("remove", quantity);
+        that.showAffirmationPopup("Removed {quantity} item(s) from the shopping cart", quantity);
     },
 
-    showAffirmationPopup: function(action, quantity) {
+    showAffirmationPopup: function (action, quantity) {
         var that = this;
         var popupDelay = 500;
 
@@ -121,12 +127,12 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
 
         this.publish('navigation.dialog.show', options);
 
-        setTimeout(function() {
+        setTimeout(function () {
             that.publish('navigation.dialog.close', options);
         }, popupDelay);
     },
 
-    addToAdd: function() {
+    addToAdd: function () {
         var quantity = +document.getElementById("add-quantity").value;
         quantity += +this.model.attributes.attributes.bundle;
 
@@ -134,11 +140,11 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.calculateAdd();
     },
 
-    removeFromAdd: function() {
+    removeFromAdd: function () {
         var quantity = +document.getElementById("add-quantity").value;
         quantity -= +this.model.attributes.attributes.bundle;
 
-        if(quantity <= 0) {
+        if (quantity <= 0) {
             return;
         }
 
@@ -146,7 +152,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.calculateAdd();
     },
 
-    addToRemove: function() {
+    addToRemove: function () {
         var quantity = +document.getElementById("remove-quantity").value;
         quantity += +this.model.attributes.attributes.bundle;
 
@@ -154,11 +160,11 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.calculateRemove();
     },
 
-    removeFromRemove: function() {
+    removeFromRemove: function () {
         var quantity = +document.getElementById("remove-quantity").value;
         quantity -= +this.model.attributes.attributes.bundle;
 
-        if(quantity <= 0) {
+        if (quantity <= 0) {
             return;
         }
 
@@ -166,12 +172,12 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         this.calculateRemove();
     },
 
-    addListeners: function() {
+    addListeners: function () {
         document.getElementById("add-quantity").addEventListener("input", _.bind(this.calculateAdd, this));
-        document.getElementById("remove-quantity").addEventListener("input",  _.bind(this.calculateRemove, this));
+        document.getElementById("remove-quantity").addEventListener("input", _.bind(this.calculateRemove, this));
     },
 
-    calculateAdd: function() {
+    calculateAdd: function () {
         var quantity = document.getElementById("add-quantity").value.trim();
 
         if (!this.isQuantityValid(quantity)) {
@@ -181,10 +187,10 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }
 
         document.getElementById("add-button").removeAttribute("disabled");
-        document.getElementById("price-add").innerHTML = quantity*this.model.attributes.attributes.price + " UAH";
+        document.getElementById("price-add").innerHTML = quantity * this.model.attributes.attributes.price + " UAH";
     },
 
-    calculateRemove: function() {
+    calculateRemove: function () {
         var quantity = document.getElementById("remove-quantity").value.trim();
 
         if (!this.isQuantityValid(quantity)) {
@@ -194,10 +200,10 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         }
 
         document.getElementById("remove-button").removeAttribute("disabled");
-        document.getElementById("price-remove").innerHTML = "-" + quantity*this.model.attributes.attributes.price + " UAH";
+        document.getElementById("price-remove").innerHTML = "-" + quantity * this.model.attributes.attributes.price + " UAH";
     },
 
-    isQuantityValid: function(quantity) {
+    isQuantityValid: function (quantity) {
 
         if (quantity % this.model.attributes.attributes.bundle !== 0)
             return false;
@@ -214,7 +220,7 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         return true;
     },
 
-    changeLanguage: function(event) {
+    changeLanguage: function (event) {
         var newLanguage = event.currentTarget.id;
         this.publish('service.dataSource.setLanguage', newLanguage);
         this.addListeners();

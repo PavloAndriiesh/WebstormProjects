@@ -53,9 +53,9 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
         document.getElementById("password").value = "";
 
-        RAD.namespace("user").username = user.attributes.username;
-        RAD.namespace("user").email = user.attributes.email;
-        RAD.namespace("user").isVip = user.attributes.isVip;
+        RAD.namespace("user").username = user.get("username");
+        RAD.namespace("user").email = user.get("email");
+        RAD.namespace("user").isVip = user.get("isVip");
 
         var options = {
             container_id: '#screen',
@@ -88,7 +88,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
-                action: "loading"
+                action: "Loading"
             }
         };
 
@@ -100,7 +100,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
             container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
-                action: "loading"
+                action: "Loading"
             }
         };
 
@@ -108,12 +108,6 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
     },
 
     createUser: function() {
-        RAD.namespace("user", {
-            username: "",
-            email: "",
-            isVip: "",
-            language: ""
-        });
+        RAD.namespace("user").init("", "", "", "");
     }
-
 }));

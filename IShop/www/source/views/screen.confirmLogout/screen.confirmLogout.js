@@ -36,10 +36,7 @@ RAD.view("screen.confirmLogout", RAD.Blanks.View.extend({
     },
 
     deleteUser: function() {
-        RAD.namespace("user").username = "";
-        RAD.namespace("user").email = "";
-        RAD.namespace("user").isVip = "";
-        RAD.namespace("user").language = "";
+        RAD.namespace("user").clearCredentials();
     }
 
 

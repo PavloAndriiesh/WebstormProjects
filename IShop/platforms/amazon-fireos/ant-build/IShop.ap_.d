@@ -33,6 +33,7 @@
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/lib \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/external \
+/home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/package \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/views \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/service \
@@ -61,6 +62,8 @@
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models/collection.listOfProducts/collection.listOfProducts.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/models/collection.shoppingHistory/collection.shoppingHistory.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/external/readme.txt \
+/home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/package/helper.translate \
+/home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/package/helper.translate/helper.translate.js \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets/img \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets/css \
 /home/pavlo/WebstormProjects/WebstormProjects/IShop/platforms/amazon-fireos/assets/www/source/assets/img/drop-down-triangle-dark.png \

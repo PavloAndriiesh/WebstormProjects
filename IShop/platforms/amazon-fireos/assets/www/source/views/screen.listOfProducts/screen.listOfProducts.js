@@ -96,7 +96,7 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
             container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
-                action: "loading"
+                action: "Loading"
             }
         };
 
@@ -108,7 +108,7 @@ RAD.view("screen.listOfProducts", RAD.Blanks.ScrollableView.extend({
             container_id: '#screen',
             content: "screen.affirmationPopup",
             extras: {
-                action: "loading"
+                action: "Loading"
             }
         };
 

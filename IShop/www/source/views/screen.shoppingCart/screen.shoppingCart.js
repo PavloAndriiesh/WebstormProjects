@@ -2,8 +2,6 @@ RAD.view("screen.shoppingCart", RAD.Blanks.ScrollableView.extend({
 
     url: 'source/views/screen.shoppingCart/screen.shoppingCart.html',
 
-    isRemoving: false,
-
     onInitialize: function () {
         this.model = RAD.model('collection.shoppingCart');
     },

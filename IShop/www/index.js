@@ -58,5 +58,6 @@
         //start
         application.start();
     }
+    scripts.push("source/package/helper.translate/helper.translate.js")
     window.RAD.scriptLoader.loadScripts(scripts, onEndLoad);
 }(document, window));
