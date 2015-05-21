@@ -13,6 +13,7 @@ RAD.view("screen.confirmLogout", RAD.Blanks.View.extend({
 
     logout: function() {
         this.closePopup();
+        this.deleteUser();
 
         var options = {
             container_id: '#screen',
@@ -32,6 +33,13 @@ RAD.view("screen.confirmLogout", RAD.Blanks.View.extend({
         };
 
         this.publish('navigation.dialog.close', options);
+    },
+
+    deleteUser: function() {
+        RAD.namespace("user").username = "";
+        RAD.namespace("user").email = "";
+        RAD.namespace("user").isVip = "";
+        RAD.namespace("user").language = "";
     }
 
 

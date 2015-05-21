@@ -208,6 +208,9 @@ RAD.view("screen.productDetails", RAD.Blanks.ScrollableView.extend({
         if (quantity % 1 != 0)
             return false;
 
+        if (quantity == 0)
+            return false;
+
         return true;
     },
 

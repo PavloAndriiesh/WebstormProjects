@@ -48,14 +48,12 @@ RAD.view("screen.home", RAD.Blanks.View.extend({
     },
 
     logout: function() {
-
         var options = {
             container_id: '#screen',
             content: "screen.confirmLogout"
         };
 
         this.publish('navigation.dialog.show', options);
-
     },
 
     changeLanguage: function(event) {

@@ -157,66 +157,97 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
 
         RAD.namespace("user").language = lang;
 
-        var local;
         var en = {
-            login: "Login",
-            incorrect: "Your email or password is incorrect",
-            hello: "Hello",
-            listOfProducts: "List of products",
-            shoppingCart: "Shoping cart",
-            shoppingHistory: "Shopping history",
-            logout: "Logout",
-            category: "Category",
-            bundle: "Bundle",
-            items: "item(s)",
-            addToCart: "Add to сart",
-            removeFromCart: "Remove from сart",
-            price: "Price",
-            discount: "Discount",
-            deal: "Deal",
-            total: "Total",
-            makeAnOrder: "Make an order",
-            selectCategory: "Categories: (Click)",
-            food: "Food",
-            alcohol: "Drink",
-            automobile: "Automobile",
-            realEstate: "Real estate",
-            computers: "Computers",
-            welcome: "Welcome to the IShop!",
-            confirmLogout: "Are you sure?",
-            yes: "Yes",
-            no: "No"
+            login: {
+                welcome: "Welcome to IShop!",
+                login: "Login",
+                incorrect: "Your email or password is incorrect"
+            },
+            home: {
+                hello: "Hello",
+                listOfProducts: "List of products",
+                shoppingCart: "Shoping cart",
+                shoppingHistory: "Shopping history",
+                logout: "Logout"
+            },
+            listOfProducts: {
+                selectCategory: "Categories: (Click)",
+                food: "Food",
+                alcohol: "Drink",
+                automobile: "Automobile",
+                realEstate: "Real estate",
+                computers: "Computers"
+            },
+            shoppingCart: {
+                price: "Price",
+                discount: "Discount",
+                deal: "Deal",
+                total: "Total",
+                makeAnOrder: "Make an order"
+            },
+            productDetails: {
+                category: "Category",
+                bundle: "Bundle",
+                items: "item(s)",
+                addToCart: "Add to сart",
+                removeFromCart: "Remove from сart"
+            },
+            confirmLogout: {
+                confirmLogout: "Are you sure?",
+                yes: "Yes",
+                no: "No"
+            },
+            shoppingHistory: {
+                shoppingHistory: "Shopping history"
+            }
         };
 
         var ru = {
-            login: "Войти",
-            incorrect: "Ваш email или пароль неверны",
-            hello: "Привет",
-            listOfProducts: "Список товаров",
-            shoppingCart: "Корзина",
-            shoppingHistory: "История покупок",
-            logout: "Выйти",
-            category: "Категория",
-            bundle: "Пачка",
-            items: "штук",
-            addToCart: "Добавить в корзину",
-            removeFromCart: "Удалить с корзины",
-            price: "Цена",
-            discount: "Скидка",
-            deal: "Акция",
-            total: "Всего",
-            makeAnOrder: "Сделать заказ",
-            selectCategory: "Категории (Нажми)",
-            food: "Продукты",
-            alcohol: "Напитки",
-            automobile: "Автомобили",
-            realEstate: "Недвижимость",
-            computers: "Компьютеры",
-            welcome: "Добро пожаловать в IShop!",
-            confirmLogout: "Вы уверены?",
-            yes: "Да",
-            no: "Нет"
+            login: {
+                welcome: "Добро пожаловать в IShop!",
+                login: "Войти",
+                incorrect: "Ваш email или пароль неверны"
+            },
+            home: {
+                hello: "Привет",
+                listOfProducts: "Список товаров",
+                shoppingCart: "Корзина",
+                shoppingHistory: "История покупок",
+                logout: "Выйти"
+            },
+            listOfProducts: {
+                selectCategory: "Категории (Нажми)",
+                food: "Продукты",
+                alcohol: "Напитки",
+                automobile: "Автомобили",
+                realEstate: "Недвижимость",
+                computers: "Компьютеры"
+            },
+            shoppingCart: {
+                price: "Цена",
+                discount: "Скидка",
+                deal: "Акция",
+                total: "Всего",
+                makeAnOrder: "Сделать заказ"
+            },
+            productDetails: {
+                category: "Категория",
+                bundle: "Пачка",
+                items: "штук",
+                addToCart: "Добавить в корзину",
+                removeFromCart: "Удалить с корзины"
+            },
+            confirmLogout: {
+                confirmLogout: "Вы уверены?",
+                yes: "Да",
+                no: "Нет"
+            },
+            shoppingHistory: {
+                shoppingHistory: "История покупок"
+            }
         };
+
+        var local;
 
         switch (lang) {
             case "en":
@@ -228,15 +259,15 @@ RAD.service("service.dataSource", RAD.Blanks.Service.extend({
                 break;
         }
 
-        RAD.model("model.productDetails").set("local", local);
-        RAD.model("model.home").set("local", local);
-        RAD.model("model.login").set("local", local);
-        RAD.model("model.confirmLogout").set("local", local);
-        RAD.models.collection.shoppingCart.local = local;
+        RAD.model("model.productDetails").set("local", local.productDetails);
+        RAD.model("model.home").set("local", local.home);
+        RAD.model("model.login").set("local", local.login);
+        RAD.model("model.confirmLogout").set("local", local.confirmLogout);
+        RAD.models.collection.shoppingCart.local = local.shoppingCart;
         RAD.model("collection.shoppingCart").trigger("change");
-        RAD.models.collection.shoppingHistory.local = local;
+        RAD.models.collection.shoppingHistory.local = local.shoppingHistory;
         RAD.model("collection.shoppingHistory").trigger("change");
-        RAD.models.collection.listOfProducts.local = local;
+        RAD.models.collection.listOfProducts.local = local.listOfProducts;
         RAD.model("collection.listOfProducts").trigger("change");
     }
 

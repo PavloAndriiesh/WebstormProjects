@@ -53,6 +53,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
         document.getElementById("password").value = "";
 
+        RAD.namespace("user").username = user.attributes.username;
         RAD.namespace("user").email = user.attributes.email;
         RAD.namespace("user").isVip = user.attributes.isVip;
 
@@ -108,6 +109,7 @@ RAD.view("screen.login", RAD.Blanks.View.extend({
 
     createUser: function() {
         RAD.namespace("user", {
+            username: "",
             email: "",
             isVip: "",
             language: ""

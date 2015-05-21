@@ -106,8 +106,7 @@
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-
+    width: 55%;
 }
 
 .menu-list div{
@@ -213,7 +212,7 @@
 }
 
 .add-button, .remove-button {
-    width: 200px;
+    width: 210px;
     font: 20px Arial;
     margin: 5px 0;
 }
